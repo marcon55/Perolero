@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Perolero — Compra y vende cerca de ti en Venezuela</title>
+<meta name="description" content="Perolero: la app y web para comprar y vender de segunda mano en toda Venezuela. Precios en dólares, envíos asegurados y pago protegido."/>
+<meta name="theme-color" content="#13c1ac"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect rx='12' width='40' height='40' fill='%2313c1ac'/%3E%3Cpath d='M12 18a8 8 0 0 1 13.5-5.5M28 22a8 8 0 0 1-13.5 5.5' stroke='white' stroke-width='3.2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M26.5 8.5v4.5H22M13.5 31.5V27H18' stroke='white' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-container":"#d6e5ee","on-error-container":"#93000a","surface":"#f3faff","on-surface":"#101d23","surface-bg":"#F4F6F8","on-primary-fixed":"#00201b","surface-card":"#FFFFFF","badge-coral":"#FF5938","tertiary-fixed":"#ffdad2","inverse-primary":"#46dcc6","surface-container-low":"#e7f6fe","tertiary-container":"#ff8c72","inverse-surface":"#253238","badge-orange":"#FF9800","error-container":"#ffdad6","on-secondary-fixed":"#101d24","on-secondary-fixed-variant":"#3b4950","surface-container-highest":"#d6e5ed","border-subtle":"#E5E9EC","inverse-on-surface":"#e4f3fb","background":"#f3faff","on-tertiary":"#ffffff","surface-container":"#e2f0f8","surface-tint":"#006b5e","secondary-fixed":"#d6e5ee","primary-fixed-dim":"#46dcc6","tertiary-fixed-dim":"#ffb4a3","charcoal-dark":"#1A202C","on-error":"#ffffff","on-background":"#101d23","secondary-fixed-dim":"#bbc9d1","outline":"#6c7a76","surface-variant":"#d6e5ed","tertiary":"#ae3115","surface-container-high":"#dceaf2","on-surface-variant":"#3c4a46","surface-bright":"#f3faff","primary-container":"#13c1ac","surface-dim":"#cedce4","primary-fixed":"#69f9e2","on-tertiary-fixed":"#3d0600","on-secondary":"#ffffff","primary":"#006b5e","on-tertiary-fixed-variant":"#8c1900","on-secondary-container":"#59666e","error":"#ba1a1a","on-primary-container":"#004940","outline-variant":"#bbcac5","on-primary-fixed-variant":"#005047","mint-bright":"#3DD2BA","secondary":"#536068","on-primary":"#ffffff","mint-light":"#E8FAF7","on-tertiary-container":"#801600","surface-container-lowest":"#ffffff"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},spacing:{"gutter":"1.25rem","space-lg":"1.5rem","space-xl":"2.5rem","gutter-desktop":"1.5rem","margin-desktop":"2.5rem","margin":"1rem","space-xs":"0.25rem","space-sm":"0.5rem","space-md":"1rem"},fontFamily:{"title-md":["Inter"],"headline-xl":["Montserrat"],"label-lg":["Inter"],"headline-lg-mobile":["Montserrat"],"body-sm":["Inter"],"label-md":["Inter"],"title-sm":["Inter"],"headline-md":["Montserrat"],"body-lg":["Inter"],"headline-xl-mobile":["Montserrat"],"headline-sm":["Montserrat"],"headline-lg":["Montserrat"],"body-md":["Inter"],"label-sm":["Inter"]},fontSize:{"title-md":["18px",{lineHeight:"24px",fontWeight:"600"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["14px",{lineHeight:"20px",fontWeight:"600"}],"headline-lg-mobile":["24px",{lineHeight:"30px",letterSpacing:"-0.01em",fontWeight:"700"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"title-sm":["16px",{lineHeight:"22px",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"headline-xl-mobile":["28px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"600"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"700"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"600"}]}}}};</script>
+<style>
+  html{scroll-behavior:smooth;scroll-padding-top:var(--hh,140px)}
+  html,body{margin:0;padding:0}
+  body{overscroll-behavior:none}
+  ::-webkit-scrollbar{display:none}
+  .scrollbar-none{scrollbar-width:none}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;user-select:none}
+  .icon-fill{font-variation-settings:'FILL' 1,'wght' 500,'GRAD' 0,'opsz' 24}
+  main{padding-top:var(--hh,140px)}
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Cards ---------- */
+  @keyframes cardIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+  .card-in{animation:cardIn .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0ms)}
+  .card{transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease}
+  .card:hover{transform:translateY(-5px);box-shadow:0 18px 36px -16px rgba(16,29,35,.22)}
+  .card:focus-visible{outline:3px solid #13c1ac;outline-offset:3px}
+  .media img{transition:opacity .6s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+  .media img:not(.loaded){opacity:0}
+  .card:hover .media img{transform:scale(1.06)}
+  @keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+  .shimmer{background:linear-gradient(90deg,#dceaf2 0%,#eef7fb 50%,#dceaf2 100%);background-size:800px 100%;animation:shimmer 1.4s linear infinite}
+
+  /* ---------- Hero ---------- */
+  @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .float{animation:floatY 6s ease-in-out infinite}
+  .float-2{animation:floatY 7s ease-in-out infinite 1.2s}
+  @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,20px) scale(1.08)}}
+  .drift{animation:drift 14s ease-in-out infinite}
+  .drift-2{animation:drift 18s ease-in-out infinite reverse}
+  .rot-word{display:inline-block;transition:opacity .35s ease,transform .35s ease;background:linear-gradient(transparent 68%,rgba(61,210,186,.35) 68%)}
+  .rot-word.out{opacity:0;transform:translateY(-12px)}
+  .rot-word.pre{opacity:0;transform:translateY(12px);transition:none}
+  @keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(255,89,56,.55)}100%{box-shadow:0 0 0 10px rgba(255,89,56,0)}}
+  .live-dot{animation:pulseDot 1.6s ease-out infinite}
+
+  /* ---------- Misc animations ---------- */
+  @keyframes pop{0%{transform:scale(1)}35%{transform:scale(1.35)}100%{transform:scale(1)}}
+  .pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
+  @keyframes typing{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-4px);opacity:1}}
+  .typing span{display:inline-block;width:5px;height:5px;border-radius:9999px;background:#6c7a76;animation:typing 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+  .msg{opacity:0;transform:translateY(8px) scale(.96);transition:opacity .4s ease,transform .4s cubic-bezier(.2,.8,.2,1)}
+  .msg.show{opacity:1;transform:none}
+  .donut-ring{transition:stroke-dasharray 1.8s cubic-bezier(.2,.7,.2,1)}
+  .logo-mark{transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+  .logo:hover .logo-mark{transform:rotate(180deg)}
+  .city svg{transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+  .city:hover svg{transform:scale(1.07)}
+  .step-line{transform-origin:left;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.2,.7,.2,1) .3s}
+  .in .step-line{transform:scaleX(1)}
+
+  /* ---------- Overlays ---------- */
+  .overlay{opacity:0;pointer-events:none;transition:opacity .3s ease}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .overlay .panel{transform:translateY(24px) scale(.97);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+  .overlay.open .panel{transform:none}
+  .dropdown{opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+  .dropdown.open{opacity:1;transform:none;pointer-events:auto}
+  #toast{transform:translate(-50%,120%);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .3s ease}
+  #toast.show{transform:translate(-50%,0);opacity:1}
+  #consent-banner{transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s ease}
+  #consent-banner.hide{transform:translateY(140%);opacity:0;pointer-events:none}
+  header.scrolled{box-shadow:0 6px 24px rgba(16,29,35,.08)}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body class="bg-surface-bg font-body-md text-on-surface antialiased min-h-screen flex flex-col">
+
+<!-- ================= HEADER ================= -->
+<header id="site-header" class="fixed top-0 left-0 w-full z-50 bg-surface-card/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.06)] transition-shadow">
+  <div class="h-[72px] md:h-20 max-w-[1280px] mx-auto px-margin md:px-margin-desktop flex items-center justify-between gap-space-md">
+    <a class="logo flex items-center gap-2 shrink-0" href="#top" aria-label="Perolero">
+      <svg class="logo-mark w-9 h-9" viewBox="0 0 40 40" aria-hidden="true"><rect rx="12" width="40" height="40" fill="#13c1ac"/><path d="M12 18a8 8 0 0 1 13.5-5.5M28 22a8 8 0 0 1-13.5 5.5" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M26.5 8.5v4.5H22M13.5 31.5V27H18" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="font-headline-sm text-headline-sm text-primary font-extrabold tracking-tight hidden sm:inline">perolero</span>
+    </a>
+
+    <!-- Desktop search -->
+    <form id="search-form" class="relative flex-1 max-w-2xl mx-space-sm hidden md:flex items-center bg-surface-card rounded-full shadow-[0_2px_8px_rgba(41,54,61,0.08)] border border-border-subtle pl-space-md pr-space-xs py-space-xs focus-within:ring-2 focus-within:ring-primary-container transition-shadow" autocomplete="off">
+      <span class="material-symbols-outlined text-secondary text-[22px] mr-2 shrink-0">search</span>
+      <input id="search-input" class="w-full bg-transparent border-0 outline-none font-body-md text-body-md text-charcoal-dark placeholder:text-secondary-fixed-dim" data-i18n-ph="search_ph" placeholder="Buscar en todas las categorías..." type="search"/>
+      <div class="relative shrink-0">
+        <button id="cat-btn" class="flex items-center gap-1 px-3 py-1.5 rounded-full text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors text-label-md font-label-md border-l border-border-subtle" type="button">
+          <span id="cat-btn-label" data-i18n="categories">Categorías</span><span class="material-symbols-outlined text-[18px]">expand_more</span>
+        </button>
+        <div id="cat-dd" class="dropdown absolute right-0 top-11 w-60 max-h-80 overflow-y-auto bg-surface-card rounded-2xl shadow-xl border border-border-subtle p-2 z-20"></div>
+      </div>
+      <div class="relative shrink-0">
+        <button id="city-btn" class="flex items-center gap-1 px-3 py-1.5 rounded-full text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors text-label-md font-label-md border-l border-border-subtle" type="button">
+          <span class="material-symbols-outlined text-primary text-[18px]">location_on</span><span id="city-btn-label" class="font-medium truncate max-w-[110px]">Toda Venezuela</span>
+        </button>
+        <div id="city-dd" class="dropdown absolute right-0 top-11 w-56 max-h-80 overflow-y-auto bg-surface-card rounded-2xl shadow-xl border border-border-subtle p-2 z-20"></div>
+      </div>
+      <button class="w-9 h-9 rounded-full bg-primary-container hover:bg-primary text-surface-card flex items-center justify-center shrink-0 ml-1 transition-all active:scale-95" type="submit" data-i18n-title="search" title="Buscar">
+        <span class="material-symbols-outlined text-[20px]">search</span>
+      </button>
+    </form>
+
+    <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+      <button class="lang-toggle flex items-center h-9 rounded-full bg-surface-container-low p-0.5 text-label-sm font-label-sm font-bold" type="button" aria-label="Idioma / Language">
+        <span data-lang="es" class="lang-opt px-2.5 h-8 flex items-center rounded-full transition-all">ES</span>
+        <span data-lang="en" class="lang-opt px-2.5 h-8 flex items-center rounded-full transition-all">EN</span>
+      </button>
+      <nav class="flex items-center gap-1 sm:gap-2">
+        <div class="relative">
+          <button id="msg-btn" class="relative flex items-center justify-center w-10 h-10 rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-i18n-title="messages" title="Mensajes" type="button">
+            <span class="material-symbols-outlined text-[24px]">chat_bubble_outline</span>
+            <span id="msg-badge" class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-badge-coral text-on-tertiary text-[10px] flex items-center justify-center font-bold">3</span>
+          </button>
+          <div id="msg-dd" class="dropdown absolute right-0 top-12 w-80 bg-surface-card rounded-2xl shadow-xl border border-border-subtle p-2 z-20">
+            <div class="flex items-center justify-between px-3 py-2">
+              <span class="font-title-sm text-title-sm text-charcoal-dark" data-i18n="messages">Mensajes</span>
+              <a href="#" class="text-label-md font-label-md text-primary hover:underline" data-i18n="see_all_msgs">Ver todos</a>
+            </div>
+            <div id="msg-list" class="flex flex-col"></div>
+          </div>
+        </div>
+        <button id="fav-btn" class="relative flex items-center justify-center w-10 h-10 rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-i18n-title="favorites" title="Favoritos" type="button">
+          <span class="material-symbols-outlined text-[24px]">favorite_border</span>
+          <span id="fav-count" class="absolute top-1 right-1 min-w-4 h-4 px-1 rounded-full bg-primary-container text-on-primary text-[10px] items-center justify-center font-bold hidden">0</span>
+        </button>
+        <a id="profile-btn" class="hidden sm:flex items-center ml-1 p-0.5 rounded-full hover:ring-2 hover:ring-primary-container transition-all" href="#" data-i18n-title="profile" title="Mi perfil">
+          <img alt="" class="w-8 h-8 rounded-full object-cover bg-mint-light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv5HHcjZ2FTFvOxoOingQquR6ALHo1gVAtNaek_S1ByiL9iToqABgO2KxXW1a4hZhdloGIJw3iZGxg6Qc-J6YrT70KBNZ_Nwi6r0EbhgonD2fi7Q-HaHKUiRndutIx7UFUFvok0wKuQymtA4TkGUpGbec4zLNm9ewd4tmh1OA2y3P8Xi23jMZZK1o2Tdn4nySJMpEmM-UspREA6JdGBQkx4akT1QL2uOcLnj7j4G4" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'w-8 h-8 rounded-full bg-primary-container text-white text-[12px] font-bold flex items-center justify-center',textContent:'TÚ'}))"/>
+        </a>
+      </nav>
+      <button class="open-publish hidden sm:inline-flex items-center justify-center bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg font-bold px-5 py-2.5 rounded-full transition-all active:scale-[0.98] shadow-sm hover:shadow" type="button" data-i18n="publish_btn">+ Publicar producto</button>
+    </div>
+  </div>
+
+  <!-- Mobile search -->
+  <div class="md:hidden px-margin pb-3">
+    <form id="m-search-form" class="flex items-center bg-surface-container-low rounded-full pl-4 pr-1 py-1 focus-within:ring-2 focus-within:ring-primary-container" autocomplete="off">
+      <span class="material-symbols-outlined text-secondary text-[20px] mr-2">search</span>
+      <input id="m-search-input" class="w-full bg-transparent border-0 outline-none text-body-md text-charcoal-dark placeholder:text-secondary" data-i18n-ph="search_ph" placeholder="Buscar en todas las categorías..." type="search"/>
+      <button class="open-publish w-9 h-9 rounded-full bg-primary-container text-white flex items-center justify-center shrink-0" type="button" data-i18n-title="publish_short" title="Publicar"><span class="material-symbols-outlined text-[20px]">add</span></button>
+    </form>
+  </div>
+
+  <div class="bg-surface-card border-t border-border-subtle">
+    <div class="max-w-[1280px] mx-auto px-margin md:px-margin-desktop">
+      <nav id="top-cats" class="flex items-center gap-2 overflow-x-auto py-2.5 scrollbar-none"></nav>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MAIN ================= -->
+<main id="top" class="w-full bg-surface-bg flex-1">
+<div class="pt-8 md:pt-11 max-w-[1280px] mx-auto px-margin md:px-margin-desktop">
+<div class="flex flex-col w-full pb-16 space-y-12">
+
+<!-- HERO -->
+<section class="relative overflow-hidden rounded-lg bg-gradient-to-r from-mint-light via-surface-container to-surface-card p-6 md:p-10 shadow-sm">
+  <div class="drift absolute -right-16 -top-16 w-80 h-80 rounded-full bg-primary-container/15 blur-3xl pointer-events-none"></div>
+  <div class="drift-2 absolute right-1/4 -bottom-20 w-72 h-72 rounded-full bg-mint-bright/20 blur-2xl pointer-events-none"></div>
+  <!-- Decorative dotted pattern -->
+  <svg class="absolute left-0 bottom-0 w-64 h-40 text-primary-container/20 pointer-events-none" aria-hidden="true"><defs><pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="2" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#dots)"/></svg>
+
+  <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <div class="lg:col-span-7 flex flex-col items-start gap-4">
+      <div class="reveal inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-bold shadow-sm">
+        <span class="material-symbols-outlined text-[16px]">eco</span>
+        <span data-i18n="hero_badge">Cambia a tu manera • Economía circular</span>
+      </div>
+      <h1 class="reveal font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-charcoal-dark tracking-tight leading-tight" style="--d:80ms">
+        <span data-i18n="hero_h1_a">La app y web para</span> <span class="text-primary" data-i18n="hero_h1_b">comprar y vender</span>
+        <span id="rot-word" class="rot-word text-charcoal-dark">lo que quieras</span>
+        <span data-i18n="hero_h1_c">cerca de ti</span>
+      </h1>
+      <p class="reveal font-body-lg text-body-lg text-secondary max-w-xl" style="--d:160ms" data-i18n="hero_p">
+        Dale una segunda vida a miles de productos en toda Venezuela.
+      </p>
+      <div class="reveal flex flex-wrap items-center gap-3 pt-2" style="--d:240ms">
+        <button class="open-publish inline-flex items-center gap-2 bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg px-6 py-3 rounded-full transition-all active:scale-95 shadow-sm hover:shadow-lg hover:-translate-y-0.5" type="button">
+          <span class="material-symbols-outlined text-[20px]">add_circle</span>
+          <span data-i18n="hero_cta1">Publicar gratis</span>
+        </button>
+        <a class="inline-flex items-center gap-2 bg-surface-card hover:bg-surface-container text-charcoal-dark font-label-lg text-label-lg px-5 py-3 rounded-full transition-all shadow-sm hover:-translate-y-0.5" href="#recientes">
+          <span class="material-symbols-outlined text-[20px] text-primary">explore</span>
+          <span data-i18n="hero_cta2">Explorar ofertas de hoy</span>
+        </a>
+      </div>
+      <div class="reveal pt-4 flex flex-wrap items-center gap-3 text-secondary font-label-sm text-label-sm" style="--d:320ms">
+        <div class="flex items-center gap-1.5 bg-surface-card/80 px-3 py-1.5 rounded-full shadow-sm">
+          <span class="material-symbols-outlined text-primary text-[18px]">verified_user</span><span data-i18n="trust1">Pago protegido hasta la entrega</span>
+        </div>
+        <div class="flex items-center gap-1.5 bg-surface-card/80 px-3 py-1.5 rounded-full shadow-sm">
+          <span class="material-symbols-outlined text-primary text-[18px]">local_shipping</span><span data-i18n="trust2">Envíos asegurados a toda Venezuela</span>
+        </div>
+        <div class="flex items-center gap-1.5 bg-surface-card/80 px-3 py-1.5 rounded-full shadow-sm">
+          <span class="material-symbols-outlined text-primary text-[18px]">published_with_changes</span><span data-i18n="trust3">Devoluciones garantizadas en 48 h</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero visual -->
+    <div class="lg:col-span-5 relative flex justify-center lg:justify-end reveal" style="--d:200ms">
+      <div class="relative w-full max-w-[380px]">
+        <div class="media relative w-full aspect-[4/5] rounded-lg overflow-hidden shadow-lg shimmer">
+          <img class="w-full h-full object-cover" alt="Persona feliz abriendo un paquete con una cámara vintage y una chaqueta" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD60Aywpxn3O2x8KnmzhXMrtumNGI6paQTGGx1Xpr-bZMuxnR6s0rDxNgtgMNYeWxueVou6bu45-e444e6vstoBmsaoh2zenZE_WFGu-xEvDA4HCwiFZ9cAAJeuTLCXE8jsZZ4-w1mj1KRJ--PAb0NKrAKeV0nuKzyg0kuV39URkq5wKX9BeSRlNjq6seLNDseDw9hEAF6okQj-wHfm5lhncDIxT5j3N4gNtua7Gso" onload="imgLoaded(this)" onerror="imgFail(this,'redeem')"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal-dark/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 bg-surface-card/95 backdrop-blur-md p-3.5 rounded-2xl shadow-md flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-mint-light flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">thumb_up</span></div>
+              <div class="flex flex-col">
+                <span class="font-label-md text-label-md text-charcoal-dark font-bold leading-tight" data-i18n="community">Comunidad activa</span>
+                <span class="font-body-sm text-body-sm text-secondary" data-i18n="community_n">+2 millones de usuarios</span>
+              </div>
+            </div>
+            <span class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-badge-coral text-on-tertiary text-[10px] font-bold"><span class="live-dot w-1.5 h-1.5 rounded-full bg-white"></span><span data-i18n="live">EN VIVO</span></span>
+          </div>
+        </div>
+        <!-- Floating chips -->
+        <div class="float absolute -left-4 sm:-left-10 top-10 bg-surface-card rounded-2xl shadow-lg px-3.5 py-2.5 flex items-center gap-2.5">
+          <span class="w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">check</span></span>
+          <div class="flex flex-col leading-tight"><span class="text-[11px] text-secondary" data-i18n="float1_a">Oferta aceptada</span><span class="font-bold text-charcoal-dark text-[14px]" data-price="400">$400</span></div>
+        </div>
+        <div class="float-2 absolute -right-3 sm:-right-6 top-1/3 bg-surface-card rounded-2xl shadow-lg px-3.5 py-2.5 flex items-center gap-2.5">
+          <span class="w-8 h-8 rounded-full bg-tertiary-fixed text-badge-coral flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">local_shipping</span></span>
+          <div class="flex flex-col leading-tight"><span class="text-[11px] text-secondary" data-i18n="float2_a">En camino</span><span class="font-bold text-charcoal-dark text-[13px]">Valencia → Caracas</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="flex flex-col gap-4 reveal">
+  <div class="flex items-center justify-between gap-3">
+    <div>
+      <h2 class="font-headline-md text-headline-md text-charcoal-dark tracking-tight" data-i18n="cats_title">¿Qué estás buscando?</h2>
+      <p class="font-body-sm text-body-sm text-secondary" data-i18n="cats_sub">Explora las categorías más activas de tu zona</p>
+    </div>
+    <button id="cats-more" class="font-label-md text-label-md text-primary font-bold hover:underline flex items-center gap-1 shrink-0" type="button">
+      <span id="cats-more-label">Ver todas (12)</span><span id="cats-more-icon" class="material-symbols-outlined text-[16px] transition-transform">chevron_right</span>
+    </button>
+  </div>
+  <div id="cat-circles" class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-9 gap-3 sm:gap-4"></div>
+</section>
+
+<!-- FILTER CHIPS -->
+<section class="relative">
+  <div id="chips" class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+    <button data-chip="near" class="chip inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-label-md text-label-md transition-all shadow-sm shrink-0" type="button"><span class="material-symbols-outlined text-[18px]">near_me</span><span data-i18n="chip_near">Cerca de mí (Caracas)</span></button>
+    <button data-chip="ship" class="chip inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-label-md text-label-md transition-all shadow-sm shrink-0" type="button"><span class="material-symbols-outlined text-[18px]">local_shipping</span><span data-i18n="chip_ship">Con envío</span></button>
+    <button data-chip="drop" class="chip inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-label-md text-label-md transition-all shadow-sm shrink-0" type="button"><span class="material-symbols-outlined text-[18px]">local_offer</span><span data-i18n="chip_drop">Bajadas de precio</span></button>
+    <button data-chip="fav" class="chip inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-label-md text-label-md transition-all shadow-sm shrink-0" type="button"><span class="material-symbols-outlined text-[18px]">favorite</span><span data-i18n="chip_fav">Mis favoritos</span></button>
+    <button id="adv-btn" data-chip="adv" class="chip inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-label-md text-label-md transition-all shadow-sm shrink-0" type="button"><span class="material-symbols-outlined text-[18px]">tune</span><span data-i18n="chip_adv">Filtros avanzados</span></button>
+  </div>
+  <div id="adv-dd" class="dropdown absolute left-0 sm:left-auto sm:right-0 lg:right-auto lg:left-[560px] top-12 w-72 bg-surface-card rounded-2xl shadow-xl border border-border-subtle p-4 z-30">
+    <p class="font-title-sm text-title-sm text-charcoal-dark mb-3" data-i18n="price_range">Rango de precio (USD)</p>
+    <div class="flex items-center gap-2">
+      <label class="flex-1 flex items-center bg-surface-container-low rounded-full px-3 py-2"><span class="text-secondary mr-1">$</span><input id="min-price" type="number" min="0" inputmode="numeric" class="w-full bg-transparent outline-none text-body-md" data-i18n-ph="min" placeholder="Mín."/></label>
+      <span class="text-secondary">—</span>
+      <label class="flex-1 flex items-center bg-surface-container-low rounded-full px-3 py-2"><span class="text-secondary mr-1">$</span><input id="max-price" type="number" min="0" inputmode="numeric" class="w-full bg-transparent outline-none text-body-md" data-i18n-ph="max" placeholder="Máx."/></label>
+    </div>
+    <div class="flex gap-2 mt-4">
+      <button id="adv-clear" class="flex-1 py-2 rounded-full bg-surface-container hover:bg-surface-container-high text-charcoal-dark font-label-md text-label-md font-bold transition-colors" type="button" data-i18n="clear">Limpiar</button>
+      <button id="adv-apply" class="flex-1 py-2 rounded-full bg-primary-container hover:bg-primary text-white font-label-md text-label-md font-bold transition-colors" type="button" data-i18n="apply">Aplicar</button>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS BAR + EMPTY -->
+<div id="results-bar" class="hidden items-center justify-between gap-3 bg-mint-light rounded-2xl px-4 py-3 !mt-6">
+  <p class="font-label-lg text-label-lg text-primary flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">filter_alt</span><span id="results-text"></span></p>
+  <button id="clear-filters" class="font-label-md text-label-md font-bold text-primary bg-surface-card hover:bg-white px-3 py-1.5 rounded-full shadow-sm transition-colors" type="button" data-i18n="clear_filters">Limpiar filtros</button>
+</div>
+<div id="empty-state" class="hidden flex-col items-center text-center gap-3 bg-surface-card rounded-lg p-10 shadow-sm">
+  <svg class="w-40 h-32" viewBox="0 0 160 128" aria-hidden="true"><ellipse cx="80" cy="116" rx="56" ry="8" fill="#e2f0f8"/><rect x="34" y="40" width="92" height="66" rx="12" fill="#E8FAF7" stroke="#13c1ac" stroke-width="3"/><path d="M34 58h92" stroke="#13c1ac" stroke-width="3"/><path d="M60 40 70 22h20l10 18" fill="none" stroke="#13c1ac" stroke-width="3" stroke-linejoin="round"/><circle cx="104" cy="84" r="14" fill="#fff" stroke="#FF5938" stroke-width="3"/><path d="m114 94 10 10" stroke="#FF5938" stroke-width="4" stroke-linecap="round"/></svg>
+  <h3 class="font-headline-sm text-headline-sm text-charcoal-dark" data-i18n="empty_title">No encontramos productos con esos filtros</h3>
+  <p class="font-body-md text-body-md text-secondary max-w-md" data-i18n="empty_sub">Prueba con otra búsqueda o sé el primero en publicar.</p>
+  <div class="flex flex-wrap justify-center gap-2 pt-2">
+    <button class="clear-all px-5 py-2.5 rounded-full bg-surface-container hover:bg-surface-container-high text-charcoal-dark font-label-lg text-label-lg transition-colors" type="button" data-i18n="clear_filters">Limpiar filtros</button>
+    <button class="open-publish px-5 py-2.5 rounded-full bg-primary-container hover:bg-primary text-white font-label-lg text-label-lg transition-colors" type="button" data-i18n="publish_btn">+ Publicar producto</button>
+  </div>
+</div>
+
+<!-- SECTION 1: Recent -->
+<section class="flex flex-col gap-5 !mt-8" id="recientes" data-section="recent">
+  <div class="flex items-center justify-between reveal">
+    <div class="flex items-center gap-3">
+      <div class="w-3.5 h-7 rounded-full bg-primary-container"></div>
+      <div>
+        <h2 class="font-headline-md text-headline-md text-charcoal-dark tracking-tight" data-i18n="recent_title">Recién llegados a tu zona</h2>
+        <p class="font-body-sm text-body-sm text-secondary" data-i18n="recent_sub">Oportunidades publicadas en los últimos minutos</p>
+      </div>
+    </div>
+    <button class="adv-proxy p-2 rounded-full bg-surface-card hover:bg-surface-container text-secondary transition-colors shadow-sm" type="button" data-i18n-title="chip_adv" title="Filtros avanzados"><span class="material-symbols-outlined text-[20px]">tune</span></button>
+  </div>
+  <div id="grid-recent" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+</section>
+
+<!-- SECTION 2: Motor -->
+<section class="flex flex-col gap-5 pt-4" id="motor" data-section="cars">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 reveal">
+    <div class="flex items-center gap-3">
+      <div class="w-3.5 h-7 rounded-full bg-charcoal-dark"></div>
+      <div>
+        <div class="flex flex-wrap items-center gap-2">
+          <h2 class="font-headline-md text-headline-md text-charcoal-dark tracking-tight" data-i18n="cars_title">Destacados en carros</h2>
+          <span class="bg-surface-container-highest text-charcoal-dark text-[11px] px-2.5 py-0.5 rounded-full font-bold" data-i18n="cars_pill">Garantía PRO</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-secondary" data-i18n="cars_sub">Vehículos verificados con historial y kilometraje certificado</p>
+      </div>
+    </div>
+    <button class="set-cat font-label-md text-label-md text-primary font-bold hover:underline flex items-center gap-1 group" data-cat="cars" type="button">
+      <span data-i18n="cars_all">Ver todos los carros</span><span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+    </button>
+  </div>
+  <div id="grid-cars" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
+</section>
+
+<!-- SECTION 3: Fashion -->
+<section class="flex flex-col gap-5 pt-4" id="moda" data-section="fashion">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 reveal">
+    <div class="flex items-center gap-3">
+      <div class="w-3.5 h-7 rounded-full bg-badge-coral"></div>
+      <div>
+        <h2 class="font-headline-md text-headline-md text-charcoal-dark tracking-tight" data-i18n="fashion_title">Moda sostenible y vintage</h2>
+        <p class="font-body-sm text-body-sm text-secondary" data-i18n="fashion_sub">Viste tu estilo ahorrando hasta un 70% frente a la tienda</p>
+      </div>
+    </div>
+    <span class="self-start sm:self-auto text-label-sm font-label-sm font-bold text-badge-coral bg-tertiary-fixed px-3 py-1 rounded-full uppercase" data-i18n="trending">Tendencia</span>
+  </div>
+  <div id="grid-fashion" class="grid grid-cols-2 lg:grid-cols-4 gap-4"></div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="como-funciona" class="rounded-lg bg-surface-card p-6 md:p-10 shadow-sm relative overflow-hidden reveal">
+  <div class="absolute -left-24 -top-24 w-72 h-72 rounded-full bg-mint-light blur-2xl pointer-events-none"></div>
+  <div class="relative">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+      <div>
+        <span class="text-primary font-label-md text-label-md font-bold uppercase tracking-wider" data-i18n="how_eyebrow">Cómo funciona</span>
+        <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-charcoal-dark mt-1" data-i18n="how_title">Vende en minutos, compra con confianza</h2>
+      </div>
+      <button class="open-publish self-start md:self-auto inline-flex items-center gap-2 bg-charcoal-dark hover:bg-secondary text-white font-label-lg text-label-lg px-5 py-2.5 rounded-full transition-colors" type="button">
+        <span class="material-symbols-outlined text-[18px]">photo_camera</span><span data-i18n="how_cta">Empezar a vender</span>
+      </button>
+    </div>
+    <div class="relative grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="step-line hidden md:block absolute top-8 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-primary-container via-mint-bright to-badge-coral"></div>
+      <div class="relative flex flex-col items-start md:items-center md:text-center gap-3">
+        <div class="relative w-16 h-16 rounded-2xl bg-mint-light text-primary flex items-center justify-center shadow-sm ring-8 ring-surface-card"><span class="material-symbols-outlined text-[30px]">add_a_photo</span><span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary-container text-white text-[12px] font-bold flex items-center justify-center">1</span></div>
+        <h3 class="font-title-md text-title-md text-charcoal-dark" data-i18n="step1_t">Toma unas fotos</h3>
+        <p class="font-body-md text-body-md text-secondary max-w-xs" data-i18n="step1_d">Publica gratis en menos de un minuto.</p>
+      </div>
+      <div class="relative flex flex-col items-start md:items-center md:text-center gap-3">
+        <div class="relative w-16 h-16 rounded-2xl bg-surface-container text-primary flex items-center justify-center shadow-sm ring-8 ring-surface-card"><span class="material-symbols-outlined text-[30px]">forum</span><span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-mint-bright text-white text-[12px] font-bold flex items-center justify-center">2</span></div>
+        <h3 class="font-title-md text-title-md text-charcoal-dark" data-i18n="step2_t">Chatea y negocia</h3>
+        <p class="font-body-md text-body-md text-secondary max-w-xs" data-i18n="step2_d">Habla directo con el comprador.</p>
+      </div>
+      <div class="relative flex flex-col items-start md:items-center md:text-center gap-3">
+        <div class="relative w-16 h-16 rounded-2xl bg-tertiary-fixed text-badge-coral flex items-center justify-center shadow-sm ring-8 ring-surface-card"><span class="material-symbols-outlined text-[30px]">handshake</span><span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-badge-coral text-white text-[12px] font-bold flex items-center justify-center">3</span></div>
+        <h3 class="font-title-md text-title-md text-charcoal-dark" data-i18n="step3_t">Entrega segura</h3>
+        <p class="font-body-md text-body-md text-secondary max-w-xs" data-i18n="step3_d">Envíalo con seguro a todo el país.</p>
+      </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-border-subtle flex flex-wrap items-center gap-2">
+      <span class="font-label-lg text-label-lg text-charcoal-dark mr-1" data-i18n="pay_title">Acuerda el pago como prefieras:</span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low text-charcoal-dark text-label-md font-label-md"><span class="material-symbols-outlined text-[16px] text-primary">smartphone</span>Pago Móvil</span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low text-charcoal-dark text-label-md font-label-md"><span class="material-symbols-outlined text-[16px] text-primary">bolt</span>Zelle</span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low text-charcoal-dark text-label-md font-label-md"><span class="material-symbols-outlined text-[16px] text-primary">payments</span><span data-i18n="pay_cash">Efectivo en dólares</span></span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low text-charcoal-dark text-label-md font-label-md"><span class="material-symbols-outlined text-[16px] text-primary">account_balance</span><span data-i18n="pay_bank">Transferencia</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- CITIES -->
+<section class="flex flex-col gap-5">
+  <div class="flex items-center gap-3 reveal">
+    <div class="w-3.5 h-7 rounded-full bg-mint-bright"></div>
+    <div>
+      <h2 class="font-headline-md text-headline-md text-charcoal-dark tracking-tight" data-i18n="cities_title">Perolero en toda Venezuela</h2>
+      <p class="font-body-sm text-body-sm text-secondary" data-i18n="cities_sub">Descubre lo que se mueve en tu ciudad</p>
+    </div>
+  </div>
+  <div id="cities" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="flex flex-col gap-5">
+  <div class="flex items-center gap-3 reveal">
+    <div class="w-3.5 h-7 rounded-full bg-badge-orange"></div>
+    <div>
+      <h2 class="font-headline-md text-headline-md text-charcoal-dark tracking-tight" data-i18n="testi_title">Lo que dice nuestra comunidad</h2>
+      <p class="font-body-sm text-body-sm text-secondary" data-i18n="testi_sub">Historias reales de compra y venta</p>
+    </div>
+  </div>
+  <div id="testimonials" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+</section>
+
+<!-- IMPACT -->
+<section class="rounded-lg bg-surface-card p-6 md:p-10 shadow-sm relative overflow-hidden reveal" id="impacto">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+    <div class="md:col-span-8 flex flex-col gap-3">
+      <div class="flex items-center gap-2 text-primary font-label-md text-label-md font-bold">
+        <span class="material-symbols-outlined text-[20px]">recycling</span><span data-i18n="impact_eyebrow">El poder de la segunda mano</span>
+      </div>
+      <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-charcoal-dark" data-i18n="impact_title">Comprar y vender cosas usadas ayuda al planeta y a tu bolsillo.</h2>
+      <p class="font-body-md text-body-md text-secondary max-w-2xl" data-i18n="impact_p">En 2025, nuestra comunidad evitó más de 12.000 toneladas de CO₂.</p>
+      <div class="grid grid-cols-3 gap-3 pt-3">
+        <div class="p-3.5 rounded-2xl bg-surface-container-low flex flex-col">
+          <span class="font-headline-sm text-headline-sm md:font-headline-md md:text-headline-md text-primary font-bold leading-tight"><span class="counter" data-to="12.4" data-dec="1">0</span>K t</span>
+          <span class="font-body-sm text-body-sm text-secondary" data-i18n="stat1">CO₂ evitado</span>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-surface-container-low flex flex-col">
+          <span class="font-headline-sm text-headline-sm md:font-headline-md md:text-headline-md text-primary font-bold leading-tight">$<span class="counter" data-to="48" data-dec="0">0</span>M</span>
+          <span class="font-body-sm text-body-sm text-secondary" data-i18n="stat2">Ahorro para usuarios</span>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-surface-container-low flex flex-col">
+          <span class="font-headline-sm text-headline-sm md:font-headline-md md:text-headline-md text-primary font-bold leading-tight"><span class="counter" data-to="3.2" data-dec="1">0</span>M</span>
+          <span class="font-body-sm text-body-sm text-secondary" data-i18n="stat3">Objetos reutilizados</span>
+        </div>
+      </div>
+    </div>
+    <div class="md:col-span-4 flex flex-col items-center justify-center p-4 bg-mint-light rounded-2xl">
+      <div class="relative w-36 h-36 flex items-center justify-center">
+        <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+          <path class="text-surface-card" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4"></path>
+          <path id="donut" class="donut-ring text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="0, 100" stroke-linecap="round" stroke-width="4"></path>
+        </svg>
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+          <span class="font-headline-sm text-headline-sm text-charcoal-dark font-bold"><span class="counter" data-to="84" data-dec="0">0</span>%</span>
+          <span class="text-[10px] text-secondary uppercase font-semibold" data-i18n="reuse">Reutilización</span>
+        </div>
+      </div>
+      <p class="font-label-sm text-label-sm text-charcoal-dark font-semibold text-center mt-3" data-i18n="carbon">Huella de carbono neutral</p>
+    </div>
+  </div>
+</section>
+
+<!-- APP BANNER -->
+<section class="rounded-lg bg-charcoal-dark text-on-primary p-6 md:p-10 shadow-md relative overflow-hidden reveal" id="app">
+  <div class="drift absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-primary-container/25 blur-3xl pointer-events-none"></div>
+  <div class="drift-2 absolute left-1/3 -top-24 w-64 h-64 rounded-full bg-badge-coral/10 blur-3xl pointer-events-none"></div>
+  <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+    <div class="md:col-span-8 flex flex-col gap-4">
+      <span class="text-mint-bright font-label-md text-label-md font-bold uppercase tracking-wider" data-i18n="app_eyebrow">Perolero en tu bolsillo</span>
+      <h2 class="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-on-primary font-bold leading-tight" data-i18n="app_title">La app para vender y descubrir al instante</h2>
+      <p class="font-body-lg text-body-lg text-secondary-fixed-dim max-w-xl" data-i18n="app_p">Chatea con vendedores, negocia y paga con seguridad.</p>
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <a class="store-link inline-flex items-center gap-3 px-5 py-2.5 bg-surface-card text-charcoal-dark rounded-full font-label-md text-label-md font-bold hover:bg-surface-container hover:-translate-y-0.5 transition-all shadow-sm" href="#">
+          <span class="material-symbols-outlined text-[24px]">phone_iphone</span>
+          <div class="flex flex-col text-left"><span class="text-[9px] uppercase font-normal leading-none text-secondary" data-i18n="dl_on">Descargar en</span><span class="leading-tight font-bold">App Store</span></div>
+        </a>
+        <a class="store-link inline-flex items-center gap-3 px-5 py-2.5 bg-surface-card text-charcoal-dark rounded-full font-label-md text-label-md font-bold hover:bg-surface-container hover:-translate-y-0.5 transition-all shadow-sm" href="#">
+          <span class="material-symbols-outlined text-[24px]">play_arrow</span>
+          <div class="flex flex-col text-left"><span class="text-[9px] uppercase font-normal leading-none text-secondary" data-i18n="get_on">Disponible en</span><span class="leading-tight font-bold">Google Play</span></div>
+        </a>
+      </div>
+      <div class="pt-4 border-t border-secondary-fixed-dim/20 flex flex-wrap items-center gap-2 text-label-sm font-label-sm text-secondary-fixed-dim">
+        <span data-i18n="language">Idioma:</span>
+        <button class="set-lang px-2.5 py-1 rounded-full bg-surface-card/10 hover:bg-surface-card/20 text-on-primary transition-colors" data-lang="es" type="button">🇻🇪 Español (Latinoamérica)</button>
+        <button class="set-lang px-2.5 py-1 rounded-full bg-surface-card/10 hover:bg-surface-card/20 text-on-primary transition-colors" data-lang="en" type="button">🇺🇸 English</button>
+      </div>
+    </div>
+    <!-- Phone mockup with animated chat -->
+    <div class="md:col-span-4 flex justify-center">
+      <div class="float relative w-56 h-[360px] rounded-[2rem] bg-surface-card/10 p-2 shadow-2xl backdrop-blur-sm ring-1 ring-white/10">
+        <div class="w-full h-full rounded-[1.6rem] bg-surface-card overflow-hidden flex flex-col">
+          <div class="h-6 bg-charcoal-dark flex items-center justify-between px-4 text-white text-[9px]">
+            <span id="phone-clock">12:45</span>
+            <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[10px]">wifi</span><span class="material-symbols-outlined text-[10px]">battery_full</span></div>
+          </div>
+          <div class="p-2.5 bg-mint-light flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-primary-container text-white flex items-center justify-center text-[10px] font-bold">C</div>
+            <span class="text-[11px] font-bold text-primary" data-i18n="phone_head">Chat con comprador</span>
+            <span class="ml-auto w-2 h-2 rounded-full bg-mint-bright"></span>
+          </div>
+          <div class="flex items-center gap-2 px-3 py-2 border-b border-border-subtle">
+            <div class="w-9 h-9 rounded-lg overflow-hidden bg-surface-container-high shrink-0"><img class="w-full h-full object-cover" alt="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgX1APpgNAXFzaNDz6LSPYaZQ_dnYsaH3Dq2SDxi6ILYb0TNNnVuEdTqulActsBr-rfZahH7aAzlHBYSfWOTLq-7RXIgCj5pHHZMfIWlJy4XLViUL4wtMkkt-1VT5tCsrppn6p0OoCOgNFdaZoSZ9zQB4btM83Y7t6x9MlFgOP3I7XNdpcoJTFMAqrh7oNYkuluRxc12MCny17s-8kVeWT2lx71UuHCsGIjsMCHi8" onerror="this.style.display='none'"/></div>
+            <div class="leading-tight"><p class="text-[10px] font-bold text-charcoal-dark">PlayStation 5</p><p class="text-[10px] text-secondary" data-price="420">$420</p></div>
+          </div>
+          <div id="phone-chat" class="p-3 flex-1 flex flex-col justify-end gap-2 text-[11px]">
+            <div class="msg bg-surface-container-low p-2 rounded-xl rounded-bl-sm text-charcoal-dark max-w-[85%]" data-i18n="chat1">¡Hola! ¿Todavía está disponible?</div>
+            <div class="msg typing-msg bg-surface-container-low px-3 py-2.5 rounded-xl ml-auto w-fit"><span class="typing flex gap-1"><span></span><span></span><span></span></span></div>
+            <div class="msg bg-primary-container text-on-primary p-2 rounded-xl rounded-br-sm ml-auto max-w-[85%] font-medium" data-i18n="chat2">¡Sí! Te lo mando hoy.</div>
+            <div class="msg bg-mint-light text-primary font-bold text-center py-1.5 rounded-full text-[10px]" data-i18n="chat3">✓ Oferta aceptada: $400</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div></div>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="w-full bg-surface-card border-t border-border-subtle mt-auto">
+  <div class="max-w-[1280px] mx-auto px-margin md:px-margin-desktop pt-space-xl pb-space-lg">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-space-lg pb-space-xl">
+      <div class="flex flex-col gap-space-sm">
+        <span class="font-title-sm text-title-sm text-charcoal-dark font-bold">Perolero</span>
+        <nav class="flex flex-col gap-2">
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_about">Sobre nosotros</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#como-funciona" data-i18n="how_eyebrow">Cómo funciona</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5" href="#"><span>Perolero PRO</span><span class="bg-mint-light text-primary text-[10px] px-2 py-0.5 rounded-full font-bold uppercase" data-i18n="new">Nuevo</span></a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_press">Prensa</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_jobs">Empleo</a>
+        </nav>
+      </div>
+      <div class="flex flex-col gap-space-sm">
+        <span class="font-title-sm text-title-sm text-charcoal-dark font-bold" data-i18n="f_support">Soporte</span>
+        <nav class="flex flex-col gap-2">
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_help">Centro de ayuda</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_rules">Normas de la comunidad</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_safety">Consejos de seguridad</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_buyer">Protección al comprador</a>
+        </nav>
+      </div>
+      <div class="flex flex-col gap-space-sm">
+        <span class="font-title-sm text-title-sm text-charcoal-dark font-bold">Legal</span>
+        <nav class="flex flex-col gap-2">
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_legal">Aviso legal</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_terms">Términos de uso</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_privacy">Política de privacidad</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" id="cookie-settings">Cookies</a>
+        </nav>
+      </div>
+      <div class="flex flex-col gap-space-sm">
+        <span class="font-title-sm text-title-sm text-charcoal-dark font-bold" data-i18n="f_lang">Idioma y moneda</span>
+        <div class="flex flex-wrap gap-1.5 pt-1">
+          <button class="set-lang foot-lang px-2.5 py-1 rounded-md text-label-sm font-label-sm transition-colors border" data-lang="es" type="button">ES · Latinoamérica</button>
+          <button class="set-lang foot-lang px-2.5 py-1 rounded-md text-label-sm font-label-sm transition-colors border" data-lang="en" type="button">EN · English</button>
+        </div>
+        <p class="flex items-center gap-1.5 text-body-sm font-body-sm text-secondary pt-1"><span class="material-symbols-outlined text-[16px] text-primary">attach_money</span><span data-i18n="f_currency">Precios en dólares (USD)</span></p>
+      </div>
+      <div class="col-span-2 md:col-span-4 lg:col-span-1 flex flex-col gap-space-sm">
+        <span class="font-title-sm text-title-sm text-charcoal-dark font-bold" data-i18n="f_app">Descarga la app</span>
+        <p class="font-body-sm text-body-sm text-secondary" data-i18n="f_app_p">Compra y vende estés donde estés desde tu celular.</p>
+        <div class="flex flex-col sm:flex-row lg:flex-col gap-2 pt-1">
+          <a href="#" class="store-link flex items-center gap-2.5 px-3 py-2 bg-charcoal-dark text-on-primary rounded-2xl hover:bg-secondary transition-colors"><span class="material-symbols-outlined text-[24px]">phone_iphone</span><div class="text-left"><p class="text-[9px] uppercase tracking-wide leading-none opacity-80" data-i18n="dl_on">Descargar en</p><p class="font-label-md text-label-md font-bold leading-tight">App Store</p></div></a>
+          <a href="#" class="store-link flex items-center gap-2.5 px-3 py-2 bg-charcoal-dark text-on-primary rounded-2xl hover:bg-secondary transition-colors"><span class="material-symbols-outlined text-[24px]">play_arrow</span><div class="text-left"><p class="text-[9px] uppercase tracking-wide leading-none opacity-80" data-i18n="get_on">Disponible en</p><p class="font-label-md text-label-md font-bold leading-tight">Google Play</p></div></a>
+        </div>
+      </div>
+    </div>
+    <div class="pt-space-lg border-t border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-secondary">
+      <p data-i18n="copyright">© 2026 Perolero Venezuela. Todos los derechos reservados.</p>
+      <p class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">verified_user</span><span data-i18n="f_secure">Transacciones protegidas y envíos asegurados</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= COOKIE BANNER ================= -->
+<div class="hide fixed bottom-4 left-4 right-4 md:left-auto md:right-8 md:max-w-xl z-[60] bg-surface-card rounded-2xl shadow-xl p-5 border border-border-subtle" id="consent-banner" role="dialog" aria-live="polite">
+  <div class="flex flex-col gap-3">
+    <div class="flex items-start justify-between gap-4">
+      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[24px]">cookie</span><h4 class="font-title-sm text-title-sm text-charcoal-dark font-bold" data-i18n="ck_title">Tu privacidad nos importa</h4></div>
+      <button class="consent-close text-secondary hover:text-charcoal-dark p-1" data-v="dismissed" type="button" aria-label="Cerrar"><span class="material-symbols-outlined text-[20px]">close</span></button>
+    </div>
+    <p class="font-body-sm text-body-sm text-secondary" data-i18n="ck_text">Usamos cookies propias y de terceros.</p>
+    <div class="flex flex-col sm:flex-row items-center gap-2.5 pt-1">
+      <button class="consent-close w-full sm:w-1/2 py-2.5 px-4 rounded-full bg-charcoal-dark hover:bg-secondary text-on-primary font-label-md text-label-md font-bold transition-colors" data-v="all" type="button" data-i18n="ck_accept">Aceptar todo</button>
+      <button class="consent-close w-full sm:w-1/2 py-2.5 px-4 rounded-full bg-surface-container hover:bg-surface-container-high text-charcoal-dark font-label-md text-label-md font-bold transition-colors" data-v="none" type="button" data-i18n="ck_reject">Rechazar todo</button>
+    </div>
+    <div class="flex items-center justify-between text-[11px] text-secondary pt-1">
+      <a class="hover:underline text-primary" href="#" data-i18n="ck_custom">Personalizar</a>
+      <div class="flex items-center gap-2"><a class="hover:underline" href="#" data-i18n="ck_notice">Aviso de privacidad</a><span>•</span><a class="hover:underline" href="#" data-i18n="ck_terms">Términos</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PRODUCT MODAL ================= -->
+<div id="product-modal" class="overlay fixed inset-0 z-[70] bg-charcoal-dark/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6" aria-modal="true" role="dialog">
+  <div class="panel relative w-full sm:max-w-4xl max-h-[92vh] overflow-y-auto bg-surface-card rounded-t-[2rem] sm:rounded-lg shadow-2xl">
+    <button class="modal-close absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-surface-card/90 hover:bg-surface-container shadow flex items-center justify-center" type="button" aria-label="Cerrar"><span class="material-symbols-outlined">close</span></button>
+    <div id="pm-body" class="grid grid-cols-1 md:grid-cols-2"></div>
+  </div>
+</div>
+
+<!-- ================= PUBLISH MODAL ================= -->
+<div id="publish-modal" class="overlay fixed inset-0 z-[70] bg-charcoal-dark/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6" aria-modal="true" role="dialog">
+  <form id="publish-form" class="panel relative w-full sm:max-w-2xl max-h-[92vh] overflow-y-auto bg-surface-card rounded-t-[2rem] sm:rounded-lg shadow-2xl p-6 md:p-8 flex flex-col gap-4" novalidate>
+    <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center" type="button" aria-label="Cerrar"><span class="material-symbols-outlined">close</span></button>
+    <div>
+      <span class="text-primary font-label-md text-label-md font-bold uppercase tracking-wider" data-i18n="pub_eyebrow">Es gratis</span>
+      <h3 class="font-headline-md text-headline-md text-charcoal-dark" data-i18n="pub_title">Publicar producto</h3>
+    </div>
+    <label id="drop-zone" class="relative flex flex-col items-center justify-center gap-2 h-44 rounded-2xl border-2 border-dashed border-outline-variant bg-surface-container-low hover:border-primary-container hover:bg-mint-light transition-colors cursor-pointer overflow-hidden">
+      <input id="pub-photo" type="file" accept="image/*" class="sr-only"/>
+      <img id="pub-preview" class="absolute inset-0 w-full h-full object-cover hidden" alt=""/>
+      <span class="material-symbols-outlined text-[36px] text-primary">add_photo_alternate</span>
+      <span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_photo">Arrastra una foto o haz clic para subirla</span>
+      <span class="text-body-sm text-secondary">JPG, PNG · máx. 10 MB</span>
+    </label>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <label class="flex flex-col gap-1.5 sm:col-span-2"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_name">Título</span>
+        <input id="pub-title" required maxlength="60" class="px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container focus:bg-white outline-none transition-colors" data-i18n-ph="pub_name_ph" placeholder="Ej.: iPhone 13 de 128 GB"/></label>
+      <label class="flex flex-col gap-1.5"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_price">Precio (USD)</span>
+        <div class="flex items-center px-4 rounded-2xl bg-surface-container-low border border-transparent focus-within:border-primary-container focus-within:bg-white transition-colors"><span class="text-secondary font-bold mr-1">$</span><input id="pub-price" required type="number" min="1" step="0.01" inputmode="decimal" class="w-full py-3 bg-transparent outline-none" placeholder="0"/></div></label>
+      <label class="flex flex-col gap-1.5"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_cat">Categoría</span>
+        <select id="pub-cat" class="px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container outline-none"></select></label>
+      <label class="flex flex-col gap-1.5"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_city">Ciudad</span>
+        <select id="pub-city" class="px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container outline-none"></select></label>
+      <label class="flex items-center gap-3 self-end py-3 cursor-pointer select-none">
+        <input id="pub-ship" type="checkbox" class="peer sr-only" checked/>
+        <span class="relative w-11 h-6 rounded-full bg-outline-variant peer-checked:bg-primary-container transition-colors after:absolute after:top-0.5 after:left-0.5 after:w-5 after:h-5 after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:after:translate-x-5"></span>
+        <span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_ship">Ofrezco envío</span>
+      </label>
+      <label class="flex flex-col gap-1.5 sm:col-span-2"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_desc">Descripción</span>
+        <textarea id="pub-desc" rows="3" maxlength="200" class="px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container focus:bg-white outline-none resize-none transition-colors" data-i18n-ph="pub_desc_ph" placeholder="Estado, detalles, motivo de venta..."></textarea></label>
+    </div>
+    <p id="pub-error" class="hidden text-error text-body-md font-medium" data-i18n="pub_error">Completa el título y un precio válido.</p>
+    <div class="flex flex-col-reverse sm:flex-row gap-2 sm:justify-end pt-2">
+      <button class="modal-close px-6 py-3 rounded-full bg-surface-container hover:bg-surface-container-high text-charcoal-dark font-label-lg text-label-lg transition-colors" type="button" data-i18n="cancel">Cancelar</button>
+      <button class="px-6 py-3 rounded-full bg-primary-container hover:bg-primary text-white font-label-lg text-label-lg transition-all active:scale-95 shadow-sm inline-flex items-center justify-center gap-2" type="submit"><span class="material-symbols-outlined text-[20px]">rocket_launch</span><span data-i18n="pub_submit">Publicar ahora</span></button>
+    </div>
+  </form>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="fixed left-1/2 bottom-6 z-[80] bg-charcoal-dark text-white px-5 py-3 rounded-full shadow-xl flex items-center gap-2 text-label-lg font-label-lg max-w-[92vw]" role="status" aria-live="polite">
+  <span id="toast-icon" class="material-symbols-outlined text-mint-bright text-[20px]">check_circle</span><span id="toast-text"></span>
+</div>
+
+<script>
+/* =========================================================
+   Perolero — lógica de la página
+   ========================================================= */
+const IMG = {
+  iphone:"https://lh3.googleusercontent.com/aida-public/AB6AXuBkn92oN2WHf3coxz58_cAKK2nZvJQob_o_T8IdL0i9sgyAbCaBgmmtsSBQwZfJhheDbdLBiCJz5mtYiEz192eDvyGLf1n7mS_MFp_FHmDbUYR3BUBv3VuWB-JKpv3o8PDvBBcIgH8hhRVCPoP-6DZ1fcpQZo-AtG3ZEYC6ahKc-ff5AYd6xboviaiG-awxTXW9W_j-e2SHa_zM2XYP3HJzEZqMQZLbRk6gVOb2fKU",
+  bike:"https://lh3.googleusercontent.com/aida-public/AB6AXuA9vUUcdAcjCFIYvnV_4BneN2RuNdi046w5dVkwQsgC3uPMEp35B-X8Y_4YxrEqeNsp2UHwdf1eo73x--b_2TX1b6fiv46hfxDq_KJS0l4-Utjfs-L-yfP41Yq9m6hFh8n4pdzoj7vhCKOZtP6r6k6qzzatVb4gipctmt3fMH0iF3vU3U_0LhjJE_jXIa9C3Assj-ncwpjJ7hBLCov44Lu_WFBnwF-AARHkXPleC-w",
+  ps5:"https://lh3.googleusercontent.com/aida-public/AB6AXuBgX1APpgNAXFzaNDz6LSPYaZQ_dnYsaH3Dq2SDxi6ILYb0TNNnVuEdTqulActsBr-rfZahH7aAzlHBYSfWOTLq-7RXIgCj5pHHZMfIWlJy4XLViUL4wtMkkt-1VT5tCsrppn6p0OoCOgNFdaZoSZ9zQB4btM83Y7t6x9MlFgOP3I7XNdpcoJTFMAqrh7oNYkuluRxc12MCny17s-8kVeWT2lx71UuHCsGIjsMCHi8",
+  jacket:"https://lh3.googleusercontent.com/aida-public/AB6AXuDiyI2sY226jcPer564jl5HKXL_Eu4r5CQGS7STJEwrAVumGRz6yAiWn2p6CilaX9B_pXuii2iY4Bk-hY9Z15ZGbE-IRjQq9cskY_6gvJ5KyRuph1qPMxr_YKnEmXJtmaweHA6j2T_cL4xOtKGNe8PhXQVxDad0VmP686c4ldnlbZ8dcJMJ8PEDENHVTxBsRlM4KUw3SUZ-WCGpAYN0MGqntBr47eNEO70aIoidhtw",
+  chair:"https://lh3.googleusercontent.com/aida-public/AB6AXuBGAJDDm6TE1ggWSuObKAAA0AuAPuluv_eg8uaWtOG6tRIjR3ulFXaCk4rJ2NSTjuvsw7iaAkf9Mo_aFuhQ3tW0z5a5r0CAGm7GA7P4JtMgwuMEbtT1AHwRSOkhznjb8WhUem3-elqMhnPlXOWkc9RHD1BPqOapAABlW8UN4gJ1ecu0FcmIcHhfdSs9CFwO-elxEUXhR1jpD9IlWMZl6ozqlIbI6-lUCjpQIr0xKG8",
+  seat:"https://lh3.googleusercontent.com/aida-public/AB6AXuBH6oCc8cED4x-ulAgRm6lHFNR6xZqgVitZTcID5r10at7tcZrj-Ksomo4SI6ptvUiqUco_FyBLtovnvfHcCPTyUOs2a0YhAi6tj_iDrQ4iWc8KUnG3c8--yjLGu7BUuJUXeF6oyHqMf-WtwgBuM6eqhXTiFgsgTSWT6j3D1dmRg6c1YPQhrrLfSfr8_cWX7J3Uy9Mte8r2Wr5GGwVzTeKja_b95uSPo0DEWLZRG0c",
+  golf:"https://lh3.googleusercontent.com/aida-public/AB6AXuAmN3NJg6zC_khNHyDi_g0CGp7swQR-5oG3BVbUKR-pkdMnBI3jyQRMzI8Fq8dy8904QWLwQ6jc8kNL1nCW5328bKu0k56u3ThuZsub-5hXgazSy6inovVRtSbH_hhiLTehpLlKPTc6L1w09nqjYscGuNM8EGjPl9e4JmR7I9cTjGAtGyEJoppEC3yH3yxNgMLz5oEyhf5Lhw8jS2v7e8Flm_qTOZ3virmq0bzpCfg",
+  yaris:"https://lh3.googleusercontent.com/aida-public/AB6AXuC_v5ORdpSFOCBL-ydA5XK1uxl3_HUtFgRcimUic2yrtlOZPBHI82ul-7tvE_JNbZDdXCrDN_yVUDT3grwwt8m41AGuN9TXykaWY98DjEGwocXkpWGs3Z86GbIjrlxMZ5uZLWzZyNQQ8ENhdIZc8CQWpAi2nk-h5yHNkK6hCI-rMm0xeJhNs13du-RtArBIVCmqQco-nhw8FJbznBXAzhNgS8XZ1720B3gopbIDEUU",
+  boots:"https://lh3.googleusercontent.com/aida-public/AB6AXuCpIS9cgJEZ9t-advuJtYuMU48yB7u_m4r3QcB-8X2hocGu0zAdV6yRHgBJ9iRCJnTkevUnaUVru8PFAygtDXS_PBZEf4HJtfk7mdP9VwPfstNmyvRuHP5vNc3GMJJr6KEBvgVqBH2Gb_kXXUQbYd_PhkcM-qSTCLKu-mSbSJ6IfADOyvfHwBRCJPbGzbnanQW7sDe1kF0M2diNDYWa19kNSjrE6qMEG3_Ex-Kdykk",
+  wind:"https://lh3.googleusercontent.com/aida-public/AB6AXuDGpoyXJBPCleMlElixmP7Kau9oLAvspEmhOD8ebhEeCCFDrbZMaq12zJ9MxiRFYQx1rJzC1I-Ho_qSgtsZfa62Sdj43hwNol9FURLm2H-gDDajj1rjvl7DQ9zY0-JzWaMuiXT8x20RneUn3HeaOhzAcmok2Wa3SCR6DDHxU7bB8z2Snpb2oqRMHrutx0merNKsL8Dm49iUTunL6Not5BDTW1IUt2HhjTmTqKI4ROo",
+  denim:"https://lh3.googleusercontent.com/aida-public/AB6AXuCN0Dpsl_VPXiFngZPymV-7Q3eWgMZxbMFcDFxIUhsEjzoN45N-YuUDQosXhmVSc9WLRBkIcH_k48d8Elqp9DcSl2YtQnyZdFm1QUhmvKr2-V61uuLujs_B3X-iS_11GUfc3aKRikNj4aqr-8BeT9_iy-twGCRwjxx8bgkvbI9oaADypXKvsnl2ONJkTzkX-jrhUrsb4Z5e1_lBX9otAIfomav46uZxJ8iPTbEvLZc",
+  shades:"https://lh3.googleusercontent.com/aida-public/AB6AXuAI4cnv-AdOxsFeAaLLqPC_zZGMY0IAtRtUcTTr_NJU5DFWCWkpxU_UTu3XOGb404G_xRpjWdOcAI2X3eQX2OiIhKckyg_UxWvUdmYo6pMhGXnwECGruEqXRguXNsfS35lyvovBpmK6CUWLyVAx8IC5NBcellCVnvn5bFB6g2183B2OfVMPCIJKSFO9h1PZSnl0vDlFJ0zcqEwXgDM0bgiN3NTLAmUBX27Mevnf534"
+};
+
+/* ---------- Traducciones (español latino / inglés) ---------- */
+const T = {
+es:{
+  search_ph:"Buscar en todas las categorías...", search:"Buscar", categories:"Categorías", all_cats:"Todas las categorías", all_ve:"Toda Venezuela",
+  messages:"Mensajes", favorites:"Favoritos", profile:"Mi perfil", publish_btn:"+ Publicar producto", publish_short:"Publicar", see_all_msgs:"Ver todos",
+  hero_badge:"Cambia a tu manera • Economía circular", hero_h1_a:"La app y web para", hero_h1_b:"comprar y vender", hero_h1_c:"cerca de ti",
+  rot:["lo que quieras","carros","celulares","ropa","muebles","consolas"],
+  hero_p:"Dale una segunda vida a miles de productos en toda Venezuela. Encuentra joyitas a precios únicos en dólares, apoya la economía circular y recibe tus paquetes en la puerta con Envíos Perolero.",
+  hero_cta1:"Publicar gratis", hero_cta2:"Explorar ofertas de hoy",
+  trust1:"Pago protegido hasta la entrega", trust2:"Envíos asegurados a toda Venezuela", trust3:"Devoluciones garantizadas en 48 h",
+  community:"Comunidad activa", community_n:"+2 millones de usuarios", live:"EN VIVO", float1_a:"Oferta aceptada", float2_a:"En camino",
+  cats_title:"¿Qué estás buscando?", cats_sub:"Explora las categorías más activas de tu zona", cats_more:"Ver todas ({n})", cats_less:"Ver menos",
+  chip_near:"Cerca de mí (Caracas)", chip_ship:"Con envío", chip_drop:"Bajadas de precio", chip_fav:"Mis favoritos", chip_adv:"Filtros avanzados",
+  price_range:"Rango de precio (USD)", min:"Mín.", max:"Máx.", clear:"Limpiar", apply:"Aplicar",
+  results:"{n} resultados", result1:"1 resultado", for_q:"para «{q}»", clear_filters:"Limpiar filtros",
+  empty_title:"No encontramos productos con esos filtros", empty_sub:"Prueba con otra búsqueda o sé el primero en publicar algo así.",
+  recent_title:"Recién llegados a tu zona", recent_sub:"Oportunidades publicadas en los últimos minutos",
+  cars_title:"Destacados en carros", cars_pill:"Garantía PRO", cars_sub:"Vehículos verificados con historial y kilometraje certificado", cars_all:"Ver todos los carros",
+  fashion_title:"Moda sostenible y vintage", fashion_sub:"Viste tu estilo ahorrando hasta un 70% frente a la tienda", trending:"Tendencia",
+  how_eyebrow:"Cómo funciona", how_title:"Vende en minutos, compra con confianza", how_cta:"Empezar a vender",
+  step1_t:"Toma unas fotos", step1_d:"Publica gratis en menos de un minuto. Ponle precio en dólares y listo.",
+  step2_t:"Chatea y negocia", step2_d:"Habla directo con el comprador o vendedor y lleguen a un acuerdo justo.",
+  step3_t:"Entrega segura", step3_d:"Envíalo con seguro a todo el país o acuerden la entrega en un punto seguro.",
+  pay_title:"Acuerda el pago como prefieras:", pay_cash:"Efectivo en dólares", pay_bank:"Transferencia",
+  cities_title:"Perolero en toda Venezuela", cities_sub:"Descubre lo que se mueve en tu ciudad", listings:"{n} anuncios",
+  testi_title:"Lo que dice nuestra comunidad", testi_sub:"Historias de compra y venta de nuestros usuarios",
+  impact_eyebrow:"El poder de la segunda mano", impact_title:"Comprar y vender cosas usadas ayuda al planeta y a tu bolsillo.",
+  impact_p:"En 2025, nuestra comunidad evitó más de 12.000 toneladas de CO₂ al alargar la vida útil de millones de objetos que aún tenían mucho que dar.",
+  stat1:"CO₂ evitado", stat2:"Ahorro para usuarios", stat3:"Objetos reutilizados", reuse:"Reutilización", carbon:"Huella de carbono neutral",
+  app_eyebrow:"Perolero en tu bolsillo", app_title:"La app para vender y descubrir al instante",
+  app_p:"Chatea al instante con vendedores, negocia de forma amistosa, paga con total seguridad y gestiona tus envíos desde tu celular.",
+  dl_on:"Descargar en", get_on:"Disponible en", language:"Idioma:", phone_head:"Chat con comprador",
+  chat1:"¡Hola! ¿Todavía está disponible? ¿Haces envíos a Caracas?", chat2:"¡Sí! Te lo mando hoy por encomienda con seguro incluido.", chat3:"✓ Oferta aceptada: $400",
+  f_about:"Sobre nosotros", new:"Nuevo", f_press:"Prensa", f_jobs:"Empleo", f_support:"Soporte", f_help:"Centro de ayuda", f_rules:"Normas de la comunidad",
+  f_safety:"Consejos de seguridad", f_buyer:"Protección al comprador", f_legal:"Aviso legal", f_terms:"Términos de uso", f_privacy:"Política de privacidad",
+  f_lang:"Idioma y moneda", f_currency:"Precios en dólares (USD)", f_app:"Descarga la app", f_app_p:"Compra y vende estés donde estés desde tu celular.",
+  copyright:"© 2026 Perolero Venezuela. Todos los derechos reservados.", f_secure:"Transacciones protegidas y envíos asegurados",
+  ck_title:"Tu privacidad nos importa", ck_text:"En Perolero usamos cookies propias y de terceros para mejorar tu experiencia y mostrarte contenido relevante. Puedes aceptarlas todas o gestionar tus preferencias.",
+  ck_accept:"Aceptar todo", ck_reject:"Rechazar todo", ck_custom:"Personalizar", ck_notice:"Aviso de privacidad", ck_terms:"Términos",
+  pub_eyebrow:"Es gratis", pub_title:"Publicar producto", pub_photo:"Arrastra una foto o haz clic para subirla", pub_name:"Título", pub_name_ph:"Ej.: iPhone 13 de 128 GB",
+  pub_price:"Precio (USD)", pub_cat:"Categoría", pub_city:"Ciudad", pub_ship:"Ofrezco envío", pub_desc:"Descripción", pub_desc_ph:"Estado, detalles, motivo de venta...",
+  pub_error:"Completa el título y un precio válido.", cancel:"Cancelar", pub_submit:"Publicar ahora", pub_done:"¡Listo! Tu producto ya está publicado",
+  just_now:"Ahora mismo", min_ago:"Hace {n} min", h_ago:"Hace {n} h", shipping:"Envío", ship_cost:"Envío {p}", negotiable:"Negociable", size:"Talla {s}",
+  b_ship:"Envío", b_inperson:"Entrega en persona", b_pickup:"Retiro en persona",
+  t_new:"Nuevo con etiquetas", t_vintage:"Vintage 90s", t_vgood:"Muy buen estado", t_case:"Con estuche original",
+  t_checked:"Revisado", t_owner:"Único dueño", t_deal:"Oportunidad", t_hybrid:"Híbrido", t_private:"Particular",
+  fuel_gas:"Gasolina", fuel_hybrid:"Híbrido", trans_auto:"Automática", trans_manual:"Manual 6 vel.", low_cons:"Bajo consumo",
+  f_verified:"Vendedor verificado", f_warranty:"Garantía de 6 meses", f_papers:"Papeles al día",
+  fav_add:"Añadido a favoritos", fav_rm:"Eliminado de favoritos", offer:"Hacer una oferta", send:"Enviar", chat_seller:"Chatear con el vendedor",
+  sales:"{n} ventas", protected:"Compra protegida: tu dinero queda resguardado hasta que confirmes la entrega.", offer_sent:"Oferta de {p} enviada al vendedor",
+  offer_bad:"Escribe un monto válido", msg_sent:"Mensaje enviado. El vendedor te responderá pronto.", year:"Año", km:"Kilometraje", fuel:"Combustible", trans:"Caja",
+  soon:"Esta sección estará disponible muy pronto", lang_set:"Idioma: Español (Latinoamérica)", stores_soon:"La app llega pronto a las tiendas",
+  msgs:[["María G.","¿Aceptas $600 por el iPhone?","5 min"],["Carlos R.","Perfecto, te lo mando mañana por encomienda","1 h"],["Ana P.","¡Gracias! Llegó perfecto 🙌","ayer"]]
+},
+en:{
+  search_ph:"Search all categories...", search:"Search", categories:"Categories", all_cats:"All categories", all_ve:"All Venezuela",
+  messages:"Messages", favorites:"Favorites", profile:"My profile", publish_btn:"+ List an item", publish_short:"List", see_all_msgs:"See all",
+  hero_badge:"Trade your way • Circular economy", hero_h1_a:"The app and website to", hero_h1_b:"buy and sell", hero_h1_c:"near you",
+  rot:["anything","cars","phones","clothes","furniture","consoles"],
+  hero_p:"Give thousands of products a second life all across Venezuela. Find hidden gems at great prices in US dollars, support the circular economy and get your parcels delivered to your door with Perolero Shipping.",
+  hero_cta1:"List for free", hero_cta2:"Explore today's deals",
+  trust1:"Payment protected until delivery", trust2:"Insured shipping across Venezuela", trust3:"Guaranteed returns within 48h",
+  community:"Active community", community_n:"2M+ users", live:"LIVE", float1_a:"Offer accepted", float2_a:"On its way",
+  cats_title:"What are you looking for?", cats_sub:"Browse the most active categories near you", cats_more:"See all ({n})", cats_less:"See less",
+  chip_near:"Near me (Caracas)", chip_ship:"With shipping", chip_drop:"Price drops", chip_fav:"My favorites", chip_adv:"Advanced filters",
+  price_range:"Price range (USD)", min:"Min", max:"Max", clear:"Clear", apply:"Apply",
+  results:"{n} results", result1:"1 result", for_q:"for “{q}”", clear_filters:"Clear filters",
+  empty_title:"No items match those filters", empty_sub:"Try another search or be the first to list something like it.",
+  recent_title:"Just arrived near you", recent_sub:"Deals posted in the last few minutes",
+  cars_title:"Featured cars", cars_pill:"PRO warranty", cars_sub:"Verified vehicles with certified history and mileage", cars_all:"See all cars",
+  fashion_title:"Sustainable & vintage fashion", fashion_sub:"Wear your own style and save up to 70% vs. retail", trending:"Trending",
+  how_eyebrow:"How it works", how_title:"Sell in minutes, buy with confidence", how_cta:"Start selling",
+  step1_t:"Snap a few photos", step1_d:"List for free in under a minute. Set your price in US dollars and you're done.",
+  step2_t:"Chat and negotiate", step2_d:"Talk directly with buyers or sellers and agree on a fair deal.",
+  step3_t:"Safe delivery", step3_d:"Ship it insured nationwide or meet up at a safe spot.",
+  pay_title:"Pay however you agree:", pay_cash:"Cash in USD", pay_bank:"Bank transfer",
+  cities_title:"Perolero all over Venezuela", cities_sub:"Discover what's trending in your city", listings:"{n} listings",
+  testi_title:"What our community says", testi_sub:"Buying and selling stories from our users",
+  impact_eyebrow:"The power of second-hand", impact_title:"Buying and selling used items helps the planet and your wallet.",
+  impact_p:"In 2025, our community avoided over 12,000 tonnes of CO₂ by extending the life of millions of items that still had plenty to give.",
+  stat1:"CO₂ avoided", stat2:"Saved by users", stat3:"Items reused", reuse:"Reuse", carbon:"Carbon-neutral footprint",
+  app_eyebrow:"Perolero in your pocket", app_title:"The app to sell and discover instantly",
+  app_p:"Chat with sellers instantly, negotiate in a friendly way, pay safely and manage your shipments from your phone.",
+  dl_on:"Download on", get_on:"Get it on", language:"Language:", phone_head:"Chat with buyer",
+  chat1:"Hi! Is it still available? Do you ship to Caracas?", chat2:"Yes! I'll ship it today with insurance included.", chat3:"✓ Offer accepted: $400",
+  f_about:"About us", new:"New", f_press:"Press", f_jobs:"Careers", f_support:"Support", f_help:"Help center", f_rules:"Community guidelines",
+  f_safety:"Safety tips", f_buyer:"Buyer protection", f_legal:"Legal notice", f_terms:"Terms of use", f_privacy:"Privacy policy",
+  f_lang:"Language & currency", f_currency:"Prices in US dollars (USD)", f_app:"Get the app", f_app_p:"Buy and sell wherever you are from your phone.",
+  copyright:"© 2026 Perolero Venezuela. All rights reserved.", f_secure:"Protected transactions and insured shipping",
+  ck_title:"Your privacy matters", ck_text:"At Perolero we use our own and third-party cookies to improve your experience and show you relevant content. You can accept them all or manage your preferences.",
+  ck_accept:"Accept all", ck_reject:"Reject all", ck_custom:"Customize", ck_notice:"Privacy notice", ck_terms:"Terms",
+  pub_eyebrow:"It's free", pub_title:"List an item", pub_photo:"Drag a photo here or click to upload", pub_name:"Title", pub_name_ph:"e.g. iPhone 13 128GB",
+  pub_price:"Price (USD)", pub_cat:"Category", pub_city:"City", pub_ship:"I offer shipping", pub_desc:"Description", pub_desc_ph:"Condition, details, reason for selling...",
+  pub_error:"Please add a title and a valid price.", cancel:"Cancel", pub_submit:"Publish now", pub_done:"Done! Your item is now live",
+  just_now:"Just now", min_ago:"{n} min ago", h_ago:"{n}h ago", shipping:"Shipping", ship_cost:"Shipping {p}", negotiable:"Negotiable", size:"Size {s}",
+  b_ship:"Shipping", b_inperson:"Meet in person", b_pickup:"Local pickup",
+  t_new:"New with tags", t_vintage:"90s vintage", t_vgood:"Very good condition", t_case:"With original case",
+  t_checked:"Inspected", t_owner:"One owner", t_deal:"Great deal", t_hybrid:"Hybrid", t_private:"Private seller",
+  fuel_gas:"Gasoline", fuel_hybrid:"Hybrid", trans_auto:"Automatic", trans_manual:"6-speed manual", low_cons:"Low consumption",
+  f_verified:"Verified seller", f_warranty:"6-month warranty", f_papers:"Paperwork up to date",
+  fav_add:"Added to favorites", fav_rm:"Removed from favorites", offer:"Make an offer", send:"Send", chat_seller:"Chat with the seller",
+  sales:"{n} sales", protected:"Protected purchase: your money is held safely until you confirm delivery.", offer_sent:"Offer of {p} sent to the seller",
+  offer_bad:"Enter a valid amount", msg_sent:"Message sent. The seller will reply soon.", year:"Year", km:"Mileage", fuel:"Fuel", trans:"Transmission",
+  soon:"This section is coming very soon", lang_set:"Language: English", stores_soon:"The app is coming soon to the stores",
+  msgs:[["María G.","Would you take $600 for the iPhone?","5 min"],["Carlos R.","Perfect, I'll ship it tomorrow","1h"],["Ana P.","Thanks! It arrived perfect 🙌","yesterday"]]
+}};
+
+/* ---------- Categorías y ciudades ---------- */
+const CATS = [
+  {k:"cars",icon:"directions_car",es:"Carros",en:"Cars"},
+  {k:"phones",icon:"smartphone",es:"Celulares",en:"Phones"},
+  {k:"computers",icon:"laptop_chromebook",es:"Computación",en:"Computers"},
+  {k:"fashion",icon:"apparel",es:"Moda",en:"Fashion"},
+  {k:"home",icon:"chair",es:"Hogar",en:"Home"},
+  {k:"audio",icon:"headphones",es:"Audio y TV",en:"Audio & TV"},
+  {k:"sports",icon:"sports_tennis",es:"Deportes",en:"Sports"},
+  {k:"consoles",icon:"sports_esports",es:"Consolas",en:"Consoles"},
+  {k:"bikes",icon:"pedal_bike",es:"Bicicletas",en:"Bikes"},
+  {k:"motos",icon:"two_wheeler",es:"Motos",en:"Motorcycles"},
+  {k:"realestate",icon:"home_work",es:"Inmuebles",en:"Real estate"},
+  {k:"collect",icon:"auto_awesome",es:"Coleccionismo",en:"Collectibles"},
+];
+const TECH = {k:"tech",icon:"devices",es:"Tecnología",en:"Tech",match:["phones","computers","audio","consoles"]};
+const TOP_NAV = ["cars","motos","fashion","realestate","tech","home","sports","bikes","consoles","collect"];
+const CITIES = ["Caracas","Maracaibo","Valencia","Barquisimeto","Maracay","Mérida","Lechería","Porlamar","Puerto Ordaz","San Cristóbal"];
+const SELLERS = [["María González",4.9,37],["Luis Pérez",4.8,12],["Gabriela Rojas",5.0,58],["José Hernández",4.7,9],["Valentina Díaz",4.9,24],["Carlos Ramírez",4.8,41]];
+
+/* ---------- Productos (precios en USD) ---------- */
+let PRODUCTS = [
+ {id:"p1",sec:"recent",cat:"phones",img:IMG.iphone,icon:"smartphone",price:620,mins:15,ship:true,badge:"ship",loc:"Caracas • Chacao",
+  es:{t:"iPhone 14 Pro 128 GB",d:"Excelente estado, batería al 92%, con caja y cable original."},
+  en:{t:"iPhone 14 Pro 128GB",d:"Excellent condition, 92% battery health, with box and original cable."}},
+ {id:"p2",sec:"recent",cat:"bikes",img:IMG.bike,icon:"pedal_bike",price:750,mins:60,ship:true,badge:"ship",loc:"Mérida • Centro",
+  es:{t:"Bicicleta gravel Orbea Terra",d:"Cuadro de aluminio, grupo Shimano GRX 810, lista para rodar en la montaña."},
+  en:{t:"Orbea Terra gravel bike",d:"Aluminium frame, Shimano GRX 810 groupset, ready to ride the mountains."}},
+ {id:"p3",sec:"recent",cat:"consoles",img:IMG.ps5,icon:"sports_esports",price:420,was:480,mins:120,ship:false,badge:"inperson",loc:"Valencia • El Viñedo",kw:"ps5 play sony consola",
+  es:{t:"PlayStation 5 + 2 controles",d:"Como nueva, incluye 2 controles DualSense y factura de compra."},
+  en:{t:"PlayStation 5 + 2 controllers",d:"Like new, includes 2 DualSense controllers and the original receipt."}},
+ {id:"p4",sec:"recent",cat:"fashion",img:IMG.jacket,icon:"apparel",price:45,mins:180,ship:true,badge:"ship",loc:"Maracaibo • Bella Vista",
+  es:{t:"Chaqueta de cuero vintage",d:"Talla M unisex, cuero genuino, forro impecable."},
+  en:{t:"Vintage leather jacket",d:"Unisex size M, genuine leather, flawless lining."}},
+ {id:"p5",sec:"recent",cat:"home",img:IMG.chair,icon:"chair",price:300,was:340,mins:240,ship:false,badge:"pickup",loc:"Barquisimeto • Este",
+  es:{t:"Silla ergonómica Herman Miller",d:"Reacondicionada, soporte lumbar ajustable y brazos 3D."},
+  en:{t:"Herman Miller ergonomic chair",d:"Refurbished, adjustable lumbar support and 3D armrests."}},
+
+ {id:"c1",sec:"cars",cat:"cars",img:IMG.seat,icon:"directions_car",price:14900,year:2020,km:68000,fuel:"fuel_gas",fuelIcon:"local_gas_station",trans:"trans_auto",transIcon:"settings",tags:[["t_checked","mint"],["t_owner","dark"]],foot:"f_verified",ship:false,loc:"Caracas • Las Mercedes",
+  es:{t:"SEAT León 1.5 TSI FR 150 CV",d:"Mantenimientos en concesionario, cauchos nuevos y aire acondicionado al 100%."},
+  en:{t:"SEAT León 1.5 TSI FR 150 HP",d:"Dealer-serviced, brand-new tires and fully working A/C."}},
+ {id:"c2",sec:"cars",cat:"cars",img:IMG.golf,icon:"directions_car",price:17500,was:18900,year:2021,km:52000,fuel:"fuel_gas",fuelIcon:"local_gas_station",trans:"trans_manual",transIcon:"settings",tags:[["t_deal","orange"]],foot:"f_warranty",ship:false,loc:"Lechería • Anzoátegui",
+  es:{t:"Volkswagen Golf 1.4 TSI Comfortline",d:"Un solo dueño, sin choques, pantalla táctil y cámara de retroceso."},
+  en:{t:"Volkswagen Golf 1.4 TSI Comfortline",d:"One owner, accident-free, touchscreen and rear camera."}},
+ {id:"c3",sec:"cars",cat:"cars",img:IMG.yaris,icon:"electric_car",price:13500,year:2019,km:44000,fuel:"fuel_hybrid",fuelIcon:"electric_car",trans:"low_cons",transIcon:"speed",tags:[["t_hybrid","primary"],["t_private","white"]],foot:"f_papers",ship:false,loc:"Maracay • Aragua",
+  es:{t:"Toyota Yaris 1.5 Hybrid",d:"Ideal para la ciudad: gasta muy poco y está impecable por dentro y por fuera."},
+  en:{t:"Toyota Yaris 1.5 Hybrid",d:"Perfect for the city: very fuel-efficient and spotless inside and out."}},
+
+ {id:"f1",sec:"fashion",cat:"fashion",img:IMG.boots,icon:"steps",price:95,was:189,ship:true,shipCost:4.99,tag:["t_new","coral"],loc:"Porlamar • Margarita",
+  es:{t:"Botas Dr. Martens 1460 (talla 39)",d:"Sin estrenar, en su caja original con etiquetas."},
+  en:{t:"Dr. Martens 1460 boots (EU 39)",d:"Never worn, in the original box with tags."}},
+ {id:"f2",sec:"fashion",cat:"fashion",img:IMG.wind,icon:"apparel",price:28,neg:true,ship:true,shipCost:3.99,tag:["t_vintage","mint"],loc:"Puerto Ordaz • Bolívar",
+  es:{t:"Cortavientos retro oversize",d:"Talla L/XL, colores vivos y sin marcas de uso."},
+  en:{t:"Oversized retro windbreaker",d:"Size L/XL, vivid colors with no signs of wear."}},
+ {id:"f3",sec:"fashion",cat:"fashion",img:IMG.denim,icon:"apparel",price:50,size:"M",ship:true,shipCost:4.49,tag:["t_vgood","gray"],loc:"San Cristóbal • Táchira",
+  es:{t:"Chaqueta de jean Levi's Trucker",d:"Original de los 90, 100% algodón grueso y duradero."},
+  en:{t:"Levi's Trucker denim jacket",d:"Original from the 90s, thick and durable 100% cotton."}},
+ {id:"f4",sec:"fashion",cat:"fashion",img:IMG.shades,icon:"eyeglasses",price:65,was:145,ship:true,shipCost:3.49,tag:["t_case","mint"],loc:"Caracas • Altamira",
+  es:{t:"Lentes Ray-Ban Clubmaster polarizados",d:"Cristales impecables sin rayones, con estuche y paño."},
+  en:{t:"Ray-Ban Clubmaster polarized sunglasses",d:"Flawless lenses with no scratches, with case and cloth."}},
+];
+
+const TESTI = [
+ {n:"Andreína M.",c:"Valencia",col:"bg-primary-container",es:"Vendí mi PS4 en dos días y el comprador pagó por Pago Móvil sin ningún problema. ¡Súper fácil!",en:"Sold my PS4 in two days and the buyer paid via Pago Móvil with no hassle at all. Super easy!"},
+ {n:"José L.",c:"Mérida",col:"bg-badge-coral",es:"Compré una bici para mis rodadas a mitad de precio. El vendedor fue todo un pana y me explicó todo.",en:"I bought a bike for my rides at half price. The seller was super friendly and explained everything."},
+ {n:"Daniela R.",c:"Maracaibo",col:"bg-badge-orange",es:"Me mandaron los zapatos desde Caracas hasta Maracaibo y llegaron perfectos en 48 horas.",en:"They shipped the shoes from Caracas to Maracaibo and they arrived perfect within 48 hours."},
+];
+
+/* ---------- Ilustraciones SVG originales de ciudades ---------- */
+const CITY_ART = {
+Caracas:`<svg viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 w-full h-full"><defs><linearGradient id="gC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bff3ea"/><stop offset="1" stop-color="#f3faff"/></linearGradient></defs><rect width="300" height="220" fill="url(#gC)"/><circle cx="235" cy="48" r="20" fill="#ffdad2"/><path d="M0 120C45 70 95 55 150 78C195 96 230 50 300 72V220H0Z" fill="#46dcc6"/><path d="M0 140C60 112 120 120 180 128C230 135 265 118 300 126V220H0Z" fill="#13c1ac"/><g fill="#006b5e"><rect x="20" y="150" width="26" height="70"/><rect x="52" y="165" width="20" height="55"/><rect x="112" y="92" width="16" height="128"/><rect x="134" y="92" width="16" height="128"/><rect x="190" y="140" width="30" height="80"/><rect x="228" y="158" width="22" height="62"/><rect x="258" y="146" width="28" height="74"/></g><g fill="#005047"><rect x="78" y="172" width="28" height="48"/><rect x="156" y="160" width="26" height="60"/></g><g fill="#E8FAF7" opacity=".7"><rect x="116" y="102" width="3" height="3"/><rect x="122" y="112" width="3" height="3"/><rect x="138" y="106" width="3" height="3"/><rect x="144" y="120" width="3" height="3"/><rect x="26" y="160" width="4" height="4"/><rect x="36" y="172" width="4" height="4"/><rect x="198" y="150" width="4" height="4"/><rect x="208" y="164" width="4" height="4"/><rect x="266" y="156" width="4" height="4"/></g></svg>`,
+Maracaibo:`<svg viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 w-full h-full"><defs><linearGradient id="gM" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb4a3"/><stop offset=".6" stop-color="#ffdad2"/><stop offset="1" stop-color="#fff4ef"/></linearGradient></defs><rect width="300" height="220" fill="url(#gM)"/><circle cx="210" cy="118" r="34" fill="#FF9800" opacity=".85"/><rect y="128" width="300" height="92" fill="#13c1ac"/><g stroke="#E8FAF7" stroke-width="2" stroke-linecap="round" opacity=".6"><path d="M20 160h40M120 172h50M200 156h60M60 190h40M180 196h70"/></g><path d="M0 120H300" stroke="#1A202C" stroke-width="5"/><g stroke="#1A202C" stroke-width="3" fill="none"><path d="M70 70V128M150 70V128M230 70V128"/><path d="M70 72 30 120M70 72 110 120M150 72 110 120M150 72 190 120M230 72 190 120M230 72 270 120"/></g><g fill="#1A202C"><rect x="66" y="64" width="8" height="10"/><rect x="146" y="64" width="8" height="10"/><rect x="226" y="64" width="8" height="10"/><rect x="20" y="120" width="4" height="12"/><rect x="110" y="120" width="4" height="12"/><rect x="190" y="120" width="4" height="12"/><rect x="270" y="120" width="4" height="12"/></g></svg>`,
+Valencia:`<svg viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 w-full h-full"><defs><linearGradient id="gV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d6e5ee"/><stop offset="1" stop-color="#f3faff"/></linearGradient></defs><rect width="300" height="220" fill="url(#gV)"/><circle cx="70" cy="55" r="18" fill="#ffb4a3"/><path d="M0 130C50 95 90 100 130 115C180 135 230 90 300 105V220H0Z" fill="#69f9e2" opacity=".8"/><path d="M0 160C70 140 150 150 300 140V220H0Z" fill="#3DD2BA"/><g fill="#536068"><rect x="40" y="150" width="24" height="70"/><rect x="70" y="135" width="18" height="85"/><rect x="94" y="158" width="30" height="62"/><rect x="176" y="146" width="22" height="74"/><rect x="204" y="128" width="16" height="92"/><rect x="226" y="160" width="34" height="60"/></g><path d="M130 220V170a20 20 0 0 1 40 0V220Z" fill="#1A202C"/><g fill="#E8FAF7" opacity=".8"><rect x="74" y="145" width="3" height="3"/><rect x="80" y="160" width="3" height="3"/><rect x="208" y="140" width="3" height="3"/><rect x="212" y="156" width="3" height="3"/><rect x="46" y="160" width="4" height="4"/></g></svg>`,
+Barquisimeto:`<svg viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 w-full h-full"><defs><linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b4950"/><stop offset=".55" stop-color="#ae3115"/><stop offset="1" stop-color="#ff8c72"/></linearGradient></defs><rect width="300" height="220" fill="url(#gB)"/><g fill="#fff" opacity=".8"><circle cx="40" cy="30" r="1.5"/><circle cx="90" cy="18" r="1"/><circle cx="160" cy="34" r="1.5"/><circle cx="250" cy="22" r="1"/><circle cx="280" cy="50" r="1.5"/><circle cx="20" cy="70" r="1"/></g><g transform="translate(150 105)" stroke="#ffdad2" stroke-width="3" stroke-linecap="round"><path d="M0-42V-26M0 26V42M-42 0H-26M26 0H42M-30-30-19-19M19 19 30 30M-30 30-19 19M19-19 30-30"/><circle r="16" fill="#FF9800" stroke="none"/></g><g fill="#1A202C"><path d="M0 220V170h30v-16h22v26h20v-30h18v70Z"/><rect x="100" y="168" width="26" height="52"/><rect x="176" y="160" width="20" height="60"/><path d="M200 220v-46h26v-18h18v18h20v-10h36v56Z"/></g><rect y="200" width="300" height="20" fill="#101d23"/></svg>`,
+Mérida:`<svg viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 w-full h-full"><defs><linearGradient id="gE" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bbc9d1"/><stop offset="1" stop-color="#f3faff"/></linearGradient></defs><rect width="300" height="220" fill="url(#gE)"/><path d="M0 170 70 70 120 130 175 40 240 120 270 90 300 120V220H0Z" fill="#536068"/><path d="M175 40 155 73 168 68 178 80 190 64 198 70Z" fill="#fff"/><path d="M70 70 55 92 66 88 74 96 84 86Z" fill="#fff"/><path d="M0 185C60 150 120 165 180 160C230 156 270 140 300 150V220H0Z" fill="#3DD2BA"/><path d="M0 205C80 185 180 195 300 180V220H0Z" fill="#13c1ac"/><path d="M20 190 175 48" stroke="#1A202C" stroke-width="1.5"/><g transform="translate(96 118)"><path d="M0-6V0" stroke="#1A202C" stroke-width="1.5"/><rect x="-8" y="0" width="16" height="12" rx="2" fill="#FF5938"/><rect x="-5" y="3" width="10" height="4" fill="#fff" opacity=".8"/></g></svg>`,
+Porlamar:`<svg viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 w-full h-full"><defs><linearGradient id="gP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#69f9e2"/><stop offset="1" stop-color="#E8FAF7"/></linearGradient></defs><rect width="300" height="220" fill="url(#gP)"/><circle cx="90" cy="60" r="24" fill="#fff4ef"/><circle cx="90" cy="60" r="16" fill="#ffdad2"/><rect y="118" width="300" height="60" fill="#13c1ac"/><path d="M0 130c20-6 40 6 60 0s40-6 60 0 40 6 60 0 40-6 60 0 40 6 60 0" stroke="#E8FAF7" stroke-width="3" fill="none" opacity=".7"/><path d="M0 170C80 155 200 160 300 150V220H0Z" fill="#ffdad2"/><path d="M0 185C90 175 200 180 300 172V220H0Z" fill="#ffe9de"/><path d="M228 190C226 160 220 130 206 104" stroke="#8c1900" stroke-width="6" fill="none" stroke-linecap="round"/><g fill="#006b5e"><path d="M206 104c-20-8-40-2-52 12 16-6 34-8 52-12Z"/><path d="M206 104c-6-18-22-28-40-28 14 8 28 16 40 28Z"/><path d="M206 104c10-18 28-24 46-20-16 4-32 10-46 20Z"/><path d="M206 104c20-4 40 6 48 22-14-10-30-16-48-22Z"/></g><path d="M40 112 52 92 64 112Z" fill="#fff"/><path d="M52 92V114" stroke="#1A202C" stroke-width="1.5"/></svg>`,
+};
+
+/* ---------- Estado ---------- */
+const LS = {get:(k,d)=>{try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}}, set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const state = {
+  lang: LS.get("cb-lang", (navigator.language||"es").toLowerCase().startsWith("en") ? "en" : "es"),
+  q:"", cat:null, city:null, ship:false, drop:false, fav:false, min:null, max:null,
+  favs:new Set(LS.get("cb-favs",[])), showAllCats:false
+};
+const $ = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const t = (k,vars={})=>{let s=(T[state.lang][k]??T.es[k]??k); if(typeof s==="string") for(const v in vars) s=s.replace("{"+v+"}",vars[v]); return s;};
+const esc = s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const catName = k=>{const c=k==="tech"?TECH:CATS.find(c=>c.k===k);return c?c[state.lang]:k};
+
+/* Formato de números y precios en USD (es: 14.900,50 · en: 14,900.50) */
+function num(n,dec=0){
+  const [i,d]=Math.abs(n).toFixed(dec).split(".");
+  const ts=state.lang==="es"?".":",", ds=state.lang==="es"?",":".";
+  return (n<0?"-":"")+i.replace(/\B(?=(\d{3})+(?!\d))/g,ts)+(d?ds+d:"");
+}
+const money = n=>"$"+num(n, n%1?2:0);
+const ago = m=>m<1?t("just_now"):m<60?t("min_ago",{n:m}):t("h_ago",{n:Math.round(m/60)});
+
+/* ---------- Imágenes ---------- */
+function imgLoaded(img){img.classList.add("loaded");img.closest(".shimmer")?.classList.remove("shimmer");}
+function imgFail(img,icon){
+  const wrap=img.parentElement; wrap?.classList.remove("shimmer");
+  const d=document.createElement("div");
+  d.className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-mint-light via-surface-container to-tertiary-fixed/60 text-primary";
+  d.innerHTML=`<span class="material-symbols-outlined text-[56px] opacity-60">${icon||"image"}</span>`;
+  img.replaceWith(d);
+}
+
+/* ---------- Filtros ---------- */
+const norm = s=>String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/\s+/g," ");
+function matches(p){
+  const L=p[state.lang]||p.es;
+  if(state.q){
+    const hay=norm([L.t,L.d,p.loc,catName(p.cat),p.es.t,p.en.t,p.kw||""].join(" "));
+    if(!norm(state.q).split(" ").filter(Boolean).every(w=>hay.includes(w))) return false;
+  }
+  if(state.cat){const m=state.cat==="tech"?TECH.match:[state.cat]; if(!m.includes(p.cat)) return false;}
+  if(state.city && !p.loc.startsWith(state.city)) return false;
+  if(state.ship && !p.ship) return false;
+  if(state.drop && !p.was) return false;
+  if(state.fav && !state.favs.has(p.id)) return false;
+  if(state.min!=null && p.price<state.min) return false;
+  if(state.max!=null && p.price>state.max) return false;
+  return true;
+}
+const filtersActive = ()=>!!(state.q||state.cat||state.city||state.ship||state.drop||state.fav||state.min!=null||state.max!=null);
+
+/* ---------- Plantillas de tarjetas ---------- */
+const favBtn = p=>`<button class="fav-toggle absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-card/90 hover:bg-surface-card backdrop-blur-sm flex items-center justify-center ${state.favs.has(p.id)?"text-badge-coral":"text-charcoal-dark"} hover:text-badge-coral transition-colors shadow-sm" data-id="${p.id}" type="button" aria-label="${t("favorites")}" aria-pressed="${state.favs.has(p.id)}"><span class="material-symbols-outlined text-[18px] ${state.favs.has(p.id)?"icon-fill":""}">favorite</span></button>`;
+const TAGCOL = {mint:"bg-mint-light text-primary",coral:"bg-badge-coral text-on-tertiary",gray:"bg-surface-container-highest text-charcoal-dark",dark:"bg-charcoal-dark/80 backdrop-blur-sm text-white",orange:"bg-badge-orange/20 text-badge-orange",primary:"bg-primary-container text-white",white:"bg-surface-card/90 text-charcoal-dark"};
+const media = (p,ratio)=>!p.img?`<div class="media relative w-full ${ratio} overflow-hidden"><div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-mint-light via-surface-container to-tertiary-fixed/60 text-primary"><span class="material-symbols-outlined text-[56px] opacity-60">${p.icon}</span></div>`:`<div class="media relative w-full ${ratio} bg-surface-container-high overflow-hidden shimmer"><img class="w-full h-full object-cover" src="${p.img}" alt="${esc((p[state.lang]||p.es).t)}" loading="lazy" onload="imgLoaded(this)" onerror="imgFail(this,'${p.icon}')"/>`;
+
+function smallCard(p,i){
+  const L=p[state.lang]||p.es;
+  let top="";
+  if(p.sec==="fashion"&&p.tag) top=`<span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full ${TAGCOL[p.tag[1]]} text-[10px] font-bold">${t(p.tag[0])}</span>`;
+  let bottom="";
+  if(p.badge==="ship") bottom=`<span class="px-2 py-0.5 rounded-full bg-mint-light text-primary text-[10px] font-bold flex items-center gap-1 shadow-sm"><span class="material-symbols-outlined text-[12px]">local_shipping</span>${t("b_ship")}</span>`;
+  if(p.badge==="inperson") bottom=`<span class="px-2 py-0.5 rounded-full bg-[#fff1dc] text-badge-orange text-[10px] font-bold shadow-sm">${t("b_inperson")}</span>`;
+  if(p.badge==="pickup") bottom=`<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-charcoal-dark text-[10px] font-bold shadow-sm">${t("b_pickup")}</span>`;
+  let right="";
+  if(p.mins!=null) right=`<span class="font-label-sm text-label-sm text-secondary font-medium whitespace-nowrap">${ago(p.mins)}</span>`;
+  else if(p.was) right=`<span class="font-label-sm text-label-sm text-secondary line-through">${money(p.was)}</span>`;
+  else if(p.neg) right=`<span class="font-label-sm text-label-sm text-badge-coral font-bold">${t("negotiable")}</span>`;
+  else if(p.size) right=`<span class="font-label-sm text-label-sm text-secondary">${t("size",{s:p.size})}</span>`;
+  const dropBadge = p.was && p.mins!=null ? `<span class="ml-1.5 align-middle text-[10px] font-bold text-badge-coral bg-tertiary-fixed px-1.5 py-0.5 rounded-full">-${Math.round((1-p.price/p.was)*100)}%</span>`:"";
+  const footR = p.shipCost ? `<span class="text-[11px] text-primary font-bold whitespace-nowrap">${t("ship_cost",{p:money(p.shipCost)})}</span>` : `<span class="material-symbols-outlined text-[18px] text-primary-container">shield</span>`;
+  return `<article class="card card-in group bg-surface-card rounded-xl overflow-hidden shadow-sm flex flex-col justify-between cursor-pointer" style="--d:${i*70}ms" data-id="${p.id}" tabindex="0">
+    <div>${media(p,"aspect-square")}${favBtn(p)}${top}${bottom?`<div class="absolute bottom-2 left-2">${bottom}</div>`:""}</div>
+      <div class="p-3.5 flex flex-col gap-1">
+        <div class="flex items-baseline justify-between gap-2"><span class="font-headline-sm text-headline-sm text-charcoal-dark font-bold">${money(p.price)}${dropBadge}</span>${right}</div>
+        <h3 class="font-title-sm text-title-sm text-charcoal-dark truncate" title="${esc(L.t)}">${esc(L.t)}</h3>
+        <p class="font-body-sm text-body-sm text-secondary line-clamp-1">${esc(L.d)}</p>
+      </div>
+    </div>
+    <div class="px-3.5 pb-3.5 pt-1 flex items-center justify-between gap-2 text-secondary font-body-sm text-body-sm">
+      <span class="flex items-center gap-1 truncate text-on-surface-variant font-medium"><span class="material-symbols-outlined text-[15px] text-primary">location_on</span>${esc(p.loc)}</span>${footR}
+    </div>
+  </article>`;
+}
+function carCard(p,i){
+  const L=p[state.lang]||p.es;
+  const tags=(p.tags||[]).map(([k,c])=>`<span class="px-2.5 py-0.5 rounded-full ${TAGCOL[c]} text-[10px] font-bold">${t(k)}</span>`).join("");
+  const footIcon = p.foot==="f_papers"?"":`<span class="material-symbols-outlined text-[16px]">verified</span>`;
+  return `<article class="card card-in group bg-surface-card rounded-xl overflow-hidden shadow-sm flex flex-col justify-between cursor-pointer" style="--d:${i*90}ms" data-id="${p.id}" tabindex="0">
+    <div>${media(p,"aspect-[16/10]")}<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">${tags}</div>${favBtn(p)}</div>
+      <div class="p-4 flex flex-col gap-2">
+        <div class="flex items-baseline justify-between gap-2"><span class="font-headline-md text-headline-md text-charcoal-dark font-bold">${money(p.price)}</span><span class="font-label-md text-label-md text-secondary whitespace-nowrap">${p.year} • ${num(p.km)} km</span></div>
+        <h3 class="font-title-md text-title-md text-charcoal-dark">${esc(L.t)}</h3>
+        <div class="flex items-center gap-3 text-secondary font-body-sm text-body-sm pt-1">
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">${p.fuelIcon}</span>${t(p.fuel)}</span>
+          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">${p.transIcon}</span>${t(p.trans)}</span>
+        </div>
+      </div>
+    </div>
+    <div class="px-4 pb-4 pt-2 flex items-center justify-between gap-2 border-t border-border-subtle/50 text-secondary font-body-sm text-body-sm">
+      <span class="flex items-center gap-1 text-on-surface-variant font-medium truncate"><span class="material-symbols-outlined text-[16px] text-primary">location_on</span>${esc(p.loc)}</span>
+      <span class="${p.foot==="f_papers"?"text-charcoal-dark font-semibold":"text-primary font-bold"} text-label-sm flex items-center gap-0.5 whitespace-nowrap">${footIcon}${t(p.foot)}</span>
+    </div>
+  </article>`;
+}
+
+/* ---------- Render principal ---------- */
+function renderProducts(){
+  let total=0;
+  [["recent","#grid-recent",smallCard],["cars","#grid-cars",carCard],["fashion","#grid-fashion",smallCard]].forEach(([sec,sel,fn])=>{
+    const list=PRODUCTS.filter(p=>p.sec===sec&&matches(p));
+    total+=list.length;
+    $(sel).innerHTML=list.map(fn).join("");
+    $(`[data-section="${sec}"]`).style.display=list.length?"":"none";
+  });
+  $$(".media img").forEach(img=>{if(img.complete&&img.naturalWidth) imgLoaded(img);});
+  const active=filtersActive();
+  const bar=$("#results-bar"); bar.classList.toggle("hidden",!active); bar.classList.toggle("flex",active);
+  let txt = total===1?t("result1"):t("results",{n:total});
+  const extra=[]; if(state.q) extra.push(t("for_q",{q:esc(state.q)})); if(state.cat) extra.push("· "+catName(state.cat)); if(state.city) extra.push("· "+state.city);
+  $("#results-text").innerHTML = txt+" "+extra.join(" ");
+  const empty=$("#empty-state"); empty.classList.toggle("hidden",total>0); empty.classList.toggle("flex",total===0);
+  renderChips(); renderCatState();
+}
+
+function renderChips(){
+  const on={near:state.city==="Caracas",ship:state.ship,drop:state.drop,fav:state.fav,adv:state.min!=null||state.max!=null};
+  $$(".chip").forEach(b=>{
+    const a=on[b.dataset.chip];
+    b.className=b.className.replace(/\b(bg-mint-light|text-primary|font-bold|bg-surface-card|hover:bg-surface-container|text-on-surface|ring-1|ring-primary-container)\b/g,"").replace(/\s+/g," ");
+    b.classList.add(...(a?["bg-mint-light","text-primary","font-bold","ring-1","ring-primary-container"]:["bg-surface-card","hover:bg-surface-container","text-on-surface"]));
+    b.setAttribute("aria-pressed",a);
+  });
+}
+
+function renderCats(){
+  // círculos
+  const list = state.showAllCats?CATS:CATS.slice(0,9);
+  $("#cat-circles").innerHTML=list.map((c,i)=>`<button class="cat-circle card-in group flex flex-col items-center gap-2 p-2.5 rounded-2xl hover:bg-surface-card transition-all" style="--d:${i*40}ms" data-cat="${c.k}" type="button">
+    <div class="cat-ico w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-surface-card group-hover:bg-mint-light shadow-sm flex items-center justify-center text-charcoal-dark group-hover:text-primary transition-all group-hover:-translate-y-1 group-hover:shadow-md"><span class="material-symbols-outlined text-[28px] transition-transform duration-300 group-hover:scale-110">${c.icon}</span></div>
+    <span class="cat-lbl font-label-md text-label-md text-center text-charcoal-dark group-hover:text-primary transition-colors font-medium">${c[state.lang]}</span></button>`).join("");
+  $("#cats-more-label").textContent = state.showAllCats?t("cats_less"):t("cats_more",{n:CATS.length});
+  $("#cats-more-icon").style.transform = state.showAllCats?"rotate(-90deg)":"";
+  // nav superior
+  $("#top-cats").innerHTML=TOP_NAV.map(k=>`<button class="top-cat whitespace-nowrap px-4 py-1.5 rounded-full text-label-md font-label-md transition-colors shrink-0" data-cat="${k}" type="button">${catName(k)}</button>`).join("");
+  // dropdown categorías
+  $("#cat-dd").innerHTML=`<button class="dd-cat w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" data-cat="" type="button"><span class="material-symbols-outlined text-[18px] text-primary">apps</span>${t("all_cats")}</button>`+
+    CATS.map(c=>`<button class="dd-cat w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" data-cat="${c.k}" type="button"><span class="material-symbols-outlined text-[18px] text-secondary">${c.icon}</span>${c[state.lang]}</button>`).join("");
+  // dropdown ciudades
+  $("#city-dd").innerHTML=[""].concat(CITIES).map(c=>`<button class="dd-city w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" data-city="${c}" type="button"><span class="material-symbols-outlined text-[18px] ${c?"text-secondary":"text-primary"}">${c?"location_city":"map"}</span>${c||t("all_ve")}</button>`).join("");
+  // selects publicar
+  $("#pub-cat").innerHTML=CATS.map(c=>`<option value="${c.k}">${c[state.lang]}</option>`).join("");
+  const keepCity=$("#pub-city").value;
+  $("#pub-city").innerHTML=CITIES.map(c=>`<option>${c}</option>`).join(""); if(keepCity) $("#pub-city").value=keepCity;
+  renderCatState();
+}
+function renderCatState(){
+  $$(".top-cat").forEach(b=>{const a=b.dataset.cat===state.cat;b.className=`top-cat whitespace-nowrap px-4 py-1.5 rounded-full text-label-md font-label-md transition-colors shrink-0 ${a?"bg-mint-light text-primary font-bold":"text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface"}`;});
+  $$(".cat-circle").forEach(b=>{const a=b.dataset.cat===state.cat;b.querySelector(".cat-ico").classList.toggle("ring-2",a);b.querySelector(".cat-ico").classList.toggle("ring-primary-container",a);b.querySelector(".cat-ico").classList.toggle("!bg-mint-light",a);b.querySelector(".cat-lbl").classList.toggle("!text-primary",a);});
+  $$(".dd-cat").forEach(b=>b.classList.toggle("bg-mint-light",(b.dataset.cat||null)===state.cat));
+  $$(".dd-city").forEach(b=>b.classList.toggle("bg-mint-light",(b.dataset.city||null)===state.city));
+  $("#cat-btn-label").textContent = state.cat?catName(state.cat):t("categories");
+  $("#city-btn-label").textContent = state.city||t("all_ve");
+}
+
+function renderCities(){
+  const counts={Caracas:8412,Maracaibo:4230,Valencia:3975,Barquisimeto:2840,Mérida:1610,Porlamar:1185};
+  const names={Porlamar:"Margarita"};
+  $("#cities").innerHTML=Object.keys(CITY_ART).map((c,i)=>`<button class="city reveal relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow text-left group" style="--d:${i*70}ms" data-city="${c}" type="button">
+    ${CITY_ART[c]}
+    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-dark/75 via-charcoal-dark/10 to-transparent"></div>
+    <div class="absolute left-3 right-3 bottom-3 flex items-end justify-between gap-2 text-white">
+      <div><p class="font-title-md text-title-md leading-tight">${names[c]||c}</p><p class="text-body-sm opacity-85">${t("listings",{n:num(counts[c])})}</p></div>
+      <span class="w-8 h-8 rounded-full bg-white/20 backdrop-blur flex items-center justify-center transition-all group-hover:bg-primary-container group-hover:translate-x-0.5"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></span>
+    </div></button>`).join("");
+  observeReveals();
+}
+function renderTesti(){
+  $("#testimonials").innerHTML=TESTI.map((x,i)=>`<figure class="reveal bg-surface-card rounded-lg p-6 shadow-sm flex flex-col gap-4 hover:shadow-md transition-shadow" style="--d:${i*100}ms">
+    <div class="flex text-badge-orange">${'<span class="material-symbols-outlined icon-fill text-[18px]">star</span>'.repeat(5)}</div>
+    <blockquote class="font-body-lg text-body-lg text-charcoal-dark flex-1">“${x[state.lang]}”</blockquote>
+    <figcaption class="flex items-center gap-3"><span class="w-10 h-10 rounded-full ${x.col} text-white font-bold flex items-center justify-center">${x.n.split(" ").map(s=>s[0]).join("")}</span><span><span class="block font-title-sm text-title-sm text-charcoal-dark">${x.n}</span><span class="block text-body-sm text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-primary">location_on</span>${x.c}</span></span></figcaption>
+  </figure>`).join("");
+  observeReveals();
+}
+function renderMsgs(){
+  const cols=["bg-primary-container","bg-badge-coral","bg-badge-orange"];
+  $("#msg-list").innerHTML=t("msgs").map((m,i)=>`<a href="#" class="msg-item flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-container-low transition-colors"><span class="w-10 h-10 shrink-0 rounded-full ${cols[i]} text-white font-bold flex items-center justify-center text-[13px]">${m[0].split(" ").map(s=>s[0]).join("")}</span><span class="flex-1 min-w-0"><span class="flex justify-between gap-2"><span class="font-label-lg text-label-lg text-charcoal-dark">${m[0]}</span><span class="text-[11px] text-secondary">${m[2]}</span></span><span class="block text-body-sm text-secondary truncate">${m[1]}</span></span>${i<3?'<span class="w-2 h-2 rounded-full bg-badge-coral shrink-0"></span>':''}</a>`).join("");
+}
+
+/* ---------- Idioma ---------- */
+function applyLang(){
+  document.documentElement.lang = state.lang==="es"?"es-419":"en";
+  document.title = state.lang==="es"?"Perolero — Compra y vende cerca de ti en Venezuela":"Perolero — Buy and sell near you in Venezuela";
+  $$("[data-i18n]").forEach(el=>{const v=t(el.dataset.i18n); if(typeof v==="string") el.innerHTML=v;});
+  $$("[data-i18n-ph]").forEach(el=>el.placeholder=t(el.dataset.i18nPh));
+  $$("[data-i18n-title]").forEach(el=>{el.title=t(el.dataset.i18nTitle);el.setAttribute("aria-label",el.title);});
+  $$("[data-price]").forEach(el=>el.textContent=money(+el.dataset.price));
+  $$(".lang-opt").forEach(o=>{const a=o.dataset.lang===state.lang;o.classList.toggle("bg-primary-container",a);o.classList.toggle("text-white",a);o.classList.toggle("shadow-sm",a);o.classList.toggle("text-secondary",!a);});
+  $$(".foot-lang").forEach(b=>{const a=b.dataset.lang===state.lang;b.className=`set-lang foot-lang px-2.5 py-1 rounded-md text-label-sm font-label-sm transition-colors border ${a?"bg-mint-light text-primary font-bold border-primary-container":"bg-surface-container-low text-on-surface-variant hover:bg-surface-container border-transparent"}`;});
+  rotIdx=0; $("#rot-word").textContent=T[state.lang].rot[0];
+  $$(".counter.done").forEach(el=>el.textContent=num(+el.dataset.to,+el.dataset.dec));
+  renderCats(); renderProducts(); renderCities(); renderTesti(); renderMsgs();
+}
+function setLang(l){ if(l===state.lang) return; state.lang=l; LS.set("cb-lang",l); applyLang(); toast(t("lang_set"),"translate"); }
+
+/* ---------- Toast ---------- */
+let toastTimer;
+function toast(msg,icon="check_circle"){
+  $("#toast-text").textContent=msg; $("#toast-icon").textContent=icon;
+  const el=$("#toast"); el.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove("show"),2600);
+}
+
+/* ---------- Favoritos ---------- */
+function toggleFav(id,btn){
+  const has=state.favs.has(id); has?state.favs.delete(id):state.favs.add(id);
+  LS.set("cb-favs",[...state.favs]); updateFavCount();
+  $$(`.fav-toggle[data-id="${id}"]`).forEach(b=>{
+    b.classList.toggle("text-badge-coral",!has); b.classList.toggle("text-charcoal-dark",has);
+    b.querySelector("span").classList.toggle("icon-fill",!has); b.setAttribute("aria-pressed",!has);
+    b.classList.remove("pop"); void b.offsetWidth; b.classList.add("pop");
+  });
+  toast(t(has?"fav_rm":"fav_add"),has?"heart_broken":"favorite");
+  if(state.fav) renderProducts();
+}
+function updateFavCount(){
+  const n=state.favs.size, el=$("#fav-count"); el.textContent=n;
+  el.classList.toggle("hidden",!n); el.classList.toggle("flex",!!n);
+  const ic=$("#fav-btn .material-symbols-outlined"); ic.textContent=n?"favorite":"favorite_border"; ic.classList.toggle("text-badge-coral",!!n);
+}
+
+/* ---------- Modal de producto ---------- */
+function openProduct(id){
+  const p=PRODUCTS.find(x=>x.id===id); if(!p) return;
+  const L=p[state.lang]||p.es, s=SELLERS[PRODUCTS.indexOf(p)%SELLERS.length];
+  const specs = p.sec==="cars" ? `<div class="grid grid-cols-2 gap-2">${[["calendar_month",t("year"),p.year],["speed",t("km"),num(p.km)+" km"],[p.fuelIcon,t("fuel"),t(p.fuel)],["settings",t("trans"),p.trans==="low_cons"?t("trans_auto"):t(p.trans)]].map(([i,k,v])=>`<div class="p-3 rounded-2xl bg-surface-container-low"><p class="text-body-sm text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">${i}</span>${k}</p><p class="font-title-sm text-title-sm text-charcoal-dark">${v}</p></div>`).join("")}</div>`:"";
+  const shipLine = p.ship ? `<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-mint-light text-primary text-label-md font-bold"><span class="material-symbols-outlined text-[16px]">local_shipping</span>${p.shipCost?t("ship_cost",{p:money(p.shipCost)}):t("shipping")}</span>` : `<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#fff1dc] text-badge-orange text-label-md font-bold"><span class="material-symbols-outlined text-[16px]">handshake</span>${t("b_inperson")}</span>`;
+  $("#pm-body").innerHTML=`
+    <div class="media relative bg-surface-container-high min-h-[260px] md:min-h-[480px] ${p.img?"shimmer":""}">${p.img?`<img class="absolute inset-0 w-full h-full object-cover" src="${p.img}" alt="${esc(L.t)}" onload="imgLoaded(this)" onerror="imgFail(this,'${p.icon}')"/>`:`<div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-mint-light via-surface-container to-tertiary-fixed/60 text-primary"><span class="material-symbols-outlined text-[72px] opacity-60">${p.icon}</span></div>`}${favBtn(p).replace("top-2.5 right-2.5","top-4 left-4")}</div>
+    <div class="p-6 md:p-8 flex flex-col gap-4">
+      <div class="flex items-center gap-2 text-body-sm text-secondary"><span class="material-symbols-outlined text-[16px] text-primary">location_on</span>${esc(p.loc)}${p.mins!=null?` · ${ago(p.mins)}`:""}</div>
+      <div><p class="font-headline-lg text-headline-lg text-charcoal-dark">${money(p.price)} ${p.was?`<span class="text-title-md font-title-md text-secondary line-through ml-1">${money(p.was)}</span>`:""}</p>
+      <h3 class="font-headline-sm text-headline-sm text-charcoal-dark mt-1">${esc(L.t)}</h3></div>
+      <p class="font-body-lg text-body-lg text-secondary">${esc(L.d)}</p>
+      <div class="flex flex-wrap gap-2">${shipLine}<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container-low text-charcoal-dark text-label-md font-bold"><span class="material-symbols-outlined text-[16px]">category</span>${catName(p.cat)}</span></div>
+      ${specs}
+      <div class="flex items-center gap-3 p-3 rounded-2xl border border-border-subtle">
+        <span class="w-11 h-11 rounded-full bg-primary-container text-white font-bold flex items-center justify-center">${s[0].split(" ").map(x=>x[0]).join("")}</span>
+        <div class="flex-1"><p class="font-title-sm text-title-sm text-charcoal-dark flex items-center gap-1">${s[0]}<span class="material-symbols-outlined icon-fill text-[16px] text-primary-container">verified</span></p><p class="text-body-sm text-secondary flex items-center gap-1"><span class="material-symbols-outlined icon-fill text-[14px] text-badge-orange">star</span>${num(s[1],1)} · ${t("sales",{n:s[2]})}</p></div>
+      </div>
+      <form id="offer-form" class="flex gap-2">
+        <label class="flex-1 flex items-center px-4 rounded-full bg-surface-container-low focus-within:ring-2 focus-within:ring-primary-container"><span class="text-secondary font-bold mr-1">$</span><input id="offer-input" type="number" min="1" step="1" class="w-full py-3 bg-transparent outline-none" placeholder="${t("offer")}" value="${Math.round(p.price*0.9)}"/></label>
+        <button class="px-5 rounded-full bg-charcoal-dark hover:bg-secondary text-white font-label-lg text-label-lg transition-colors" type="submit">${t("send")}</button>
+      </form>
+      <button id="chat-seller" class="w-full py-3 rounded-full bg-primary-container hover:bg-primary text-white font-label-lg text-label-lg transition-all active:scale-[.98] inline-flex items-center justify-center gap-2" type="button"><span class="material-symbols-outlined text-[20px]">chat</span>${t("chat_seller")}</button>
+      <p class="text-body-sm text-secondary flex items-start gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>${t("protected")}</p>
+    </div>`;
+  $("#offer-form").onsubmit=e=>{e.preventDefault();const v=parseFloat($("#offer-input").value);if(!(v>0))return toast(t("offer_bad"),"error");toast(t("offer_sent",{p:money(v)}),"send");closeModals();};
+  $("#chat-seller").onclick=()=>{toast(t("msg_sent"),"chat");closeModals();};
+  openModal("#product-modal");
+}
+let lastFocus;
+function openModal(sel){lastFocus=document.activeElement;const m=$(sel);m.classList.add("open");document.body.style.overflow="hidden";setTimeout(()=>m.querySelector("input,button:not(.modal-close)")?.focus({preventScroll:true}),50);}
+function closeModals(){$$(".overlay.open").forEach(m=>m.classList.remove("open"));document.body.style.overflow="";lastFocus?.focus?.({preventScroll:true});}
+
+/* ---------- Publicar ---------- */
+let pubImg=null;
+function handleFile(f){
+  if(!f||!f.type.startsWith("image/")) return;
+  const r=new FileReader(); r.onload=()=>{pubImg=r.result;const pv=$("#pub-preview");pv.src=pubImg;pv.classList.remove("hidden");}; r.readAsDataURL(f);
+}
+function submitPublish(e){
+  e.preventDefault();
+  const title=$("#pub-title").value.trim(), price=parseFloat($("#pub-price").value);
+  if(!title||!(price>0)){$("#pub-error").classList.remove("hidden");return;}
+  $("#pub-error").classList.add("hidden");
+  const cat=$("#pub-cat").value, city=$("#pub-city").value, ship=$("#pub-ship").checked;
+  const desc=$("#pub-desc").value.trim()||"—"; const ic=(CATS.find(c=>c.k===cat)||{}).icon||"sell";
+  const p={id:"u"+Date.now(),sec:"recent",cat,img:pubImg||"",icon:ic,price,mins:0,ship,badge:ship?"ship":"inperson",loc:city,es:{t:title,d:desc},en:{t:title,d:desc}};
+  PRODUCTS.unshift(p);
+  e.target.reset(); pubImg=null; $("#pub-preview").classList.add("hidden");
+  closeModals(); clearFilters(false); renderProducts();
+  toast(t("pub_done"),"celebration");
+  setTimeout(()=>{$("#recientes").scrollIntoView({behavior:"smooth"});const c=$(`[data-id="${p.id}"]`);if(c){c.classList.add("ring-4","ring-primary-container");setTimeout(()=>c.classList.remove("ring-4","ring-primary-container"),2500);}},250);
+}
+
+/* ---------- Acciones de filtro ---------- */
+function clearFilters(render=true){
+  Object.assign(state,{q:"",cat:null,city:null,ship:false,drop:false,fav:false,min:null,max:null});
+  $("#search-input").value=""; $("#m-search-input").value=""; $("#min-price").value=""; $("#max-price").value="";
+  if(render) renderProducts();
+}
+function goResults(){ const target=$("#results-bar").classList.contains("hidden")?$("#recientes"):$("#results-bar"); target.scrollIntoView({behavior:"smooth",block:"start"}); }
+function closeDropdowns(except){ $$(".dropdown.open").forEach(d=>{if(d!==except) d.classList.remove("open");}); }
+
+/* ---------- Animaciones: reveal, contadores, donut, chat ---------- */
+let io;
+function observeReveals(){
+  if(!io) io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.12,rootMargin:"0px 0px -40px 0px"});
+  $$(".reveal:not(.in)").forEach(el=>io.observe(el));
+}
+function animateCounter(el){
+  const to=+el.dataset.to, dec=+el.dataset.dec, dur=1600, t0=performance.now();
+  const step=now=>{const k=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-k,3); el.textContent=num(to*e,dec); if(k<1) requestAnimationFrame(step); else el.classList.add("done");};
+  requestAnimationFrame(step);
+}
+const statIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){$$(".counter",e.target).forEach(animateCounter);$("#donut").setAttribute("stroke-dasharray","84, 100");statIO.unobserve(e.target);}}),{threshold:.35});
+
+let chatTimer=[];
+function runChat(){
+  const msgs=$$("#phone-chat .msg"); chatTimer.forEach(clearTimeout); chatTimer=[];
+  msgs.forEach(m=>{m.classList.remove("show");m.style.display="";});
+  const typing=$("#phone-chat .typing-msg");
+  const seq=[[0,()=>msgs[0].classList.add("show")],[1200,()=>typing.classList.add("show")],[2600,()=>{typing.style.display="none";msgs[2].classList.add("show");}],[3800,()=>msgs[3].classList.add("show")],[8000,runChat]];
+  seq.forEach(([d,f])=>chatTimer.push(setTimeout(f,d)));
+}
+const chatIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){runChat();chatIO.unobserve(e.target);}}),{threshold:.4});
+
+let rotIdx=0;
+function rotateWord(){
+  const el=$("#rot-word"), words=T[state.lang].rot;
+  el.classList.add("out");
+  setTimeout(()=>{rotIdx=(rotIdx+1)%words.length; el.textContent=words[rotIdx]; el.classList.remove("out"); el.classList.add("pre"); void el.offsetWidth; el.classList.remove("pre");},350);
+}
+
+/* ---------- Eventos ---------- */
+function bind(){
+  // Header: altura y sombra
+  const header=$("#site-header");
+  const setH=()=>document.documentElement.style.setProperty("--hh",header.offsetHeight+"px");
+  setH(); addEventListener("resize",setH); new ResizeObserver(setH).observe(header);
+  addEventListener("scroll",()=>header.classList.toggle("scrolled",scrollY>10),{passive:true});
+
+  // Idioma
+  $(".lang-toggle").addEventListener("click",()=>setLang(state.lang==="es"?"en":"es"));
+  document.addEventListener("click",e=>{const b=e.target.closest(".set-lang");if(b) setLang(b.dataset.lang);});
+
+  // Búsqueda (en vivo + submit)
+  let deb;
+  const onSearch=(v,go)=>{clearTimeout(deb);deb=setTimeout(()=>{state.q=v.trim();renderProducts();if(go)goResults();},go?0:220);};
+  [["#search-input","#m-search-input"],["#m-search-input","#search-input"]].forEach(([a,b])=>$(a).addEventListener("input",e=>{$(b).value=e.target.value;onSearch(e.target.value);}));
+  $("#search-form").addEventListener("submit",e=>{e.preventDefault();onSearch($("#search-input").value,true);});
+  $("#m-search-form").addEventListener("submit",e=>{e.preventDefault();$("#m-search-input").blur();onSearch($("#m-search-input").value,true);});
+
+  // Dropdowns
+  const dd=(btn,menu)=>$(btn).addEventListener("click",e=>{e.stopPropagation();const m=$(menu);closeDropdowns(m);m.classList.toggle("open");});
+  dd("#cat-btn","#cat-dd"); dd("#city-btn","#city-dd"); dd("#msg-btn","#msg-dd"); dd("#adv-btn","#adv-dd");
+  $$(".adv-proxy").forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();$("#chips").scrollIntoView({behavior:"smooth",block:"center"});setTimeout(()=>$("#adv-dd").classList.add("open"),350);}));
+  document.addEventListener("click",e=>{if(!e.target.closest(".dropdown")) closeDropdowns();});
+
+  // Categorías (círculos, nav, dropdown, enlaces)
+  document.addEventListener("click",e=>{
+    const c=e.target.closest(".cat-circle,.top-cat,.dd-cat,.set-cat");
+    if(c){ const k=c.dataset.cat||null; state.cat=(state.cat===k&&!c.classList.contains("dd-cat"))?null:k; closeDropdowns(); renderProducts(); goResults(); }
+    const ci=e.target.closest(".dd-city,.city");
+    if(ci){ state.city=ci.dataset.city||null; closeDropdowns(); renderProducts(); goResults(); }
+  });
+  $("#cats-more").addEventListener("click",()=>{state.showAllCats=!state.showAllCats;renderCats();});
+
+  // Chips
+  $$(".chip").forEach(b=>b.addEventListener("click",()=>{
+    const k=b.dataset.chip; if(k==="adv") return;
+    if(k==="near") state.city=state.city==="Caracas"?null:"Caracas"; else state[k]=!state[k];
+    renderProducts();
+  }));
+  $("#adv-apply").addEventListener("click",()=>{const mn=parseFloat($("#min-price").value),mx=parseFloat($("#max-price").value);state.min=isNaN(mn)?null:mn;state.max=isNaN(mx)?null:mx;closeDropdowns();renderProducts();goResults();});
+  $("#adv-clear").addEventListener("click",()=>{$("#min-price").value="";$("#max-price").value="";state.min=state.max=null;closeDropdowns();renderProducts();});
+  $("#clear-filters").addEventListener("click",()=>clearFilters());
+  document.addEventListener("click",e=>{if(e.target.closest(".clear-all")) clearFilters();});
+
+  // Favoritos
+  $("#fav-btn").addEventListener("click",()=>{state.fav=!state.fav;renderProducts();goResults();});
+
+  // Tarjetas
+  document.addEventListener("click",e=>{
+    const f=e.target.closest(".fav-toggle"); if(f){e.stopPropagation();toggleFav(f.dataset.id,f);return;}
+    const card=e.target.closest("article.card[data-id]"); if(card) openProduct(card.dataset.id);
+  });
+  document.addEventListener("keydown",e=>{
+    if(e.key==="Escape"){closeModals();closeDropdowns();}
+    if((e.key==="Enter"||e.key===" ")&&e.target.matches("article.card[data-id]")){e.preventDefault();openProduct(e.target.dataset.id);}
+  });
+
+  // Modales
+  $$(".overlay").forEach(o=>o.addEventListener("click",e=>{if(e.target===o||e.target.closest(".modal-close")) closeModals();}));
+  document.addEventListener("click",e=>{if(e.target.closest(".open-publish")){e.preventDefault();openModal("#publish-modal");}});
+  $("#publish-form").addEventListener("submit",submitPublish);
+  $("#pub-photo").addEventListener("change",e=>handleFile(e.target.files[0]));
+  const dz=$("#drop-zone");
+  ["dragenter","dragover"].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add("border-primary-container","bg-mint-light");}));
+  ["dragleave","drop"].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove("border-primary-container","bg-mint-light");}));
+  dz.addEventListener("drop",e=>handleFile(e.dataTransfer.files[0]));
+
+  // Varios
+  $("#profile-btn").addEventListener("click",e=>{e.preventDefault();toast(t("soon"),"person");});
+  $$(".store-link").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();toast(t("stores_soon"),"phone_iphone");}));
+  document.addEventListener("click",e=>{if(e.target.closest(".msg-item")){e.preventDefault();closeDropdowns();toast(t("soon"),"chat");}});
+  $$('footer a[href="#"]:not(#cookie-settings)').forEach(a=>a.addEventListener("click",e=>{e.preventDefault();toast(t("soon"),"info");}));
+
+  // Cookies
+  const cb=$("#consent-banner");
+  if(!LS.get("cb-consent",null)) setTimeout(()=>cb.classList.remove("hide"),1200);
+  $$(".consent-close").forEach(b=>b.addEventListener("click",()=>{LS.set("cb-consent",b.dataset.v);cb.classList.add("hide");}));
+  $("#cookie-settings").addEventListener("click",e=>{e.preventDefault();e.stopImmediatePropagation();cb.classList.remove("hide");});
+  $$("#consent-banner a").forEach(a=>a.addEventListener("click",e=>e.preventDefault()));
+
+  // Reloj del teléfono
+  const clock=()=>{const d=new Date();$("#phone-clock").textContent=d.getHours()+":"+String(d.getMinutes()).padStart(2,"0");}; clock(); setInterval(clock,30000);
+}
+
+/* ---------- Init ---------- */
+bind();
+applyLang();
+updateFavCount();
+observeReveals();
+statIO.observe($("#impacto"));
+chatIO.observe($("#app"));
+if(!matchMedia("(prefers-reduced-motion: reduce)").matches) setInterval(rotateWord,2600);
+</script>
+</body>
+</html>
