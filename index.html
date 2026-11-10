@@ -142,8 +142,8 @@
         </button>
         <!-- Cuenta: usuario conectado -->
         <div id="user-menu" class="relative hidden">
-          <button id="user-btn" class="flex items-center ml-1 p-0.5 rounded-full hover:ring-2 hover:ring-primary-container transition-all" type="button" data-i18n-title="profile" title="Mi perfil">
-            <span id="user-avatar" class="block w-9 h-9"></span>
+          <button id="user-btn" class="relative flex items-center ml-1 p-0.5 rounded-full hover:ring-2 hover:ring-primary-container transition-all" type="button" data-i18n-title="profile" title="Mi perfil">
+            <span id="user-avatar" class="block w-9 h-9"></span><span id="user-dot" class="hidden absolute top-0 right-0 w-3 h-3 rounded-full bg-badge-coral ring-2 ring-white"></span>
           </button>
           <div id="user-dd" class="dropdown absolute right-0 top-12 w-64 bg-surface-card rounded-2xl shadow-xl border border-border-subtle p-2 z-20">
             <div class="px-3 py-2.5 border-b border-border-subtle mb-1">
@@ -151,6 +151,7 @@
               <p id="user-email" class="text-body-sm text-secondary truncate">—</p>
             </div>
             <button id="my-listings-btn" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" type="button"><span class="material-symbols-outlined text-[20px] text-primary">storefront</span><span data-i18n="my_listings">Mis anuncios</span></button>
+            <button id="pending-btn" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" type="button"><span class="material-symbols-outlined text-[20px] text-badge-orange">star</span><span data-i18n="pending_title">Valoraciones pendientes</span><span id="pending-count" class="ml-auto hidden px-2 rounded-full bg-badge-coral text-white text-[11px] font-bold"></span></button>
             <button id="open-profile" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" type="button"><span class="material-symbols-outlined text-[20px] text-primary">person</span><span data-i18n="my_profile">Mi perfil</span></button>
             <button class="open-publish w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" type="button"><span class="material-symbols-outlined text-[20px] text-primary">add_circle</span><span data-i18n="publish_short">Publicar</span></button>
             <button id="admin-btn" class="hidden w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" type="button"><span class="material-symbols-outlined text-[20px] text-charcoal-dark">shield_person</span><span data-i18n="admin_title">Panel de moderación</span><span id="admin-count" class="ml-auto hidden px-2 rounded-full bg-badge-coral text-white text-[11px] font-bold"></span></button>
@@ -542,10 +543,10 @@
       <div class="flex flex-col gap-space-sm">
         <span class="font-title-sm text-title-sm text-charcoal-dark font-bold">Legal</span>
         <nav class="flex flex-col gap-2">
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_legal">Aviso legal</a>
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_terms">Términos de uso</a>
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_privacy">Política de privacidad</a>
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" id="cookie-settings">Cookies</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="legal.html#aviso" data-i18n="f_legal">Aviso legal</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="legal.html#terminos" data-i18n="f_terms">Términos de uso</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="legal.html#privacidad" data-i18n="f_privacy">Política de privacidad</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="legal.html#cookies" data-i18n="f_cookies">Cookies</a>
         </nav>
       </div>
       <div class="flex flex-col gap-space-sm">
@@ -582,11 +583,11 @@
     <p class="font-body-sm text-body-sm text-secondary" data-i18n="ck_text">Usamos cookies propias y de terceros.</p>
     <div class="flex flex-col sm:flex-row items-center gap-2.5 pt-1">
       <button class="consent-close w-full sm:w-1/2 py-2.5 px-4 rounded-full bg-charcoal-dark hover:bg-secondary text-on-primary font-label-md text-label-md font-bold transition-colors" data-v="all" type="button" data-i18n="ck_accept">Aceptar todo</button>
-      <button class="consent-close w-full sm:w-1/2 py-2.5 px-4 rounded-full bg-surface-container hover:bg-surface-container-high text-charcoal-dark font-label-md text-label-md font-bold transition-colors" data-v="none" type="button" data-i18n="ck_reject">Rechazar todo</button>
+      <a class="w-full sm:w-1/2 py-2.5 px-4 rounded-full bg-surface-container hover:bg-surface-container-high text-charcoal-dark font-label-md text-label-md font-bold transition-colors text-center" href="legal.html#cookies" data-i18n="ck_reject">Ver la política</a>
     </div>
     <div class="flex items-center justify-between text-[11px] text-secondary pt-1">
-      <a class="hover:underline text-primary" href="#" data-i18n="ck_custom">Personalizar</a>
-      <div class="flex items-center gap-2"><a class="hover:underline" href="#" data-i18n="ck_notice">Aviso de privacidad</a><span>•</span><a class="hover:underline" href="#" data-i18n="ck_terms">Términos</a></div>
+      <span></span>
+      <div class="flex items-center gap-2"><a class="hover:underline" href="legal.html#privacidad" data-i18n="ck_notice">Privacidad</a><span>•</span><a class="hover:underline" href="legal.html#terminos" data-i18n="ck_terms">Términos</a></div>
     </div>
   </div>
 </div>
@@ -717,6 +718,48 @@
   </div>
 </div>
 
+<!-- ================= SOLD-TO MODAL ================= -->
+<div id="sold-modal" class="overlay fixed inset-0 z-[78] bg-charcoal-dark/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6" aria-modal="true" role="dialog">
+  <form id="sold-form" class="panel relative w-full sm:max-w-md max-h-[92vh] overflow-y-auto bg-surface-card rounded-t-[2rem] sm:rounded-lg shadow-2xl p-6 md:p-8 flex flex-col gap-4" novalidate>
+    <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center" type="button" aria-label="Cerrar"><span class="material-symbols-outlined">close</span></button>
+    <div class="flex items-center gap-3 pr-10"><span class="w-11 h-11 rounded-full bg-mint-light text-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined">handshake</span></span>
+      <div class="min-w-0"><h3 class="font-headline-sm text-headline-sm text-charcoal-dark" data-i18n="sold_to_title">¿A quién se lo vendiste?</h3><p id="sold-listing" class="text-body-sm text-secondary truncate"></p></div></div>
+    <p class="text-body-md text-secondary" data-i18n="sold_to_help">Elige al comprador. Al confirmar, los dos podrán dejarse una opinión.</p>
+    <div id="sold-list" class="flex flex-col gap-2"></div>
+    <p id="sold-msg" class="hidden text-body-md text-error"></p>
+    <button id="sold-submit" class="py-3 rounded-full bg-primary-container hover:bg-primary text-white font-label-lg text-label-lg transition-all disabled:opacity-60" type="submit" data-i18n="confirm_sale">Confirmar venta</button>
+  </form>
+</div>
+
+<!-- ================= REVIEW MODAL ================= -->
+<div id="review-modal" class="overlay fixed inset-0 z-[78] bg-charcoal-dark/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6" aria-modal="true" role="dialog">
+  <form id="review-form" class="panel relative w-full sm:max-w-md max-h-[92vh] overflow-y-auto bg-surface-card rounded-t-[2rem] sm:rounded-lg shadow-2xl p-6 md:p-8 flex flex-col gap-4" novalidate>
+    <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center" type="button" aria-label="Cerrar"><span class="material-symbols-outlined">close</span></button>
+    <div id="rv-head" class="flex items-center gap-3 pr-10"></div>
+    <p id="rv-q" class="font-title-sm text-title-sm text-charcoal-dark"></p>
+    <div id="star-pick" class="flex gap-1">
+      <button class="star-btn w-11 h-11 rounded-full hover:bg-surface-container-low flex items-center justify-center transition-transform hover:scale-110" data-v="1" type="button" aria-label="1"><span class="material-symbols-outlined text-[30px] text-outline-variant">star</span></button>
+      <button class="star-btn w-11 h-11 rounded-full hover:bg-surface-container-low flex items-center justify-center transition-transform hover:scale-110" data-v="2" type="button" aria-label="2"><span class="material-symbols-outlined text-[30px] text-outline-variant">star</span></button>
+      <button class="star-btn w-11 h-11 rounded-full hover:bg-surface-container-low flex items-center justify-center transition-transform hover:scale-110" data-v="3" type="button" aria-label="3"><span class="material-symbols-outlined text-[30px] text-outline-variant">star</span></button>
+      <button class="star-btn w-11 h-11 rounded-full hover:bg-surface-container-low flex items-center justify-center transition-transform hover:scale-110" data-v="4" type="button" aria-label="4"><span class="material-symbols-outlined text-[30px] text-outline-variant">star</span></button>
+      <button class="star-btn w-11 h-11 rounded-full hover:bg-surface-container-low flex items-center justify-center transition-transform hover:scale-110" data-v="5" type="button" aria-label="5"><span class="material-symbols-outlined text-[30px] text-outline-variant">star</span></button>
+    </div>
+    <textarea id="review-comment" rows="3" maxlength="500" class="px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container focus:bg-white outline-none resize-none" data-i18n-ph="review_ph" placeholder="¿Cómo fue tu experiencia?"></textarea>
+    <p id="review-msg" class="hidden text-body-md text-error"></p>
+    <button class="py-3 rounded-full bg-primary-container hover:bg-primary text-white font-label-lg text-label-lg transition-all disabled:opacity-60" type="submit" data-i18n="send_review">Publicar opinión</button>
+  </form>
+</div>
+
+<!-- ================= PENDING REVIEWS MODAL ================= -->
+<div id="pending-modal" class="overlay fixed inset-0 z-[75] bg-charcoal-dark/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6" aria-modal="true" role="dialog">
+  <div class="panel relative w-full sm:max-w-lg max-h-[92vh] overflow-y-auto bg-surface-card rounded-t-[2rem] sm:rounded-lg shadow-2xl p-6 md:p-8 flex flex-col gap-4">
+    <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center" type="button" aria-label="Cerrar"><span class="material-symbols-outlined">close</span></button>
+    <div class="flex items-center gap-3"><span class="w-11 h-11 rounded-full bg-[#fff1dc] text-badge-orange flex items-center justify-center"><span class="material-symbols-outlined icon-fill">star</span></span>
+      <div><h3 class="font-headline-sm text-headline-sm text-charcoal-dark" data-i18n="pending_title">Valoraciones pendientes</h3><p class="text-body-sm text-secondary" data-i18n="pending_sub">Compras y ventas confirmadas que aún no has valorado</p></div></div>
+    <div id="pending-list" class="flex flex-col gap-2"></div>
+  </div>
+</div>
+
 <!-- ================= REPORT MODAL ================= -->
 <div id="report-modal" class="overlay fixed inset-0 z-[78] bg-charcoal-dark/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6" aria-modal="true" role="dialog">
   <form id="report-form" class="panel relative w-full sm:max-w-md max-h-[92vh] overflow-y-auto bg-surface-card rounded-t-[2rem] sm:rounded-lg shadow-2xl p-6 md:p-8 flex flex-col gap-4" novalidate>
@@ -801,8 +844,8 @@ es:{
   f_safety:"Consejos de seguridad", f_buyer:"Protección al comprador", f_legal:"Aviso legal", f_terms:"Términos de uso", f_privacy:"Política de privacidad",
   f_lang:"Idioma y moneda", f_currency:"Precios en dólares (USD)", f_app:"Úsalo en tu celular", f_app_p:"Compra y vende estés donde estés desde tu celular.",
   copyright:"© 2026 Perolero Venezuela. Todos los derechos reservados.", f_secure:"Contacto directo entre compradores y vendedores",
-  ck_title:"Tu privacidad nos importa", ck_text:"En Perolero usamos cookies propias y de terceros para mejorar tu experiencia y mostrarte contenido relevante. Puedes aceptarlas todas o gestionar tus preferencias.",
-  ck_accept:"Aceptar todo", ck_reject:"Rechazar todo", ck_custom:"Personalizar", ck_notice:"Aviso de privacidad", ck_terms:"Términos",
+  ck_title:"Tu privacidad nos importa", ck_text:"Perolero solo guarda en tu navegador lo necesario para funcionar: tu sesión, idioma y favoritos. No usamos cookies de publicidad ni de seguimiento.",
+  ck_accept:"Entendido", ck_reject:"Ver la política", ck_custom:"Personalizar", ck_notice:"Privacidad", ck_terms:"Términos",
   pub_eyebrow:"Es gratis", pub_title:"Publicar producto", pub_photo:"Añade hasta 6 fotos (la primera será la portada)", pub_photo_hint:"JPG o PNG · se optimizan automáticamente", photos:"Fotos", pub_name:"Título", pub_name_ph:"Ej.: iPhone 13 de 128 GB",
   pub_price:"Precio (USD)", pub_cat:"Categoría", pub_city:"Ciudad", pub_ship:"Ofrezco envío", pub_desc:"Descripción", pub_desc_ph:"Estado, detalles, motivo de venta...",
   pub_error:"Completa el título y un precio válido.", cancel:"Cancelar", pub_submit:"Publicar ahora", pub_done:"¡Listo! Tu producto ya está publicado",
@@ -822,6 +865,13 @@ es:{
   marked_sold:"Anuncio marcado como vendido", reactivated:"Tu anuncio vuelve a estar a la venta", deleted:"Anuncio eliminado", sold:"VENDIDO", your_listing:"Este es tu anuncio",
   my_listings:"Mis anuncios", cover:"Portada", max_photos:"Máximo 6 fotos por anuncio", pub_need_photo:"Añade al menos una foto.", uploading:"Subiendo foto {i} de {n}...",
   search_city:"Buscar ciudad o estado...", d_ago:"Hace {n} d", safety_tip:"Consejo: revisa el producto antes de pagar y reúnete en lugares públicos y concurridos.",
+  sold_to_btn:"Marcar como vendido a…", sold_to_title:"¿A quién se lo vendiste?", sold_to_help:"Elige al comprador. Al confirmar, los dos podrán dejarse una opinión.",
+  contacted:"Te contactó {d}", no_contacts:"Nadie te ha contactado todavía desde Perolero por este anuncio.", sold_outside:"Lo vendí fuera de Perolero", sold_outside_d:"Se marca como vendido, sin opiniones",
+  pick_buyer:"Elige al comprador o la opción «Lo vendí fuera de Perolero».", confirm_sale:"Confirmar venta",
+  pending_title:"Valoraciones pendientes", pending_sub:"Compras y ventas confirmadas que aún no has valorado", no_pending:"No tienes valoraciones pendientes. 👌",
+  pending_toast:"Tienes {n} valoraciones pendientes en tu menú", pending_toast1:"Tienes 1 valoración pendiente en tu menú", rate:"Valorar",
+  you_sold:"Le vendiste «{t}» ({p})", you_bought:"Le compraste «{t}» ({p})", rate_buyer:"¿Qué tal fue como comprador?", rate_seller:"¿Qué tal fue como vendedor?",
+  as_seller:"como vendedor", as_buyer:"como comprador", verified_reviews_note:"Solo pueden opinar quienes compraron o vendieron a esta persona y la venta fue confirmada en Perolero.", f_cookies:"Cookies",
   listing1:"1 anuncio", float2_b:"¿Sigue disponible?", community_n:"{n} personas ya usan Perolero", community_join:"Únete hoy, ¡es gratis!",
   safe_title:"Compra y vende seguro", safe_sub:"Consejos sencillos para que todo salga bien",
   tips:[["groups","Reúnete en lugares públicos","Para entregar en persona, elige sitios concurridos como centros comerciales, y mejor de día."],["fact_check","Revisa antes de pagar","Prueba el producto y comprueba que funciona y coincide con las fotos antes de entregar el dinero."],["gpp_maybe","Desconfía de lo demasiado bueno","No pagues por adelantado a desconocidos ni compartas códigos o claves. Si algo no cuadra, repórtalo."]],
@@ -840,7 +890,7 @@ es:{
   status_active:"Activo", status_sold:"Vendido", status_hidden:"Oculto",
   login:"Entrar", register:"Crear cuenta", logout:"Cerrar sesión", my_profile:"Mi perfil", full_name:"Nombre y apellido", full_name_ph:"Ej.: María González",
   email:"Correo electrónico", password:"Contraseña", password_ph:"Mínimo 6 caracteres", new_password:"Nueva contraseña", forgot:"¿Olvidaste tu contraseña?", back_login:"Volver a entrar",
-  terms_note:"Al crear tu cuenta aceptas los Términos de uso y la Política de privacidad de Perolero.",
+  terms_note:"Al crear tu cuenta confirmas que eres mayor de 18 años y aceptas los <a href=\"legal.html#terminos\" target=\"_blank\" class=\"underline\">Términos de uso</a> y la <a href=\"legal.html#privacidad\" target=\"_blank\" class=\"underline\">Política de privacidad</a>.",
   auth_login_t:"¡Hola de nuevo!", auth_login_s:"Entra para publicar, guardar favoritos y contactar vendedores.",
   auth_reg_t:"Únete a Perolero", auth_reg_s:"Crea tu cuenta gratis en menos de un minuto.",
   auth_forgot_t:"Recupera tu contraseña", auth_forgot_s:"Te enviaremos un enlace a tu correo para crear una nueva.",
@@ -891,8 +941,8 @@ en:{
   f_safety:"Safety tips", f_buyer:"Buyer protection", f_legal:"Legal notice", f_terms:"Terms of use", f_privacy:"Privacy policy",
   f_lang:"Language & currency", f_currency:"Prices in US dollars (USD)", f_app:"Use it on your phone", f_app_p:"Buy and sell wherever you are from your phone.",
   copyright:"© 2026 Perolero Venezuela. All rights reserved.", f_secure:"Direct contact between buyers and sellers",
-  ck_title:"Your privacy matters", ck_text:"At Perolero we use our own and third-party cookies to improve your experience and show you relevant content. You can accept them all or manage your preferences.",
-  ck_accept:"Accept all", ck_reject:"Reject all", ck_custom:"Customize", ck_notice:"Privacy notice", ck_terms:"Terms",
+  ck_title:"Your privacy matters", ck_text:"Perolero only stores what it needs to work in your browser: your session, language and favorites. We don't use advertising or tracking cookies.",
+  ck_accept:"Got it", ck_reject:"Read the policy", ck_custom:"Customize", ck_notice:"Privacy", ck_terms:"Terms",
   pub_eyebrow:"It's free", pub_title:"List an item", pub_photo:"Add up to 6 photos (the first one is the cover)", pub_photo_hint:"JPG or PNG · automatically optimized", photos:"Photos", pub_name:"Title", pub_name_ph:"e.g. iPhone 13 128GB",
   pub_price:"Price (USD)", pub_cat:"Category", pub_city:"City", pub_ship:"I offer shipping", pub_desc:"Description", pub_desc_ph:"Condition, details, reason for selling...",
   pub_error:"Please add a title and a valid price.", cancel:"Cancel", pub_submit:"Publish now", pub_done:"Done! Your item is now live",
@@ -912,6 +962,13 @@ en:{
   marked_sold:"Listing marked as sold", reactivated:"Your listing is back on sale", deleted:"Listing deleted", sold:"SOLD", your_listing:"This is your listing",
   my_listings:"My listings", cover:"Cover", max_photos:"Maximum 6 photos per listing", pub_need_photo:"Add at least one photo.", uploading:"Uploading photo {i} of {n}...",
   search_city:"Search city or state...", d_ago:"{n}d ago", safety_tip:"Tip: check the item before paying and meet in busy public places.",
+  sold_to_btn:"Mark as sold to…", sold_to_title:"Who did you sell it to?", sold_to_help:"Pick the buyer. Once confirmed, you can both leave each other a review.",
+  contacted:"Contacted you {d}", no_contacts:"Nobody has contacted you through Perolero about this listing yet.", sold_outside:"I sold it outside Perolero", sold_outside_d:"Marked as sold, no reviews",
+  pick_buyer:"Pick the buyer or “I sold it outside Perolero”.", confirm_sale:"Confirm sale",
+  pending_title:"Pending reviews", pending_sub:"Confirmed purchases and sales you haven't reviewed yet", no_pending:"No pending reviews. 👌",
+  pending_toast:"You have {n} pending reviews in your menu", pending_toast1:"You have 1 pending review in your menu", rate:"Review",
+  you_sold:"You sold them “{t}” ({p})", you_bought:"You bought “{t}” ({p}) from them", rate_buyer:"How were they as a buyer?", rate_seller:"How were they as a seller?",
+  as_seller:"as seller", as_buyer:"as buyer", verified_reviews_note:"Only people who bought from or sold to this person, with the sale confirmed on Perolero, can leave a review.", f_cookies:"Cookies",
   listing1:"1 listing", float2_b:"Still available?", community_n:"{n} people already use Perolero", community_join:"Join today, it's free!",
   safe_title:"Buy and sell safely", safe_sub:"Simple tips so everything goes well",
   tips:[["groups","Meet in public places","For in-person deals, pick busy spots like shopping malls, ideally during the day."],["fact_check","Check before paying","Try the item and make sure it works and matches the photos before handing over money."],["gpp_maybe","Be wary of deals too good to be true","Never pay strangers in advance or share codes or passwords. If something feels off, report it."]],
@@ -930,7 +987,7 @@ en:{
   status_active:"Active", status_sold:"Sold", status_hidden:"Hidden",
   login:"Sign in", register:"Sign up", logout:"Sign out", my_profile:"My profile", full_name:"Full name", full_name_ph:"e.g. María González",
   email:"Email", password:"Password", password_ph:"At least 6 characters", new_password:"New password", forgot:"Forgot your password?", back_login:"Back to sign in",
-  terms_note:"By creating an account you accept Perolero's Terms of use and Privacy policy.",
+  terms_note:"By creating an account you confirm you are 18 or older and accept the <a href=\"legal.html#terminos\" target=\"_blank\" class=\"underline\">Terms of use</a> and <a href=\"legal.html#privacidad\" target=\"_blank\" class=\"underline\">Privacy policy</a>.",
   auth_login_t:"Welcome back!", auth_login_s:"Sign in to list items, save favorites and contact sellers.",
   auth_reg_t:"Join Perolero", auth_reg_s:"Create your free account in under a minute.",
   auth_forgot_t:"Reset your password", auth_forgot_s:"We'll email you a link to create a new one.",
@@ -1347,7 +1404,7 @@ function openProduct(id){
         <button id="pm-delete" class="w-full py-3 rounded-full bg-surface-container hover:bg-tertiary-fixed text-tertiary font-label-lg text-label-lg transition-colors inline-flex items-center justify-center gap-2" type="button"><span class="material-symbols-outlined text-[20px]">delete</span>${t("delete")}</button>`
       :`<div class="p-3 rounded-2xl bg-mint-light text-primary text-body-md font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">person</span>${t("your_listing")}</div>
       <button id="pm-edit" class="${btnMain} bg-primary-container hover:bg-primary" type="button"><span class="material-symbols-outlined text-[20px]">edit</span>${t("edit")}</button>
-      <button id="pm-sold" class="${btnMain} bg-charcoal-dark hover:bg-secondary" type="button"><span class="material-symbols-outlined text-[20px]">${p.status==="sold"?"replay":"sell"}</span>${t(p.status==="sold"?"reactivate":"mark_sold")}</button>
+      <button id="pm-sold" class="${btnMain} bg-charcoal-dark hover:bg-secondary" type="button"><span class="material-symbols-outlined text-[20px]">${p.status==="sold"?"replay":"sell"}</span>${t(p.status==="sold"?"reactivate":"sold_to_btn")}</button>
       <button id="pm-delete" class="w-full py-3 rounded-full bg-surface-container hover:bg-tertiary-fixed text-tertiary font-label-lg text-label-lg transition-colors inline-flex items-center justify-center gap-2" type="button"><span class="material-symbols-outlined text-[20px]">delete</span>${t("delete")}</button>`;
   } else if(!p.real){
     actions=`<p class="p-3 rounded-2xl bg-surface-container-low text-secondary text-body-md flex items-center gap-2"><span class="material-symbols-outlined text-[20px] text-badge-orange">info</span>${t("sample_note")}</p>`;
@@ -1384,9 +1441,10 @@ function openProduct(id){
       ${p.real&&!isOwner?`<button id="pm-report" class="self-start text-body-sm text-secondary hover:text-badge-coral inline-flex items-center gap-1 transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">flag</span>${t("report")}</button>`:""}
     </div>`;
   $$(".pm-thumb").forEach(b=>b.onclick=()=>{$("#pm-main").src=b.dataset.src;$$(".pm-thumb").forEach(x=>{x.classList.toggle("ring-primary-container",x===b);x.classList.toggle("ring-white/60",x!==b);});});
-  if($("#offer-form")) $("#offer-form").onsubmit=e=>{e.preventDefault();const v=parseFloat($("#offer-input").value);if(!(v>0))return toast(t("offer_bad"),"error");window.open(waLink(p.seller.phone,t("wa_offer",{t:L.t,p:money(v)})),"_blank","noopener");};
+  if($("#offer-form")) $("#offer-form").onsubmit=e=>{e.preventDefault();recordContact(p);const v=parseFloat($("#offer-input").value);if(!(v>0))return toast(t("offer_bad"),"error");window.open(waLink(p.seller.phone,t("wa_offer",{t:L.t,p:money(v)})),"_blank","noopener");};
   if($("#pm-login")) $("#pm-login").onclick=()=>openAuth("login");
-  if($("#pm-sold")) $("#pm-sold").onclick=()=>setListingStatus(p,p.status==="sold"?"active":"sold");
+  if($("#pm-sold")) $("#pm-sold").onclick=()=>p.status==="sold"?reactivateListing(p):openSoldModal(p);
+  if($("#pm-wa")) $("#pm-wa").addEventListener("click",()=>recordContact(p));
   if($("#pm-delete")) $("#pm-delete").onclick=()=>deleteListing(p);
   if($("#pm-edit")) $("#pm-edit").onclick=()=>openPublish(p);
   if($("#pm-share")) $("#pm-share").onclick=()=>shareListing(p);
@@ -1402,7 +1460,7 @@ function closeModals(){$$(".overlay.open").forEach(m=>m.classList.remove("open")
 /* ---------- Anuncios reales (Supabase) ---------- */
 const SAMPLES = PRODUCTS.map(p=>Object.assign(p,{sample:true}));
 const BUCKET = "listing-photos";
-const LISTING_SELECT = "id,user_id,title,description,price,category,city,shipping,photos,status,created_at,profiles(full_name,phone,city,avatar_url)";
+const listingSelect = ()=>"id,user_id,title,description,price,category,city,shipping,photos,status,created_at,profiles(full_name,city,avatar_url"+(auth.user?",phone":"")+")";
 function toProduct(r){
   const d={t:r.title,d:r.description||""};
   return {id:r.id,real:true,owner:r.user_id,sec:"recent",cat:r.category,img:r.photos?.[0]||"",photos:r.photos||[],
@@ -1413,7 +1471,7 @@ function toProduct(r){
 let routed=false, STATS=null;
 async function loadListings(){
   if(!sb) return;
-  const {data,error}=await sb.from("listings").select(LISTING_SELECT).neq("status","deleted").order("created_at",{ascending:false}).limit(300);
+  const {data,error}=await sb.from("listings").select(listingSelect()).neq("status","deleted").order("created_at",{ascending:false}).limit(300);
   if(error){ console.warn("Perolero: no se pudieron cargar los anuncios",error); return; }
   PRODUCTS=[...data.map(toProduct),...SAMPLES];
   renderProducts(); renderCities();
@@ -1432,7 +1490,7 @@ const listingUrl = id=>location.origin+location.pathname+"#/a/"+id;
 function routeHash(){ const m=location.hash.match(/^#\/a\/([0-9a-f-]{36})$/i); if(m) openListingById(m[1]); }
 async function openListingById(id){
   let p=PRODUCTS.find(x=>x.id===id);
-  if(!p && sb){ const {data}=await sb.from("listings").select(LISTING_SELECT).eq("id",id).maybeSingle(); if(data){ p=toProduct(data); PRODUCTS.push(p); } }
+  if(!p && sb){ const {data}=await sb.from("listings").select(listingSelect()).eq("id",id).maybeSingle(); if(data){ p=toProduct(data); PRODUCTS.push(p); } }
   if(p) openProduct(p.id); else { history.replaceState(null,"",location.pathname); toast(t("not_found"),"error"); }
 }
 async function shareListing(p){
@@ -1459,7 +1517,7 @@ async function deleteListing(p,silent=false){
 
 /* ---------- Vendedor: perfil y opiniones ---------- */
 async function sellerRating(id){
-  const {data}=await sb.from("reviews").select("rating").eq("seller_id",id);
+  const {data}=await sb.from("reviews").select("rating").eq("reviewee_id",id);
   const n=data?.length||0; return {n,avg:n?data.reduce((a,r)=>a+r.rating,0)/n:0};
 }
 const ratingText = r=>r.n?`${num(r.avg,1)} · ${t(r.n===1?"review1":"reviews_n",{n:r.n})}`:t("no_reviews");
@@ -1470,7 +1528,7 @@ async function openSeller(id){
   $("#seller-body").innerHTML=`<div class="py-20 flex justify-center"><span class="material-symbols-outlined animate-spin text-primary text-[36px]">progress_activity</span></div>`;
   const [{data:prof},{data:revs}]=await Promise.all([
     sb.from("profiles").select("id,full_name,city,avatar_url,created_at").eq("id",id).maybeSingle(),
-    sb.from("reviews").select("id,rating,comment,created_at,reviewer_id,reviewer:profiles!reviews_reviewer_id_fkey(full_name,avatar_url)").eq("seller_id",id).order("created_at",{ascending:false})
+    sb.from("reviews").select("id,rating,comment,created_at,role,reviewer_id,reviewer:profiles!reviews_reviewer_id_fkey(full_name,avatar_url)").eq("reviewee_id",id).order("created_at",{ascending:false})
   ]);
   if(!prof){ $("#seller-body").innerHTML=`<p class="py-16 text-center text-secondary">${t("not_found")}</p>`; return; }
   const list=revs||[], n=list.length, avg=n?list.reduce((a,r)=>a+r.rating,0)/n:0;
@@ -1479,15 +1537,7 @@ async function openSeller(id){
   reviewStars=mine?.rating||0;
   const since=new Date(prof.created_at).toLocaleDateString(state.lang==="es"?"es-VE":"en-US",{month:"long",year:"numeric"});
   const first=esc((prof.full_name||t("seller")).split(" ")[0]);
-  let form="";
-  if(!auth.user) form=`<button class="open-login-review w-full py-3 rounded-2xl border-2 border-dashed border-outline-variant text-primary font-label-lg text-label-lg hover:bg-mint-light transition-colors" type="button">${t("review_login")}</button>`;
-  else if(auth.user.id!==id) form=`<form id="review-form" class="p-4 rounded-2xl bg-surface-container-low flex flex-col gap-3">
-      <p class="font-title-sm text-title-sm text-charcoal-dark">${t(mine?"edit_review":"write_review")}</p>
-      <div id="star-pick" class="flex gap-1">${[1,2,3,4,5].map(i=>`<button class="star-btn w-10 h-10 rounded-full hover:bg-white flex items-center justify-center transition-transform hover:scale-110" data-v="${i}" type="button" aria-label="${i}"><span class="material-symbols-outlined text-[28px] ${i<=reviewStars?"icon-fill text-badge-orange":"text-outline-variant"}">star</span></button>`).join("")}</div>
-      <textarea id="review-comment" rows="2" maxlength="500" class="px-4 py-3 rounded-2xl bg-white border border-transparent focus:border-primary-container outline-none resize-none" placeholder="${t("review_ph")}">${esc(mine?.comment||"")}</textarea>
-      <p id="review-msg" class="hidden text-body-sm text-error"></p>
-      <button class="self-end px-5 py-2.5 rounded-full bg-primary-container hover:bg-primary text-white font-label-lg text-label-lg transition-colors disabled:opacity-60" type="submit">${t("send_review")}</button>
-    </form>`;
+  const form=`<p class="p-3 rounded-2xl bg-mint-light text-primary text-body-sm flex items-start gap-2"><span class="material-symbols-outlined text-[18px]">verified</span>${t("verified_reviews_note")}</p>`;
   $("#seller-body").innerHTML=`
     <div class="flex items-center gap-4 pr-10">
       ${avatarHTML(prof,"w-20 h-20","text-[26px]")}
@@ -1504,19 +1554,85 @@ async function openSeller(id){
     <div class="flex flex-col gap-3">${form}
       ${list.map(r=>`<div class="flex gap-3 p-4 rounded-2xl border border-border-subtle">${avatarHTML(r.reviewer,"w-10 h-10","text-[13px]")}
         <div class="flex-1 min-w-0"><div class="flex items-center justify-between gap-2"><p class="font-label-lg text-label-lg text-charcoal-dark truncate">${esc(r.reviewer?.full_name||"—")}</p><span class="text-body-sm text-secondary whitespace-nowrap">${new Date(r.created_at).toLocaleDateString(state.lang==="es"?"es-VE":"en-US")}</span></div>
-        <p class="flex">${starsHTML(r.rating,15)}</p>${r.comment?`<p class="text-body-md text-secondary mt-1 break-words">${esc(r.comment)}</p>`:""}</div></div>`).join("")}
+        <p class="flex items-center">${starsHTML(r.rating,15)}<span class="ml-2 text-[11px] font-bold uppercase tracking-wide text-secondary">${t(r.role==="seller"?"as_seller":"as_buyer")}</span></p>${r.comment?`<p class="text-body-md text-secondary mt-1 break-words">${esc(r.comment)}</p>`:""}</div></div>`).join("")}
     </div>`;
   $$("#seller-body .media img").forEach(img=>{if(img.complete&&img.naturalWidth) imgLoaded(img);});
+}
+/* ---------- Ventas confirmadas y valoraciones ---------- */
+// Cada vez que alguien con sesión contacta por WhatsApp u oferta, queda registrado como posible comprador
+function recordContact(p){
+  if(!auth.user||!sb||!p.real||p.owner===auth.user.id) return;
+  sb.from("contacts").upsert({listing_id:p.id,buyer_id:auth.user.id},{onConflict:"listing_id,buyer_id",ignoreDuplicates:true}).then(({error})=>{ if(error) console.warn("Perolero contacto",error); });
+}
+const spinner=`<div class="py-8 flex justify-center"><span class="material-symbols-outlined animate-spin text-primary text-[30px]">progress_activity</span></div>`;
+let soldTarget=null;
+async function openSoldModal(p){
+  soldTarget=p; closeModals();
+  $("#sold-listing").textContent=p.es.t; $("#sold-msg").classList.add("hidden"); $("#sold-list").innerHTML=spinner;
+  openModal("#sold-modal");
+  const {data}=await sb.from("contacts").select("buyer_id,created_at,buyer:profiles!contacts_buyer_id_fkey(full_name,avatar_url,city)").eq("listing_id",p.id).order("created_at",{ascending:false});
+  const card=(val,icon,title,sub)=>`<label class="flex items-center gap-3 p-3 rounded-2xl border border-border-subtle cursor-pointer hover:bg-surface-container-low has-[:checked]:border-primary-container has-[:checked]:bg-mint-light transition-colors"><input type="radio" name="buyer" value="${val}" class="w-4 h-4 accent-[#13c1ac] shrink-0"/>${icon}<span class="flex-1 min-w-0"><span class="block font-label-lg text-label-lg text-charcoal-dark truncate">${title}</span><span class="block text-body-sm text-secondary">${sub}</span></span></label>`;
+  const people=(data||[]).map(c=>card(c.buyer_id,avatarHTML(c.buyer,"w-10 h-10","text-[13px]"),esc(c.buyer?.full_name||"—"),t("contacted",{d:ago(Math.round((Date.now()-new Date(c.created_at))/60000)).toLowerCase()}))).join("");
+  $("#sold-list").innerHTML=(people||`<p class="text-body-md text-secondary p-3 rounded-2xl bg-surface-container-low">${t("no_contacts")}</p>`)+
+    card("",`<span class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-secondary">storefront</span></span>`,t("sold_outside"),t("sold_outside_d"));
+}
+async function confirmSold(e){
+  e.preventDefault();
+  const sel=$("#sold-form input[name=buyer]:checked"), msg=$("#sold-msg");
+  if(!sel){ msg.textContent=t("pick_buyer"); msg.classList.remove("hidden"); return; }
+  const buyer=sel.value||null, btn=$("#sold-submit"); btn.disabled=true;
+  const {data:saleId,error}=await sb.rpc("mark_sold",{p_listing:soldTarget.id,p_buyer:buyer});
+  btn.disabled=false;
+  if(error){ msg.textContent=authErr(error); msg.classList.remove("hidden"); return; }
+  soldTarget.status="sold"; closeModals(); renderProducts(); renderCities(); loadStats();
+  toast(t("marked_sold"),"sell");
+  if(buyer){ await loadPending(); const sale=pending.find(x=>x.id===saleId); if(sale) setTimeout(()=>openReview(sale),500); }
+}
+async function reactivateListing(p){
+  const {error}=await sb.rpc("reactivate_listing",{p_listing:p.id});
+  if(error) return toast(authErr(error),"error");
+  p.status="active"; closeModals(); renderProducts(); renderCities(); loadStats(); toast(t("reactivated"),"check_circle");
+}
+let pending=[], reviewSale=null;
+async function loadPending(){
+  pending=[];
+  if(auth.user&&sb){
+    const uid=auth.user.id;
+    const {data,error}=await sb.from("sales").select("id,title,price,seller_id,buyer_id,created_at,seller:profiles!sales_seller_id_fkey(full_name,avatar_url),buyer:profiles!sales_buyer_id_fkey(full_name,avatar_url),reviews(reviewer_id)").or(`seller_id.eq.${uid},buyer_id.eq.${uid}`).order("created_at",{ascending:false});
+    if(!error) pending=(data||[]).filter(x=>!(x.reviews||[]).some(r=>r.reviewer_id===uid));
+  }
+  const n=pending.length;
+  $("#pending-count").textContent=n; $("#pending-count").classList.toggle("hidden",!n); $("#user-dot").classList.toggle("hidden",!n);
+  return n;
+}
+const saleLine = x=>t(x.seller_id===auth.user.id?"you_sold":"you_bought",{t:esc(x.title),p:money(+x.price)});
+function openPending(){
+  closeDropdowns(); closeModals();
+  $("#pending-list").innerHTML=pending.length?pending.map(x=>{const other=x.seller_id===auth.user.id?x.buyer:x.seller;
+    return `<div class="flex items-center gap-3 p-3 rounded-2xl border border-border-subtle">${avatarHTML(other)}<div class="flex-1 min-w-0"><p class="font-label-lg text-label-lg text-charcoal-dark truncate">${esc(other?.full_name||"—")}</p><p class="text-body-sm text-secondary truncate">${saleLine(x)}</p></div><button class="pend-rate px-4 py-2 rounded-full bg-primary-container hover:bg-primary text-white text-label-md font-label-md shrink-0" data-sale="${x.id}" type="button">${t("rate")}</button></div>`;}).join("")
+    :`<p class="py-8 text-center text-body-md text-secondary">${t("no_pending")}</p>`;
+  openModal("#pending-modal");
+}
+function openReview(x){
+  reviewSale=x; reviewStars=0; closeModals();
+  const iSell=x.seller_id===auth.user.id, other=iSell?x.buyer:x.seller;
+  $("#rv-head").innerHTML=`${avatarHTML(other,"w-14 h-14","text-[18px]")}<div class="min-w-0"><p class="font-headline-sm text-headline-sm text-charcoal-dark truncate">${esc(other?.full_name||"—")}</p><p class="text-body-sm text-secondary truncate">${saleLine(x)}</p></div>`;
+  $("#rv-q").textContent=t(iSell?"rate_buyer":"rate_seller");
+  $$("#star-pick .star-btn span").forEach(sp=>{sp.classList.remove("icon-fill","text-badge-orange");sp.classList.add("text-outline-variant");});
+  $("#review-comment").value=""; $("#review-msg").classList.add("hidden");
+  openModal("#review-modal");
 }
 async function submitReview(e){
   e.preventDefault();
   const msg=$("#review-msg"), btn=e.target.querySelector("button[type=submit]");
   if(!reviewStars){ msg.textContent=t("pick_stars"); msg.classList.remove("hidden"); return; }
+  const x=reviewSale, iSell=x.seller_id===auth.user.id;
   btn.disabled=true;
-  const {error}=await sb.from("reviews").upsert({seller_id:sellerOpen,reviewer_id:auth.user.id,rating:reviewStars,comment:$("#review-comment").value.trim()||null},{onConflict:"seller_id,reviewer_id"});
+  const {error}=await sb.from("reviews").insert({sale_id:x.id,reviewer_id:auth.user.id,reviewee_id:iSell?x.buyer_id:x.seller_id,role:iSell?"buyer":"seller",rating:reviewStars,comment:$("#review-comment").value.trim()||null});
   btn.disabled=false;
-  if(error){ msg.textContent=authErr(error); msg.classList.remove("hidden"); return; }
-  toast(t("review_saved"),"star"); openSeller(sellerOpen);
+  if(error && error.code!=="23505"){ msg.textContent=authErr(error); msg.classList.remove("hidden"); return; }
+  closeModals(); toast(t("review_saved"),"star");
+  const n=await loadPending(); if(n) setTimeout(openPending,700);
 }
 
 /* ---------- Reportes ---------- */
@@ -1656,7 +1772,7 @@ async function submitPublish(e){
     lbl.textContent=t("loading");
     const row={title,description:desc||null,price,category:cat,city,shipping:ship,photos:urls};
     const q=editing?sb.from("listings").update(row).eq("id",id):sb.from("listings").insert({id,...row});
-    const {data,error}=await q.select(LISTING_SELECT).single();
+    const {data,error}=await q.select(listingSelect()).single();
     if(error) throw error;
     if(removedPhotos.length) await sb.storage.from(BUCKET).remove(removedPhotos.map(pathFromUrl).filter(Boolean));
     const np=toProduct(data);
@@ -1793,14 +1909,11 @@ function bind(){
   // Varios
   bindAuth();
   $$(".install-btn").forEach(b=>b.addEventListener("click",()=>toast(t(b.dataset.os==="ios"?"install_ios":"install_android"),b.dataset.os==="ios"?"ios_share":"add_to_home_screen",6000)));
-  $$('footer a[href="#"]:not(#cookie-settings)').forEach(a=>a.addEventListener("click",e=>{e.preventDefault();toast(t("soon"),"info");}));
 
   // Cookies
   const cb=$("#consent-banner");
   if(!LS.get("cb-consent",null)) setTimeout(()=>cb.classList.remove("hide"),1200);
   $$(".consent-close").forEach(b=>b.addEventListener("click",()=>{LS.set("cb-consent",b.dataset.v);cb.classList.add("hide");}));
-  $("#cookie-settings").addEventListener("click",e=>{e.preventDefault();e.stopImmediatePropagation();cb.classList.remove("hide");});
-  $$("#consent-banner a").forEach(a=>a.addEventListener("click",e=>e.preventDefault()));
 
   // Reloj del teléfono
   const clock=()=>{const d=new Date();$("#phone-clock").textContent=d.getHours()+":"+String(d.getMinutes()).padStart(2,"0");}; clock(); setInterval(clock,30000);
@@ -1884,6 +1997,7 @@ async function setUser(user){
     auth.profile=data||{id:user.id,full_name:user.user_metadata?.full_name||"",city:user.user_metadata?.city||""};
   }
   updateUserUI(); loadListings(); loadStats(); checkAdmin();
+  loadPending().then(n=>{ if(n) setTimeout(()=>toast(t(n===1?"pending_toast1":"pending_toast",{n}),"star",4500),auth.greet?3200:800); });
   if(auth.profile?.city && CITIES.includes(auth.profile.city)) $("#pub-city").value=auth.profile.city;
   if(!user && state.mine){ state.mine=false; }
   renderProducts();
@@ -1944,6 +2058,9 @@ function bindAuth(){
   $("#avatar-input").addEventListener("change",e=>{uploadAvatar(e.target.files[0]);e.target.value="";});
   $("#admin-btn").addEventListener("click",openAdmin);
   $("#report-form").addEventListener("submit",submitReport);
+  $("#sold-form").addEventListener("submit",confirmSold);
+  $("#pending-btn").addEventListener("click",openPending);
+  $("#pending-list").addEventListener("click",e=>{const b=e.target.closest(".pend-rate");if(b) openReview(pending.find(x=>x.id===b.dataset.sale));});
   $("#admin-list").addEventListener("click",e=>{const b=e.target.closest(".adm-act");if(b) adminAction(b.dataset.act,b.parentElement.dataset.lid);});
   document.addEventListener("click",e=>{
     const s=e.target.closest(".star-btn");
