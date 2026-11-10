@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-container":"#d6e5ee","on-error-container":"#93000a","surface":"#f3faff","on-surface":"#101d23","surface-bg":"#F4F6F8","on-primary-fixed":"#00201b","surface-card":"#FFFFFF","badge-coral":"#FF5938","tertiary-fixed":"#ffdad2","inverse-primary":"#46dcc6","surface-container-low":"#e7f6fe","tertiary-container":"#ff8c72","inverse-surface":"#253238","badge-orange":"#FF9800","error-container":"#ffdad6","on-secondary-fixed":"#101d24","on-secondary-fixed-variant":"#3b4950","surface-container-highest":"#d6e5ed","border-subtle":"#E5E9EC","inverse-on-surface":"#e4f3fb","background":"#f3faff","on-tertiary":"#ffffff","surface-container":"#e2f0f8","surface-tint":"#006b5e","secondary-fixed":"#d6e5ee","primary-fixed-dim":"#46dcc6","tertiary-fixed-dim":"#ffb4a3","charcoal-dark":"#1A202C","on-error":"#ffffff","on-background":"#101d23","secondary-fixed-dim":"#bbc9d1","outline":"#6c7a76","surface-variant":"#d6e5ed","tertiary":"#ae3115","surface-container-high":"#dceaf2","on-surface-variant":"#3c4a46","surface-bright":"#f3faff","primary-container":"#13c1ac","surface-dim":"#cedce4","primary-fixed":"#69f9e2","on-tertiary-fixed":"#3d0600","on-secondary":"#ffffff","primary":"#006b5e","on-tertiary-fixed-variant":"#8c1900","on-secondary-container":"#59666e","error":"#ba1a1a","on-primary-container":"#004940","outline-variant":"#bbcac5","on-primary-fixed-variant":"#005047","mint-bright":"#3DD2BA","secondary":"#536068","on-primary":"#ffffff","mint-light":"#E8FAF7","on-tertiary-container":"#801600","surface-container-lowest":"#ffffff"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},spacing:{"gutter":"1.25rem","space-lg":"1.5rem","space-xl":"2.5rem","gutter-desktop":"1.5rem","margin-desktop":"2.5rem","margin":"1rem","space-xs":"0.25rem","space-sm":"0.5rem","space-md":"1rem"},fontFamily:{"title-md":["Inter"],"headline-xl":["Montserrat"],"label-lg":["Inter"],"headline-lg-mobile":["Montserrat"],"body-sm":["Inter"],"label-md":["Inter"],"title-sm":["Inter"],"headline-md":["Montserrat"],"body-lg":["Inter"],"headline-xl-mobile":["Montserrat"],"headline-sm":["Montserrat"],"headline-lg":["Montserrat"],"body-md":["Inter"],"label-sm":["Inter"]},fontSize:{"title-md":["18px",{lineHeight:"24px",fontWeight:"600"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["14px",{lineHeight:"20px",fontWeight:"600"}],"headline-lg-mobile":["24px",{lineHeight:"30px",letterSpacing:"-0.01em",fontWeight:"700"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"title-sm":["16px",{lineHeight:"22px",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"headline-xl-mobile":["28px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"600"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"700"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"600"}]}}}};</script>
 <style>
   html{scroll-behavior:smooth;scroll-padding-top:var(--hh,140px)}
@@ -141,9 +142,25 @@
           <span class="material-symbols-outlined text-[24px]">favorite_border</span>
           <span id="fav-count" class="absolute top-1 right-1 min-w-4 h-4 px-1 rounded-full bg-primary-container text-on-primary text-[10px] items-center justify-center font-bold hidden">0</span>
         </button>
-        <a id="profile-btn" class="hidden sm:flex items-center ml-1 p-0.5 rounded-full hover:ring-2 hover:ring-primary-container transition-all" href="#" data-i18n-title="profile" title="Mi perfil">
-          <img alt="" class="w-8 h-8 rounded-full object-cover bg-mint-light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv5HHcjZ2FTFvOxoOingQquR6ALHo1gVAtNaek_S1ByiL9iToqABgO2KxXW1a4hZhdloGIJw3iZGxg6Qc-J6YrT70KBNZ_Nwi6r0EbhgonD2fi7Q-HaHKUiRndutIx7UFUFvok0wKuQymtA4TkGUpGbec4zLNm9ewd4tmh1OA2y3P8Xi23jMZZK1o2Tdn4nySJMpEmM-UspREA6JdGBQkx4akT1QL2uOcLnj7j4G4" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'w-8 h-8 rounded-full bg-primary-container text-white text-[12px] font-bold flex items-center justify-center',textContent:'TÚ'}))"/>
-        </a>
+        <!-- Cuenta: invitado -->
+        <button id="login-btn" class="flex items-center gap-1.5 ml-1 h-10 px-2.5 sm:px-4 rounded-full border border-border-subtle text-charcoal-dark hover:bg-surface-container-low hover:border-primary-container transition-all font-label-lg text-label-lg" type="button" data-i18n-title="login" title="Entrar">
+          <span class="material-symbols-outlined text-[22px] text-primary">account_circle</span><span class="hidden lg:inline" data-i18n="login">Entrar</span>
+        </button>
+        <!-- Cuenta: usuario conectado -->
+        <div id="user-menu" class="relative hidden">
+          <button id="user-btn" class="flex items-center ml-1 p-0.5 rounded-full hover:ring-2 hover:ring-primary-container transition-all" type="button" data-i18n-title="profile" title="Mi perfil">
+            <span id="user-initials" class="w-9 h-9 rounded-full bg-primary-container text-white text-[13px] font-bold flex items-center justify-center">TÚ</span>
+          </button>
+          <div id="user-dd" class="dropdown absolute right-0 top-12 w-64 bg-surface-card rounded-2xl shadow-xl border border-border-subtle p-2 z-20">
+            <div class="px-3 py-2.5 border-b border-border-subtle mb-1">
+              <p id="user-name" class="font-title-sm text-title-sm text-charcoal-dark truncate">—</p>
+              <p id="user-email" class="text-body-sm text-secondary truncate">—</p>
+            </div>
+            <button id="open-profile" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" type="button"><span class="material-symbols-outlined text-[20px] text-primary">person</span><span data-i18n="my_profile">Mi perfil</span></button>
+            <button class="open-publish w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" type="button"><span class="material-symbols-outlined text-[20px] text-primary">add_circle</span><span data-i18n="publish_short">Publicar</span></button>
+            <button id="logout-btn" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-tertiary-fixed text-left text-body-md text-tertiary" type="button"><span class="material-symbols-outlined text-[20px]">logout</span><span data-i18n="logout">Cerrar sesión</span></button>
+          </div>
+        </div>
       </nav>
       <button class="open-publish hidden sm:inline-flex items-center justify-center bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg font-bold px-5 py-2.5 rounded-full transition-all active:scale-[0.98] shadow-sm hover:shadow" type="button" data-i18n="publish_btn">+ Publicar producto</button>
     </div>
@@ -633,7 +650,69 @@
 </div>
 
 <!-- TOAST -->
-<div id="toast" class="fixed left-1/2 bottom-6 z-[80] bg-charcoal-dark text-white px-5 py-3 rounded-full shadow-xl flex items-center gap-2 text-label-lg font-label-lg max-w-[92vw]" role="status" aria-live="polite">
+<!-- ================= AUTH MODAL ================= -->
+<div id="auth-modal" class="overlay fixed inset-0 z-[75] bg-charcoal-dark/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6" aria-modal="true" role="dialog">
+  <div class="panel relative w-full sm:max-w-md max-h-[94vh] overflow-y-auto bg-surface-card rounded-t-[2rem] sm:rounded-lg shadow-2xl p-6 md:p-8">
+    <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center" type="button" aria-label="Cerrar"><span class="material-symbols-outlined">close</span></button>
+    <div class="flex flex-col items-center text-center gap-2 mb-5">
+      <svg class="w-12 h-12" viewBox="0 0 40 40" aria-hidden="true"><rect rx="12" width="40" height="40" fill="#13c1ac"/><path d="M12 18a8 8 0 0 1 13.5-5.5M28 22a8 8 0 0 1-13.5 5.5" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M26.5 8.5v4.5H22M13.5 31.5V27H18" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h3 id="auth-title" class="font-headline-md text-headline-md text-charcoal-dark">Entrar</h3>
+      <p id="auth-sub" class="text-body-md text-secondary"></p>
+    </div>
+    <!-- Pestañas -->
+    <div id="auth-tabs" class="grid grid-cols-2 p-1 rounded-full bg-surface-container-low mb-5">
+      <button data-view="login" class="auth-tab py-2 rounded-full font-label-lg text-label-lg transition-all" type="button" data-i18n="login">Entrar</button>
+      <button data-view="register" class="auth-tab py-2 rounded-full font-label-lg text-label-lg transition-all" type="button" data-i18n="register">Crear cuenta</button>
+    </div>
+    <form id="auth-form" class="flex flex-col gap-3" novalidate>
+      <label data-for="register" class="auth-field flex flex-col gap-1.5"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="full_name">Nombre y apellido</span>
+        <input id="auth-name" autocomplete="name" maxlength="60" class="px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container focus:bg-white outline-none transition-colors" data-i18n-ph="full_name_ph" placeholder="Ej.: María González"/></label>
+      <label data-for="register" class="auth-field flex flex-col gap-1.5"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_city">Ciudad</span>
+        <select id="auth-city" class="city-select px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container outline-none"></select></label>
+      <label data-for="login register forgot" class="auth-field flex flex-col gap-1.5"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="email">Correo electrónico</span>
+        <input id="auth-email" type="email" autocomplete="email" class="px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container focus:bg-white outline-none transition-colors" placeholder="tucorreo@ejemplo.com"/></label>
+      <label data-for="login register reset" class="auth-field flex flex-col gap-1.5"><span id="auth-pass-label" class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="password">Contraseña</span>
+        <span class="relative flex items-center">
+          <input id="auth-pass" type="password" autocomplete="current-password" minlength="6" class="w-full pl-4 pr-12 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container focus:bg-white outline-none transition-colors" data-i18n-ph="password_ph" placeholder="Mínimo 6 caracteres"/>
+          <button id="toggle-pass" class="absolute right-2 w-9 h-9 rounded-full hover:bg-surface-container flex items-center justify-center text-secondary" type="button" aria-label="Mostrar contraseña"><span class="material-symbols-outlined text-[20px]">visibility</span></button>
+        </span></label>
+      <button id="forgot-link" data-for="login" class="auth-field self-end text-label-md font-label-md text-primary hover:underline" type="button" data-i18n="forgot">¿Olvidaste tu contraseña?</button>
+      <p id="auth-error" class="hidden text-body-md text-error bg-error-container/60 rounded-2xl px-4 py-2.5"></p>
+      <p id="auth-ok" class="hidden text-body-md text-primary bg-mint-light rounded-2xl px-4 py-2.5"></p>
+      <button id="auth-submit" class="mt-1 py-3 rounded-full bg-primary-container hover:bg-primary text-white font-label-lg text-label-lg transition-all active:scale-[.98] shadow-sm inline-flex items-center justify-center gap-2 disabled:opacity-60" type="submit"><span id="auth-submit-text">Entrar</span></button>
+      <button id="back-login" data-for="forgot" class="auth-field text-label-md font-label-md text-secondary hover:text-primary inline-flex items-center justify-center gap-1" type="button"><span class="material-symbols-outlined text-[16px]">arrow_back</span><span data-i18n="back_login">Volver a entrar</span></button>
+      <p data-for="register" class="auth-field text-[11px] text-secondary text-center" data-i18n="terms_note">Al crear tu cuenta aceptas los Términos de uso y la Política de privacidad de Perolero.</p>
+    </form>
+  </div>
+</div>
+
+<!-- ================= PROFILE MODAL ================= -->
+<div id="profile-modal" class="overlay fixed inset-0 z-[75] bg-charcoal-dark/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6" aria-modal="true" role="dialog">
+  <form id="profile-form" class="panel relative w-full sm:max-w-md max-h-[94vh] overflow-y-auto bg-surface-card rounded-t-[2rem] sm:rounded-lg shadow-2xl p-6 md:p-8 flex flex-col gap-4" novalidate>
+    <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center" type="button" aria-label="Cerrar"><span class="material-symbols-outlined">close</span></button>
+    <div class="flex items-center gap-4">
+      <span id="profile-initials" class="w-16 h-16 rounded-full bg-primary-container text-white text-[22px] font-bold flex items-center justify-center shadow-sm">TÚ</span>
+      <div class="min-w-0">
+        <h3 class="font-headline-md text-headline-md text-charcoal-dark" data-i18n="my_profile">Mi perfil</h3>
+        <p id="profile-email" class="text-body-md text-secondary truncate"></p>
+      </div>
+    </div>
+    <label class="flex flex-col gap-1.5"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="full_name">Nombre y apellido</span>
+      <input id="pf-name" maxlength="60" required class="px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container focus:bg-white outline-none transition-colors"/></label>
+    <label class="flex flex-col gap-1.5"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_city">Ciudad</span>
+      <select id="pf-city" class="city-select px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container outline-none"></select></label>
+    <label class="flex flex-col gap-1.5"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="whatsapp">WhatsApp</span>
+      <div class="flex items-center px-4 rounded-2xl bg-surface-container-low border border-transparent focus-within:border-primary-container focus-within:bg-white transition-colors"><span class="text-secondary font-bold mr-2">+58</span><input id="pf-phone" type="tel" inputmode="tel" maxlength="14" class="w-full py-3 bg-transparent outline-none" placeholder="412 1234567"/></div>
+      <span class="text-body-sm text-secondary" data-i18n="whatsapp_note">Los compradores te contactarán por aquí. Es visible en tus anuncios.</span></label>
+    <p id="pf-msg" class="hidden text-body-md rounded-2xl px-4 py-2.5"></p>
+    <div class="flex flex-col-reverse sm:flex-row gap-2 sm:justify-end pt-1">
+      <button class="modal-close px-6 py-3 rounded-full bg-surface-container hover:bg-surface-container-high text-charcoal-dark font-label-lg text-label-lg transition-colors" type="button" data-i18n="cancel">Cancelar</button>
+      <button id="pf-save" class="px-6 py-3 rounded-full bg-primary-container hover:bg-primary text-white font-label-lg text-label-lg transition-all active:scale-95 shadow-sm disabled:opacity-60" type="submit" data-i18n="save">Guardar cambios</button>
+    </div>
+  </form>
+</div>
+
+<div id="toast"class="fixed left-1/2 bottom-6 z-[80] bg-charcoal-dark text-white px-5 py-3 rounded-full shadow-xl flex items-center gap-2 text-label-lg font-label-lg max-w-[92vw]" role="status" aria-live="polite">
   <span id="toast-icon" class="material-symbols-outlined text-mint-bright text-[20px]">check_circle</span><span id="toast-text"></span>
 </div>
 
@@ -707,6 +786,21 @@ es:{
   fav_add:"Añadido a favoritos", fav_rm:"Eliminado de favoritos", offer:"Hacer una oferta", send:"Enviar", chat_seller:"Chatear con el vendedor",
   sales:"{n} ventas", protected:"Compra protegida: tu dinero queda resguardado hasta que confirmes la entrega.", offer_sent:"Oferta de {p} enviada al vendedor",
   offer_bad:"Escribe un monto válido", msg_sent:"Mensaje enviado. El vendedor te responderá pronto.", year:"Año", km:"Kilometraje", fuel:"Combustible", trans:"Caja",
+  login:"Entrar", register:"Crear cuenta", logout:"Cerrar sesión", my_profile:"Mi perfil", full_name:"Nombre y apellido", full_name_ph:"Ej.: María González",
+  email:"Correo electrónico", password:"Contraseña", password_ph:"Mínimo 6 caracteres", new_password:"Nueva contraseña", forgot:"¿Olvidaste tu contraseña?", back_login:"Volver a entrar",
+  terms_note:"Al crear tu cuenta aceptas los Términos de uso y la Política de privacidad de Perolero.",
+  auth_login_t:"¡Hola de nuevo!", auth_login_s:"Entra para publicar, guardar favoritos y contactar vendedores.",
+  auth_reg_t:"Únete a Perolero", auth_reg_s:"Crea tu cuenta gratis en menos de un minuto.",
+  auth_forgot_t:"Recupera tu contraseña", auth_forgot_s:"Te enviaremos un enlace a tu correo para crear una nueva.",
+  auth_reset_t:"Crea una nueva contraseña", auth_reset_s:"Escribe tu nueva contraseña para volver a entrar.",
+  btn_login:"Entrar", btn_register:"Crear mi cuenta", btn_forgot:"Enviar enlace", btn_reset:"Guardar contraseña", loading:"Un momento...",
+  check_email:"¡Listo! Revisa tu correo ({e}) y pulsa el enlace para activar tu cuenta.", reset_sent:"Si existe una cuenta con ese correo, te llegará un enlace en unos minutos. Revisa también la carpeta de spam.",
+  welcome:"¡Bienvenido/a, {n}!", logged_out:"Sesión cerrada. ¡Vuelve pronto!", pass_updated:"Contraseña actualizada. Ya estás dentro.",
+  e_fields:"Completa todos los campos.", e_email:"Escribe un correo válido.", e_pass:"La contraseña debe tener al menos 6 caracteres.", e_name:"Escribe tu nombre.",
+  e_invalid:"Correo o contraseña incorrectos.", e_unconfirmed:"Aún no confirmas tu correo. Revisa tu bandeja de entrada.", e_exists:"Ya existe una cuenta con ese correo. Intenta entrar.",
+  e_rate:"Demasiados intentos. Espera unos minutos e inténtalo de nuevo.", e_weak:"Esa contraseña es muy débil. Prueba con una más larga.", e_net:"No pudimos conectar. Revisa tu internet e inténtalo de nuevo.", e_generic:"Algo salió mal: {m}",
+  whatsapp:"WhatsApp", whatsapp_note:"Los compradores te contactarán por aquí. Es visible en tus anuncios.", save:"Guardar cambios", saved:"Perfil actualizado",
+  e_phone:"Escribe un número válido (ej.: 412 1234567).", login_to_publish:"Entra o crea tu cuenta para publicar",
   soon:"Esta sección estará disponible muy pronto", lang_set:"Idioma: Español (Latinoamérica)", stores_soon:"La app llega pronto a las tiendas",
   msgs:[["María G.","¿Aceptas $600 por el iPhone?","5 min"],["Carlos R.","Perfecto, te lo mando mañana por encomienda","1 h"],["Ana P.","¡Gracias! Llegó perfecto 🙌","ayer"]]
 },
@@ -759,6 +853,21 @@ en:{
   fav_add:"Added to favorites", fav_rm:"Removed from favorites", offer:"Make an offer", send:"Send", chat_seller:"Chat with the seller",
   sales:"{n} sales", protected:"Protected purchase: your money is held safely until you confirm delivery.", offer_sent:"Offer of {p} sent to the seller",
   offer_bad:"Enter a valid amount", msg_sent:"Message sent. The seller will reply soon.", year:"Year", km:"Mileage", fuel:"Fuel", trans:"Transmission",
+  login:"Sign in", register:"Sign up", logout:"Sign out", my_profile:"My profile", full_name:"Full name", full_name_ph:"e.g. María González",
+  email:"Email", password:"Password", password_ph:"At least 6 characters", new_password:"New password", forgot:"Forgot your password?", back_login:"Back to sign in",
+  terms_note:"By creating an account you accept Perolero's Terms of use and Privacy policy.",
+  auth_login_t:"Welcome back!", auth_login_s:"Sign in to list items, save favorites and contact sellers.",
+  auth_reg_t:"Join Perolero", auth_reg_s:"Create your free account in under a minute.",
+  auth_forgot_t:"Reset your password", auth_forgot_s:"We'll email you a link to create a new one.",
+  auth_reset_t:"Create a new password", auth_reset_s:"Type your new password to get back in.",
+  btn_login:"Sign in", btn_register:"Create my account", btn_forgot:"Send link", btn_reset:"Save password", loading:"One moment...",
+  check_email:"Done! Check your email ({e}) and click the link to activate your account.", reset_sent:"If an account exists for that email, a link will arrive in a few minutes. Check your spam folder too.",
+  welcome:"Welcome, {n}!", logged_out:"Signed out. See you soon!", pass_updated:"Password updated. You're signed in.",
+  e_fields:"Please fill in all fields.", e_email:"Enter a valid email.", e_pass:"Password must be at least 6 characters.", e_name:"Enter your name.",
+  e_invalid:"Wrong email or password.", e_unconfirmed:"You haven't confirmed your email yet. Check your inbox.", e_exists:"An account with that email already exists. Try signing in.",
+  e_rate:"Too many attempts. Wait a few minutes and try again.", e_weak:"That password is too weak. Try a longer one.", e_net:"We couldn't connect. Check your internet and try again.", e_generic:"Something went wrong: {m}",
+  whatsapp:"WhatsApp", whatsapp_note:"Buyers will contact you here. It's shown on your listings.", save:"Save changes", saved:"Profile updated",
+  e_phone:"Enter a valid number (e.g. 412 1234567).", login_to_publish:"Sign in or create an account to list items",
   soon:"This section is coming very soon", lang_set:"Language: English", stores_soon:"The app is coming soon to the stores",
   msgs:[["María G.","Would you take $600 for the iPhone?","5 min"],["Carlos R.","Perfect, I'll ship it tomorrow","1h"],["Ana P.","Thanks! It arrived perfect 🙌","yesterday"]]
 }};
@@ -994,7 +1103,7 @@ function renderCats(){
   // selects publicar
   $("#pub-cat").innerHTML=CATS.map(c=>`<option value="${c.k}">${c[state.lang]}</option>`).join("");
   const keepCity=$("#pub-city").value;
-  $("#pub-city").innerHTML=CITIES.map(c=>`<option>${c}</option>`).join(""); if(keepCity) $("#pub-city").value=keepCity;
+  $$("#pub-city,.city-select").forEach(sel=>{const keep=sel.value;sel.innerHTML=CITIES.map(c=>`<option>${c}</option>`).join("");if(keep)sel.value=keep;});
   renderCatState();
 }
 function renderCatState(){
@@ -1043,7 +1152,7 @@ function applyLang(){
   $$(".foot-lang").forEach(b=>{const a=b.dataset.lang===state.lang;b.className=`set-lang foot-lang px-2.5 py-1 rounded-md text-label-sm font-label-sm transition-colors border ${a?"bg-mint-light text-primary font-bold border-primary-container":"bg-surface-container-low text-on-surface-variant hover:bg-surface-container border-transparent"}`;});
   rotIdx=0; $("#rot-word").textContent=T[state.lang].rot[0];
   $$(".counter.done").forEach(el=>el.textContent=num(+el.dataset.to,+el.dataset.dec));
-  renderCats(); renderProducts(); renderCities(); renderTesti(); renderMsgs();
+  renderCats(); renderProducts(); renderCities(); renderTesti(); renderMsgs(); renderAuthView();
 }
 function setLang(l){ if(l===state.lang) return; state.lang=l; LS.set("cb-lang",l); applyLang(); toast(t("lang_set"),"translate"); }
 
@@ -1226,7 +1335,9 @@ function bind(){
 
   // Modales
   $$(".overlay").forEach(o=>o.addEventListener("click",e=>{if(e.target===o||e.target.closest(".modal-close")) closeModals();}));
-  document.addEventListener("click",e=>{if(e.target.closest(".open-publish")){e.preventDefault();openModal("#publish-modal");}});
+  document.addEventListener("click",e=>{if(e.target.closest(".open-publish")){e.preventDefault();closeDropdowns();
+    if(!auth.user){toast(t("login_to_publish"),"lock");openAuth("login");return;}
+    closeModals();openModal("#publish-modal");}});
   $("#publish-form").addEventListener("submit",submitPublish);
   $("#pub-photo").addEventListener("change",e=>handleFile(e.target.files[0]));
   const dz=$("#drop-zone");
@@ -1235,7 +1346,7 @@ function bind(){
   dz.addEventListener("drop",e=>handleFile(e.dataTransfer.files[0]));
 
   // Varios
-  $("#profile-btn").addEventListener("click",e=>{e.preventDefault();toast(t("soon"),"person");});
+  bindAuth();
   $$(".store-link").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();toast(t("stores_soon"),"phone_iphone");}));
   document.addEventListener("click",e=>{if(e.target.closest(".msg-item")){e.preventDefault();closeDropdowns();toast(t("soon"),"chat");}});
   $$('footer a[href="#"]:not(#cookie-settings)').forEach(a=>a.addEventListener("click",e=>{e.preventDefault();toast(t("soon"),"info");}));
@@ -1249,6 +1360,129 @@ function bind(){
 
   // Reloj del teléfono
   const clock=()=>{const d=new Date();$("#phone-clock").textContent=d.getHours()+":"+String(d.getMinutes()).padStart(2,"0");}; clock(); setInterval(clock,30000);
+}
+
+/* =========================================================
+   Cuentas de usuario (Supabase)
+   La clave "publishable" está hecha para ir en la web: la seguridad
+   la dan las políticas RLS de la base de datos.
+   ========================================================= */
+const SUPABASE_URL = "https://zvnsrlbnjbuesmzeymyk.supabase.co";
+const SUPABASE_KEY = "sb_publishable_EDVAKuqVdojfnloJoKx10w_QKG2LlZU";
+const AUTH_HASH = new URLSearchParams(location.hash.slice(1)); // se lee antes de que Supabase limpie la URL
+const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+const auth = {user:null, profile:null, view:"login", greet:AUTH_HASH.get("type")==="signup"};
+const initials = s=>(s||"").trim().split(/\s+/).slice(0,2).map(w=>w[0]).join("").toUpperCase()||"TÚ";
+const displayName = ()=>auth.profile?.full_name||auth.user?.user_metadata?.full_name||auth.user?.email?.split("@")[0]||"";
+
+function authErr(e){
+  const m=String(e?.message||"").toLowerCase();
+  if(m.includes("invalid login")) return t("e_invalid");
+  if(m.includes("not confirmed")) return t("e_unconfirmed");
+  if(m.includes("already registered")||m.includes("already been registered")||m.includes("user already")) return t("e_exists");
+  if(e?.status===429||m.includes("rate limit")||m.includes("security purposes")) return t("e_rate");
+  if(m.includes("weak")||m.includes("password should")) return t("e_weak");
+  if(m.includes("fetch")||m.includes("network")) return t("e_net");
+  return t("e_generic",{m:e?.message||"?"});
+}
+function renderAuthView(){
+  const v=auth.view, map={login:["auth_login_t","auth_login_s","btn_login"],register:["auth_reg_t","auth_reg_s","btn_register"],forgot:["auth_forgot_t","auth_forgot_s","btn_forgot"],reset:["auth_reset_t","auth_reset_s","btn_reset"]}[v];
+  $("#auth-title").textContent=t(map[0]); $("#auth-sub").textContent=t(map[1]); $("#auth-submit-text").textContent=t(map[2]);
+  $("#auth-tabs").classList.toggle("hidden",!(v==="login"||v==="register"));
+  $$(".auth-tab").forEach(b=>{const a=b.dataset.view===v;b.classList.toggle("bg-surface-card",a);b.classList.toggle("shadow-sm",a);b.classList.toggle("text-primary",a);b.classList.toggle("text-secondary",!a);});
+  $$(".auth-field").forEach(el=>el.classList.toggle("hidden",!el.dataset.for.split(" ").includes(v)));
+  $("#auth-pass-label").textContent=t(v==="reset"?"new_password":"password");
+  $("#auth-pass").autocomplete=v==="login"?"current-password":"new-password";
+}
+function authMsg(type,msg){
+  $("#auth-error").classList.add("hidden"); $("#auth-ok").classList.add("hidden");
+  if(type){const el=$(type==="err"?"#auth-error":"#auth-ok"); el.textContent=msg; el.classList.remove("hidden");}
+}
+function openAuth(view="login"){
+  closeModals(); auth.view=view; authMsg(); renderAuthView(); openModal("#auth-modal");
+  setTimeout(()=>$$("#auth-form input").find(i=>i.offsetParent)?.focus({preventScroll:true}),80);
+}
+async function submitAuth(e){
+  e.preventDefault(); authMsg();
+  if(!sb) return authMsg("err",t("e_net"));
+  const v=auth.view, email=$("#auth-email").value.trim(), pass=$("#auth-pass").value, name=$("#auth-name").value.trim(), city=$("#auth-city").value;
+  if(v!=="reset" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return authMsg("err",t("e_email"));
+  if(v==="register" && !name) return authMsg("err",t("e_name"));
+  if(v!=="forgot" && pass.length<6) return authMsg("err",t("e_pass"));
+  const btn=$("#auth-submit"); btn.disabled=true; $("#auth-submit-text").textContent=t("loading");
+  const redirectTo=location.origin+location.pathname;
+  try{
+    if(v==="login"){
+      auth.greet=true;
+      const {error}=await sb.auth.signInWithPassword({email,password:pass}); if(error) throw error;
+      closeModals(); $("#auth-pass").value="";
+    } else if(v==="register"){
+      const {data,error}=await sb.auth.signUp({email,password:pass,options:{data:{full_name:name,city},emailRedirectTo:redirectTo}});
+      if(error) throw error;
+      // Si el correo ya existe, Supabase no da error (por privacidad) pero devuelve identities vacío
+      if(data.user && Array.isArray(data.user.identities) && data.user.identities.length===0) throw {message:"already registered"};
+      if(data.session){ auth.greet=true; closeModals(); }
+      else { authMsg("ok",t("check_email",{e:email})); $("#auth-pass").value=""; }
+    } else if(v==="forgot"){
+      const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo}); if(error) throw error;
+      authMsg("ok",t("reset_sent"));
+    } else if(v==="reset"){
+      const {error}=await sb.auth.updateUser({password:pass}); if(error) throw error;
+      closeModals(); $("#auth-pass").value=""; toast(t("pass_updated"),"lock_open");
+    }
+  }catch(err){ if(v==="login") auth.greet=false; authMsg("err",authErr(err)); }
+  finally{ btn.disabled=false; $("#auth-submit-text").textContent=t({login:"btn_login",register:"btn_register",forgot:"btn_forgot",reset:"btn_reset"}[v]); }
+}
+async function setUser(user){
+  auth.user=user; auth.profile=null;
+  if(user && sb){
+    const {data}=await sb.from("profiles").select("*").eq("id",user.id).maybeSingle();
+    auth.profile=data||{id:user.id,full_name:user.user_metadata?.full_name||"",city:user.user_metadata?.city||""};
+  }
+  updateUserUI();
+  if(user && auth.greet){ auth.greet=false; toast(t("welcome",{n:displayName().split(" ")[0]}),"waving_hand"); }
+}
+function updateUserUI(){
+  const on=!!auth.user;
+  $("#login-btn").classList.toggle("hidden",on); $("#user-menu").classList.toggle("hidden",!on);
+  if(on){const n=displayName(); $("#user-initials").textContent=initials(n); $("#user-name").textContent=n; $("#user-email").textContent=auth.user.email;}
+}
+function openProfile(){
+  closeDropdowns(); const p=auth.profile||{};
+  $("#pf-name").value=p.full_name||""; $("#pf-city").value=p.city||CITIES[0]; $("#pf-phone").value=(p.phone||"").replace(/^\+58/,"");
+  $("#profile-email").textContent=auth.user.email; $("#profile-initials").textContent=initials(displayName());
+  $("#pf-msg").classList.add("hidden"); openModal("#profile-modal");
+}
+async function saveProfile(e){
+  e.preventDefault();
+  const msg=$("#pf-msg"), show=(ok,m)=>{msg.textContent=m;msg.className="text-body-md rounded-2xl px-4 py-2.5 "+(ok?"text-primary bg-mint-light":"text-error bg-error-container/60");};
+  const name=$("#pf-name").value.trim(), city=$("#pf-city").value, phone=$("#pf-phone").value.replace(/\D/g,"").replace(/^0/,"");
+  if(!name) return show(false,t("e_name"));
+  if(phone && phone.length!==10) return show(false,t("e_phone"));
+  const btn=$("#pf-save"); btn.disabled=true;
+  const {data,error}=await sb.from("profiles").upsert({id:auth.user.id,full_name:name,city,phone:phone?"+58"+phone:null}).select().single();
+  btn.disabled=false;
+  if(error) return show(false,authErr(error));
+  auth.profile=data; updateUserUI(); closeModals(); toast(t("saved"),"check_circle");
+}
+function bindAuth(){
+  $("#login-btn").addEventListener("click",()=>openAuth("login"));
+  $("#user-btn").addEventListener("click",e=>{e.stopPropagation();const m=$("#user-dd");closeDropdowns(m);m.classList.toggle("open");});
+  $$(".auth-tab").forEach(b=>b.addEventListener("click",()=>{auth.view=b.dataset.view;authMsg();renderAuthView();}));
+  $("#forgot-link").addEventListener("click",()=>{auth.view="forgot";authMsg();renderAuthView();});
+  $("#back-login").addEventListener("click",()=>{auth.view="login";authMsg();renderAuthView();});
+  $("#toggle-pass").addEventListener("click",()=>{const i=$("#auth-pass"),s=i.type==="password";i.type=s?"text":"password";$("#toggle-pass span").textContent=s?"visibility_off":"visibility";});
+  $("#auth-form").addEventListener("submit",submitAuth);
+  $("#open-profile").addEventListener("click",openProfile);
+  $("#profile-form").addEventListener("submit",saveProfile);
+  $("#logout-btn").addEventListener("click",async()=>{closeDropdowns();await sb?.auth.signOut();toast(t("logged_out"),"logout");});
+  if(AUTH_HASH.get("error_description")) setTimeout(()=>toast(AUTH_HASH.get("error_description"),"error"),600);
+  if(!sb){ updateUserUI(); return; }
+  sb.auth.onAuthStateChange((event,session)=>{
+    // setTimeout evita bloquear el cliente de Supabase dentro del callback
+    if(event==="PASSWORD_RECOVERY") setTimeout(()=>openAuth("reset"),0);
+    setTimeout(()=>setUser(session?.user||null),0);
+  });
 }
 
 /* ---------- Init ---------- */
