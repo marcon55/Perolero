@@ -6,6 +6,11 @@
 <title>Perolero — Compra y vende cerca de ti en Venezuela</title>
 <meta name="description" content="Perolero: la app y web para comprar y vender de segunda mano en toda Venezuela. Precios en dólares, envíos asegurados y pago protegido."/>
 <meta name="theme-color" content="#13c1ac"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Perolero"/>
+<meta property="og:title" content="Perolero — Compra y vende cerca de ti en Venezuela"/>
+<meta property="og:description" content="Publica gratis, encuentra joyitas de segunda mano y contacta directo por WhatsApp. Precios en dólares."/>
+<meta property="og:url" content="https://www.perolero.com/"/>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect rx='12' width='40' height='40' fill='%2313c1ac'/%3E%3Cpath d='M12 18a8 8 0 0 1 13.5-5.5M28 22a8 8 0 0 1-13.5 5.5' stroke='white' stroke-width='3.2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M26.5 8.5v4.5H22M13.5 31.5V27H18' stroke='white' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -66,6 +71,8 @@
   .logo:hover .logo-mark{transform:rotate(180deg)}
   .city svg{transition:transform 1s cubic-bezier(.2,.7,.2,1)}
   .city:hover svg{transform:scale(1.07)}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .spin-slow{animation:spin 18s linear infinite}
   .step-line{transform-origin:left;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.2,.7,.2,1) .3s}
   .in .step-line{transform:scaleX(1)}
 
@@ -125,19 +132,6 @@
         <span data-lang="en" class="lang-opt px-2.5 h-8 flex items-center rounded-full transition-all">EN</span>
       </button>
       <nav class="flex items-center gap-1 sm:gap-2">
-        <div class="relative">
-          <button id="msg-btn" class="relative flex items-center justify-center w-10 h-10 rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-i18n-title="messages" title="Mensajes" type="button">
-            <span class="material-symbols-outlined text-[24px]">chat_bubble_outline</span>
-            <span id="msg-badge" class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-badge-coral text-on-tertiary text-[10px] flex items-center justify-center font-bold">3</span>
-          </button>
-          <div id="msg-dd" class="dropdown absolute right-0 top-12 w-80 bg-surface-card rounded-2xl shadow-xl border border-border-subtle p-2 z-20">
-            <div class="flex items-center justify-between px-3 py-2">
-              <span class="font-title-sm text-title-sm text-charcoal-dark" data-i18n="messages">Mensajes</span>
-              <a href="#" class="text-label-md font-label-md text-primary hover:underline" data-i18n="see_all_msgs">Ver todos</a>
-            </div>
-            <div id="msg-list" class="flex flex-col"></div>
-          </div>
-        </div>
         <button id="fav-btn" class="relative flex items-center justify-center w-10 h-10 rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-i18n-title="favorites" title="Favoritos" type="button">
           <span class="material-symbols-outlined text-[24px]">favorite_border</span>
           <span id="fav-count" class="absolute top-1 right-1 min-w-4 h-4 px-1 rounded-full bg-primary-container text-on-primary text-[10px] items-center justify-center font-bold hidden">0</span>
@@ -149,7 +143,7 @@
         <!-- Cuenta: usuario conectado -->
         <div id="user-menu" class="relative hidden">
           <button id="user-btn" class="flex items-center ml-1 p-0.5 rounded-full hover:ring-2 hover:ring-primary-container transition-all" type="button" data-i18n-title="profile" title="Mi perfil">
-            <span id="user-initials" class="w-9 h-9 rounded-full bg-primary-container text-white text-[13px] font-bold flex items-center justify-center">TÚ</span>
+            <span id="user-avatar" class="block w-9 h-9"></span>
           </button>
           <div id="user-dd" class="dropdown absolute right-0 top-12 w-64 bg-surface-card rounded-2xl shadow-xl border border-border-subtle p-2 z-20">
             <div class="px-3 py-2.5 border-b border-border-subtle mb-1">
@@ -159,6 +153,7 @@
             <button id="my-listings-btn" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" type="button"><span class="material-symbols-outlined text-[20px] text-primary">storefront</span><span data-i18n="my_listings">Mis anuncios</span></button>
             <button id="open-profile" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" type="button"><span class="material-symbols-outlined text-[20px] text-primary">person</span><span data-i18n="my_profile">Mi perfil</span></button>
             <button class="open-publish w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" type="button"><span class="material-symbols-outlined text-[20px] text-primary">add_circle</span><span data-i18n="publish_short">Publicar</span></button>
+            <button id="admin-btn" class="hidden w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-surface-container-low text-left text-body-md" type="button"><span class="material-symbols-outlined text-[20px] text-charcoal-dark">shield_person</span><span data-i18n="admin_title">Panel de moderación</span><span id="admin-count" class="ml-auto hidden px-2 rounded-full bg-badge-coral text-white text-[11px] font-bold"></span></button>
             <button id="logout-btn" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-tertiary-fixed text-left text-body-md text-tertiary" type="button"><span class="material-symbols-outlined text-[20px]">logout</span><span data-i18n="logout">Cerrar sesión</span></button>
           </div>
         </div>
@@ -221,13 +216,13 @@
       </div>
       <div class="reveal pt-4 flex flex-wrap items-center gap-3 text-secondary font-label-sm text-label-sm" style="--d:320ms">
         <div class="flex items-center gap-1.5 bg-surface-card/80 px-3 py-1.5 rounded-full shadow-sm">
-          <span class="material-symbols-outlined text-primary text-[18px]">verified_user</span><span data-i18n="trust1">Pago protegido hasta la entrega</span>
+          <span class="material-symbols-outlined text-primary text-[18px]">sell</span><span data-i18n="trust1">Pago protegido hasta la entrega</span>
         </div>
         <div class="flex items-center gap-1.5 bg-surface-card/80 px-3 py-1.5 rounded-full shadow-sm">
-          <span class="material-symbols-outlined text-primary text-[18px]">local_shipping</span><span data-i18n="trust2">Envíos asegurados a toda Venezuela</span>
+          <span class="material-symbols-outlined text-primary text-[18px]">chat</span><span data-i18n="trust2">Envíos asegurados a toda Venezuela</span>
         </div>
         <div class="flex items-center gap-1.5 bg-surface-card/80 px-3 py-1.5 rounded-full shadow-sm">
-          <span class="material-symbols-outlined text-primary text-[18px]">published_with_changes</span><span data-i18n="trust3">Devoluciones garantizadas en 48 h</span>
+          <span class="material-symbols-outlined text-primary text-[18px]">mark_email_read</span><span data-i18n="trust3">Devoluciones garantizadas en 48 h</span>
         </div>
       </div>
     </div>
@@ -243,10 +238,10 @@
               <div class="w-10 h-10 rounded-full bg-mint-light flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">thumb_up</span></div>
               <div class="flex flex-col">
                 <span class="font-label-md text-label-md text-charcoal-dark font-bold leading-tight" data-i18n="community">Comunidad activa</span>
-                <span class="font-body-sm text-body-sm text-secondary" data-i18n="community_n">+2 millones de usuarios</span>
+                <span id="community-n" class="font-body-sm text-body-sm text-secondary">Únete hoy</span>
               </div>
             </div>
-            <span class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-badge-coral text-on-tertiary text-[10px] font-bold"><span class="live-dot w-1.5 h-1.5 rounded-full bg-white"></span><span data-i18n="live">EN VIVO</span></span>
+            <span class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-badge-coral text-on-tertiary text-[10px] font-bold"><span class="live-dot w-1.5 h-1.5 rounded-full bg-white"></span><span data-i18n="live">NUEVO</span></span>
           </div>
         </div>
         <!-- Floating chips -->
@@ -255,8 +250,8 @@
           <div class="flex flex-col leading-tight"><span class="text-[11px] text-secondary" data-i18n="float1_a">Oferta aceptada</span><span class="font-bold text-charcoal-dark text-[14px]" data-price="400">$400</span></div>
         </div>
         <div class="float-2 absolute -right-3 sm:-right-6 top-1/3 bg-surface-card rounded-2xl shadow-lg px-3.5 py-2.5 flex items-center gap-2.5">
-          <span class="w-8 h-8 rounded-full bg-tertiary-fixed text-badge-coral flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">local_shipping</span></span>
-          <div class="flex flex-col leading-tight"><span class="text-[11px] text-secondary" data-i18n="float2_a">En camino</span><span class="font-bold text-charcoal-dark text-[13px]">Valencia → Caracas</span></div>
+          <span class="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">chat</span></span>
+          <div class="flex flex-col leading-tight"><span class="text-[11px] text-secondary" data-i18n="float2_a">Nuevo mensaje</span><span class="font-bold text-charcoal-dark text-[13px]" data-i18n="float2_b">¿Sigue disponible?</span></div>
         </div>
       </div>
     </div>
@@ -321,13 +316,17 @@
     <div class="flex items-center gap-3">
       <div class="w-3.5 h-7 rounded-full bg-primary-container"></div>
       <div>
-        <h2 class="font-headline-md text-headline-md text-charcoal-dark tracking-tight" data-i18n="recent_title">Recién llegados a tu zona</h2>
-        <p class="font-body-sm text-body-sm text-secondary" data-i18n="recent_sub">Oportunidades publicadas en los últimos minutos</p>
+        <h2 id="recent-title" class="font-headline-md text-headline-md text-charcoal-dark tracking-tight">Recién llegados a tu zona</h2>
+        <p id="recent-sub" class="font-body-sm text-body-sm text-secondary">Oportunidades publicadas en los últimos minutos</p>
       </div>
     </div>
-    <button class="adv-proxy p-2 rounded-full bg-surface-card hover:bg-surface-container text-secondary transition-colors shadow-sm" type="button" data-i18n-title="chip_adv" title="Filtros avanzados"><span class="material-symbols-outlined text-[20px]">tune</span></button>
+    <div class="flex items-center gap-2">
+      <button id="see-all" class="hidden font-label-md text-label-md text-primary font-bold hover:underline items-center gap-1" type="button"><span data-i18n="see_all">Ver todos</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></button>
+      <button class="adv-proxy p-2 rounded-full bg-surface-card hover:bg-surface-container text-secondary transition-colors shadow-sm" type="button" data-i18n-title="chip_adv" title="Filtros avanzados"><span class="material-symbols-outlined text-[20px]">tune</span></button>
+    </div>
   </div>
   <div id="grid-recent" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+  <button id="load-more" class="hidden self-center px-6 py-2.5 rounded-full bg-surface-card hover:bg-surface-container text-charcoal-dark font-label-lg text-label-lg shadow-sm transition-colors" type="button" data-i18n="load_more">Cargar más</button>
 </section>
 
 <!-- SECTION 2: Motor -->
@@ -338,7 +337,6 @@
       <div>
         <div class="flex flex-wrap items-center gap-2">
           <h2 class="font-headline-md text-headline-md text-charcoal-dark tracking-tight" data-i18n="cars_title">Destacados en carros</h2>
-          <span class="bg-surface-container-highest text-charcoal-dark text-[11px] px-2.5 py-0.5 rounded-full font-bold" data-i18n="cars_pill">Garantía PRO</span>
         </div>
         <p class="font-body-sm text-body-sm text-secondary" data-i18n="cars_sub">Vehículos verificados con historial y kilometraje certificado</p>
       </div>
@@ -418,16 +416,16 @@
   <div id="cities" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"></div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="flex flex-col gap-5">
+<!-- SAFETY -->
+<section class="flex flex-col gap-5" id="seguridad">
   <div class="flex items-center gap-3 reveal">
     <div class="w-3.5 h-7 rounded-full bg-badge-orange"></div>
     <div>
-      <h2 class="font-headline-md text-headline-md text-charcoal-dark tracking-tight" data-i18n="testi_title">Lo que dice nuestra comunidad</h2>
-      <p class="font-body-sm text-body-sm text-secondary" data-i18n="testi_sub">Historias reales de compra y venta</p>
+      <h2 class="font-headline-md text-headline-md text-charcoal-dark tracking-tight" data-i18n="safe_title">Compra y vende seguro</h2>
+      <p class="font-body-sm text-body-sm text-secondary" data-i18n="safe_sub">Consejos sencillos para que todo salga bien</p>
     </div>
   </div>
-  <div id="testimonials" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+  <div id="safety" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
 </section>
 
 <!-- IMPACT -->
@@ -441,31 +439,26 @@
       <p class="font-body-md text-body-md text-secondary max-w-2xl" data-i18n="impact_p">En 2025, nuestra comunidad evitó más de 12.000 toneladas de CO₂.</p>
       <div class="grid grid-cols-3 gap-3 pt-3">
         <div class="p-3.5 rounded-2xl bg-surface-container-low flex flex-col">
-          <span class="font-headline-sm text-headline-sm md:font-headline-md md:text-headline-md text-primary font-bold leading-tight"><span class="counter" data-to="12.4" data-dec="1">0</span>K t</span>
-          <span class="font-body-sm text-body-sm text-secondary" data-i18n="stat1">CO₂ evitado</span>
+          <span class="font-headline-sm text-headline-sm md:font-headline-md md:text-headline-md text-primary font-bold leading-tight"><span class="counter" id="stat-listings" data-to="0" data-dec="0">0</span></span>
+          <span class="font-body-sm text-body-sm text-secondary" data-i18n="stat1">Anuncios activos</span>
         </div>
         <div class="p-3.5 rounded-2xl bg-surface-container-low flex flex-col">
-          <span class="font-headline-sm text-headline-sm md:font-headline-md md:text-headline-md text-primary font-bold leading-tight">$<span class="counter" data-to="48" data-dec="0">0</span>M</span>
-          <span class="font-body-sm text-body-sm text-secondary" data-i18n="stat2">Ahorro para usuarios</span>
+          <span class="font-headline-sm text-headline-sm md:font-headline-md md:text-headline-md text-primary font-bold leading-tight"><span class="counter" id="stat-sold" data-to="0" data-dec="0">0</span></span>
+          <span class="font-body-sm text-body-sm text-secondary" data-i18n="stat2">Objetos vendidos</span>
         </div>
         <div class="p-3.5 rounded-2xl bg-surface-container-low flex flex-col">
-          <span class="font-headline-sm text-headline-sm md:font-headline-md md:text-headline-md text-primary font-bold leading-tight"><span class="counter" data-to="3.2" data-dec="1">0</span>M</span>
-          <span class="font-body-sm text-body-sm text-secondary" data-i18n="stat3">Objetos reutilizados</span>
+          <span class="font-headline-sm text-headline-sm md:font-headline-md md:text-headline-md text-primary font-bold leading-tight"><span class="counter" id="stat-users" data-to="0" data-dec="0">0</span></span>
+          <span class="font-body-sm text-body-sm text-secondary" data-i18n="stat3">Personas registradas</span>
         </div>
       </div>
     </div>
-    <div class="md:col-span-4 flex flex-col items-center justify-center p-4 bg-mint-light rounded-2xl">
+    <div class="md:col-span-4 flex flex-col items-center justify-center p-6 bg-mint-light rounded-2xl">
       <div class="relative w-36 h-36 flex items-center justify-center">
-        <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
-          <path class="text-surface-card" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4"></path>
-          <path id="donut" class="donut-ring text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="0, 100" stroke-linecap="round" stroke-width="4"></path>
-        </svg>
-        <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-          <span class="font-headline-sm text-headline-sm text-charcoal-dark font-bold"><span class="counter" data-to="84" data-dec="0">0</span>%</span>
-          <span class="text-[10px] text-secondary uppercase font-semibold" data-i18n="reuse">Reutilización</span>
-        </div>
+        <svg class="absolute inset-0 w-full h-full spin-slow" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="none" stroke="#13c1ac" stroke-width="5" stroke-dasharray="60 8" stroke-linecap="round" opacity=".55"/></svg>
+        <svg class="logo-mark w-20 h-20" viewBox="0 0 40 40" aria-hidden="true"><rect rx="12" width="40" height="40" fill="#13c1ac"/><path d="M12 18a8 8 0 0 1 13.5-5.5M28 22a8 8 0 0 1-13.5 5.5" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M26.5 8.5v4.5H22M13.5 31.5V27H18" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <p class="font-label-sm text-label-sm text-charcoal-dark font-semibold text-center mt-3" data-i18n="carbon">Huella de carbono neutral</p>
+      <p class="font-title-sm text-title-sm text-charcoal-dark text-center mt-4" data-i18n="reuse">Cada objeto reutilizado cuenta</p>
+      <p class="font-body-sm text-body-sm text-secondary text-center mt-1" data-i18n="carbon">Menos basura, más ahorro para tu familia.</p>
     </div>
   </div>
 </section>
@@ -480,14 +473,14 @@
       <h2 class="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-on-primary font-bold leading-tight" data-i18n="app_title">La app para vender y descubrir al instante</h2>
       <p class="font-body-lg text-body-lg text-secondary-fixed-dim max-w-xl" data-i18n="app_p">Chatea con vendedores, negocia y paga con seguridad.</p>
       <div class="flex flex-wrap items-center gap-3 pt-2">
-        <a class="store-link inline-flex items-center gap-3 px-5 py-2.5 bg-surface-card text-charcoal-dark rounded-full font-label-md text-label-md font-bold hover:bg-surface-container hover:-translate-y-0.5 transition-all shadow-sm" href="#">
+        <button class="install-btn inline-flex items-center gap-3 px-5 py-2.5 bg-surface-card text-charcoal-dark rounded-full font-label-md text-label-md font-bold hover:bg-surface-container hover:-translate-y-0.5 transition-all shadow-sm" data-os="android" type="button">
+          <span class="material-symbols-outlined text-[24px]">android</span>
+          <div class="flex flex-col text-left"><span class="text-[9px] uppercase font-normal leading-none text-secondary" data-i18n="add_home">Añadir a inicio</span><span class="leading-tight font-bold">Android</span></div>
+        </button>
+        <button class="install-btn inline-flex items-center gap-3 px-5 py-2.5 bg-surface-card text-charcoal-dark rounded-full font-label-md text-label-md font-bold hover:bg-surface-container hover:-translate-y-0.5 transition-all shadow-sm" data-os="ios" type="button">
           <span class="material-symbols-outlined text-[24px]">phone_iphone</span>
-          <div class="flex flex-col text-left"><span class="text-[9px] uppercase font-normal leading-none text-secondary" data-i18n="dl_on">Descargar en</span><span class="leading-tight font-bold">App Store</span></div>
-        </a>
-        <a class="store-link inline-flex items-center gap-3 px-5 py-2.5 bg-surface-card text-charcoal-dark rounded-full font-label-md text-label-md font-bold hover:bg-surface-container hover:-translate-y-0.5 transition-all shadow-sm" href="#">
-          <span class="material-symbols-outlined text-[24px]">play_arrow</span>
-          <div class="flex flex-col text-left"><span class="text-[9px] uppercase font-normal leading-none text-secondary" data-i18n="get_on">Disponible en</span><span class="leading-tight font-bold">Google Play</span></div>
-        </a>
+          <div class="flex flex-col text-left"><span class="text-[9px] uppercase font-normal leading-none text-secondary" data-i18n="add_home">Añadir a inicio</span><span class="leading-tight font-bold">iPhone</span></div>
+        </button>
       </div>
       <div class="pt-4 border-t border-secondary-fixed-dim/20 flex flex-wrap items-center gap-2 text-label-sm font-label-sm text-secondary-fixed-dim">
         <span data-i18n="language">Idioma:</span>
@@ -504,7 +497,7 @@
             <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[10px]">wifi</span><span class="material-symbols-outlined text-[10px]">battery_full</span></div>
           </div>
           <div class="p-2.5 bg-mint-light flex items-center gap-2">
-            <div class="w-6 h-6 rounded-full bg-primary-container text-white flex items-center justify-center text-[10px] font-bold">C</div>
+            <div class="w-6 h-6 rounded-full bg-[#25D366] text-white flex items-center justify-center text-[10px] font-bold">P</div>
             <span class="text-[11px] font-bold text-primary" data-i18n="phone_head">Chat con comprador</span>
             <span class="ml-auto w-2 h-2 rounded-full bg-mint-bright"></span>
           </div>
@@ -534,20 +527,16 @@
       <div class="flex flex-col gap-space-sm">
         <span class="font-title-sm text-title-sm text-charcoal-dark font-bold">Perolero</span>
         <nav class="flex flex-col gap-2">
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_about">Sobre nosotros</a>
           <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#como-funciona" data-i18n="how_eyebrow">Cómo funciona</a>
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5" href="#"><span>Perolero PRO</span><span class="bg-mint-light text-primary text-[10px] px-2 py-0.5 rounded-full font-bold uppercase" data-i18n="new">Nuevo</span></a>
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_press">Prensa</a>
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_jobs">Empleo</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#recientes" data-i18n="f_browse">Ver anuncios</a>
+          <a class="open-publish font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="publish_short">Publicar</a>
         </nav>
       </div>
       <div class="flex flex-col gap-space-sm">
         <span class="font-title-sm text-title-sm text-charcoal-dark font-bold" data-i18n="f_support">Soporte</span>
         <nav class="flex flex-col gap-2">
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_help">Centro de ayuda</a>
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_rules">Normas de la comunidad</a>
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_safety">Consejos de seguridad</a>
-          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#" data-i18n="f_buyer">Protección al comprador</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#seguridad" data-i18n="f_safety">Consejos de seguridad</a>
+          <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="mailto:hola@perolero.com" data-i18n="f_contact">Contacto</a>
         </nav>
       </div>
       <div class="flex flex-col gap-space-sm">
@@ -571,8 +560,8 @@
         <span class="font-title-sm text-title-sm text-charcoal-dark font-bold" data-i18n="f_app">Descarga la app</span>
         <p class="font-body-sm text-body-sm text-secondary" data-i18n="f_app_p">Compra y vende estés donde estés desde tu celular.</p>
         <div class="flex flex-col sm:flex-row lg:flex-col gap-2 pt-1">
-          <a href="#" class="store-link flex items-center gap-2.5 px-3 py-2 bg-charcoal-dark text-on-primary rounded-2xl hover:bg-secondary transition-colors"><span class="material-symbols-outlined text-[24px]">phone_iphone</span><div class="text-left"><p class="text-[9px] uppercase tracking-wide leading-none opacity-80" data-i18n="dl_on">Descargar en</p><p class="font-label-md text-label-md font-bold leading-tight">App Store</p></div></a>
-          <a href="#" class="store-link flex items-center gap-2.5 px-3 py-2 bg-charcoal-dark text-on-primary rounded-2xl hover:bg-secondary transition-colors"><span class="material-symbols-outlined text-[24px]">play_arrow</span><div class="text-left"><p class="text-[9px] uppercase tracking-wide leading-none opacity-80" data-i18n="get_on">Disponible en</p><p class="font-label-md text-label-md font-bold leading-tight">Google Play</p></div></a>
+          <button class="install-btn flex items-center gap-2.5 px-3 py-2 bg-charcoal-dark text-on-primary rounded-2xl hover:bg-secondary transition-colors" data-os="ios" type="button"><span class="material-symbols-outlined text-[24px]">phone_iphone</span><div class="text-left"><p class="text-[9px] uppercase tracking-wide leading-none opacity-80" data-i18n="add_home">Añadir a inicio</p><p class="font-label-md text-label-md font-bold leading-tight">iPhone</p></div></button>
+          <button class="install-btn flex items-center gap-2.5 px-3 py-2 bg-charcoal-dark text-on-primary rounded-2xl hover:bg-secondary transition-colors" data-os="android" type="button"><span class="material-symbols-outlined text-[24px]">android</span><div class="text-left"><p class="text-[9px] uppercase tracking-wide leading-none opacity-80" data-i18n="add_home">Añadir a inicio</p><p class="font-label-md text-label-md font-bold leading-tight">Android</p></div></button>
         </div>
       </div>
     </div>
@@ -616,7 +605,7 @@
     <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center" type="button" aria-label="Cerrar"><span class="material-symbols-outlined">close</span></button>
     <div>
       <span class="text-primary font-label-md text-label-md font-bold uppercase tracking-wider" data-i18n="pub_eyebrow">Es gratis</span>
-      <h3 class="font-headline-md text-headline-md text-charcoal-dark" data-i18n="pub_title">Publicar producto</h3>
+      <h3 id="pub-heading" class="font-headline-md text-headline-md text-charcoal-dark">Publicar producto</h3>
     </div>
     <div class="flex flex-col gap-2">
       <div class="flex items-center justify-between"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="photos">Fotos</span><span id="pub-count" class="text-body-sm text-secondary">0/6</span></div>
@@ -630,7 +619,7 @@
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <label class="flex flex-col gap-1.5 sm:col-span-2"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_name">Título</span>
-        <input id="pub-title" required maxlength="60" class="px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container focus:bg-white outline-none transition-colors" data-i18n-ph="pub_name_ph" placeholder="Ej.: iPhone 13 de 128 GB"/></label>
+        <input id="pub-title" required maxlength="80" class="px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container focus:bg-white outline-none transition-colors" data-i18n-ph="pub_name_ph" placeholder="Ej.: iPhone 13 de 128 GB"/></label>
       <label class="flex flex-col gap-1.5"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_price">Precio (USD)</span>
         <div class="flex items-center px-4 rounded-2xl bg-surface-container-low border border-transparent focus-within:border-primary-container focus-within:bg-white transition-colors"><span class="text-secondary font-bold mr-1">$</span><input id="pub-price" required type="number" min="1" step="0.01" inputmode="decimal" class="w-full py-3 bg-transparent outline-none" placeholder="0"/></div></label>
       <label class="flex flex-col gap-1.5"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_cat">Categoría</span>
@@ -643,12 +632,12 @@
         <span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_ship">Ofrezco envío</span>
       </label>
       <label class="flex flex-col gap-1.5 sm:col-span-2"><span class="font-label-lg text-label-lg text-charcoal-dark" data-i18n="pub_desc">Descripción</span>
-        <textarea id="pub-desc" rows="3" maxlength="200" class="px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container focus:bg-white outline-none resize-none transition-colors" data-i18n-ph="pub_desc_ph" placeholder="Estado, detalles, motivo de venta..."></textarea></label>
+        <textarea id="pub-desc" rows="4" maxlength="1000" class="px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container focus:bg-white outline-none resize-none transition-colors" data-i18n-ph="pub_desc_ph" placeholder="Estado, detalles, motivo de venta..."></textarea></label>
     </div>
     <p id="pub-error" class="hidden text-error text-body-md font-medium" data-i18n="pub_error">Completa el título y un precio válido.</p>
     <div class="flex flex-col-reverse sm:flex-row gap-2 sm:justify-end pt-2">
       <button class="modal-close px-6 py-3 rounded-full bg-surface-container hover:bg-surface-container-high text-charcoal-dark font-label-lg text-label-lg transition-colors" type="button" data-i18n="cancel">Cancelar</button>
-      <button id="pub-submit" class="px-6 py-3 rounded-full bg-primary-container hover:bg-primary text-white font-label-lg text-label-lg transition-all active:scale-95 shadow-sm inline-flex items-center justify-center gap-2 disabled:opacity-60" type="submit"><span class="material-symbols-outlined text-[20px]">rocket_launch</span><span id="pub-submit-text" data-i18n="pub_submit">Publicar ahora</span></button>
+      <button id="pub-submit" class="px-6 py-3 rounded-full bg-primary-container hover:bg-primary text-white font-label-lg text-label-lg transition-all active:scale-95 shadow-sm inline-flex items-center justify-center gap-2 disabled:opacity-60" type="submit"><span class="material-symbols-outlined text-[20px]">rocket_launch</span><span id="pub-submit-text">Publicar ahora</span></button>
     </div>
   </form>
 </div>
@@ -695,7 +684,11 @@
   <form id="profile-form" class="panel relative w-full sm:max-w-md max-h-[94vh] overflow-y-auto bg-surface-card rounded-t-[2rem] sm:rounded-lg shadow-2xl p-6 md:p-8 flex flex-col gap-4" novalidate>
     <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center" type="button" aria-label="Cerrar"><span class="material-symbols-outlined">close</span></button>
     <div class="flex items-center gap-4">
-      <span id="profile-initials" class="w-16 h-16 rounded-full bg-primary-container text-white text-[22px] font-bold flex items-center justify-center shadow-sm">TÚ</span>
+      <label class="relative shrink-0 cursor-pointer group" data-i18n-title="change_photo" title="Cambiar foto">
+        <span id="profile-avatar" class="block w-20 h-20"></span>
+        <span class="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-charcoal-dark text-white flex items-center justify-center shadow ring-2 ring-white group-hover:bg-primary transition-colors"><span class="material-symbols-outlined text-[16px]">photo_camera</span></span>
+        <input id="avatar-input" type="file" accept="image/*" class="sr-only"/>
+      </label>
       <div class="min-w-0">
         <h3 class="font-headline-md text-headline-md text-charcoal-dark" data-i18n="my_profile">Mi perfil</h3>
         <p id="profile-email" class="text-body-md text-secondary truncate"></p>
@@ -716,7 +709,39 @@
   </form>
 </div>
 
-<div id="toast"class="fixed left-1/2 bottom-6 z-[80] bg-charcoal-dark text-white px-5 py-3 rounded-full shadow-xl flex items-center gap-2 text-label-lg font-label-lg max-w-[92vw]" role="status" aria-live="polite">
+<!-- ================= SELLER MODAL ================= -->
+<div id="seller-modal" class="overlay fixed inset-0 z-[75] bg-charcoal-dark/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6" aria-modal="true" role="dialog">
+  <div class="panel relative w-full sm:max-w-3xl max-h-[92vh] overflow-y-auto bg-surface-card rounded-t-[2rem] sm:rounded-lg shadow-2xl p-6 md:p-8">
+    <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center" type="button" aria-label="Cerrar"><span class="material-symbols-outlined">close</span></button>
+    <div id="seller-body"></div>
+  </div>
+</div>
+
+<!-- ================= REPORT MODAL ================= -->
+<div id="report-modal" class="overlay fixed inset-0 z-[78] bg-charcoal-dark/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6" aria-modal="true" role="dialog">
+  <form id="report-form" class="panel relative w-full sm:max-w-md max-h-[92vh] overflow-y-auto bg-surface-card rounded-t-[2rem] sm:rounded-lg shadow-2xl p-6 md:p-8 flex flex-col gap-4" novalidate>
+    <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center" type="button" aria-label="Cerrar"><span class="material-symbols-outlined">close</span></button>
+    <div class="flex items-center gap-3"><span class="w-11 h-11 rounded-full bg-tertiary-fixed text-badge-coral flex items-center justify-center"><span class="material-symbols-outlined">flag</span></span>
+      <div><h3 class="font-headline-sm text-headline-sm text-charcoal-dark" data-i18n="report_title">Reportar anuncio</h3><p id="report-listing" class="text-body-sm text-secondary truncate"></p></div></div>
+    <div id="report-reasons" class="flex flex-col gap-2"></div>
+    <textarea id="report-details" rows="3" maxlength="500" class="px-4 py-3 rounded-2xl bg-surface-container-low border border-transparent focus:border-primary-container focus:bg-white outline-none resize-none" data-i18n-ph="report_details" placeholder="Cuéntanos más (opcional)"></textarea>
+    <p id="report-msg" class="hidden text-body-md text-error"></p>
+    <button id="report-submit" class="py-3 rounded-full bg-badge-coral hover:bg-tertiary text-white font-label-lg text-label-lg transition-all disabled:opacity-60" type="submit" data-i18n="report_send">Enviar reporte</button>
+  </form>
+</div>
+
+<!-- ================= ADMIN MODAL ================= -->
+<div id="admin-modal" class="overlay fixed inset-0 z-[75] bg-charcoal-dark/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6" aria-modal="true" role="dialog">
+  <div class="panel relative w-full sm:max-w-4xl max-h-[92vh] overflow-y-auto bg-surface-card rounded-t-[2rem] sm:rounded-lg shadow-2xl p-6 md:p-8">
+    <button class="modal-close absolute top-4 right-4 w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center" type="button" aria-label="Cerrar"><span class="material-symbols-outlined">close</span></button>
+    <div class="flex items-center gap-3 mb-5"><span class="w-11 h-11 rounded-full bg-charcoal-dark text-white flex items-center justify-center"><span class="material-symbols-outlined">shield_person</span></span>
+      <div><h3 class="font-headline-md text-headline-md text-charcoal-dark" data-i18n="admin_title">Panel de moderación</h3><p class="text-body-sm text-secondary" data-i18n="admin_sub">Anuncios reportados por la comunidad</p></div></div>
+    <div id="admin-stats" class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6"></div>
+    <div id="admin-list" class="flex flex-col gap-3"></div>
+  </div>
+</div>
+
+<div id="toast" class="fixed left-1/2 bottom-6 z-[80] bg-charcoal-dark text-white px-5 py-3 rounded-[1.5rem] shadow-xl flex items-center gap-2 text-label-lg font-label-lg max-w-[92vw] sm:max-w-lg" role="status" aria-live="polite">
   <span id="toast-icon" class="material-symbols-outlined text-mint-bright text-[20px]">check_circle</span><span id="toast-text"></span>
 </div>
 
@@ -744,20 +769,20 @@ const T = {
 es:{
   search_ph:"Buscar en todas las categorías...", search:"Buscar", categories:"Categorías", all_cats:"Todas las categorías", all_ve:"Toda Venezuela",
   messages:"Mensajes", favorites:"Favoritos", profile:"Mi perfil", publish_btn:"+ Publicar producto", publish_short:"Publicar", see_all_msgs:"Ver todos",
-  hero_badge:"Cambia a tu manera • Economía circular", hero_h1_a:"La app y web para", hero_h1_b:"comprar y vender", hero_h1_c:"cerca de ti",
+  hero_badge:"Cambia a tu manera • Economía circular", hero_h1_a:"La web para", hero_h1_b:"comprar y vender", hero_h1_c:"cerca de ti",
   rot:["lo que quieras","carros","celulares","ropa","muebles","consolas"],
-  hero_p:"Dale una segunda vida a miles de productos en toda Venezuela. Encuentra joyitas a precios únicos en dólares, apoya la economía circular y recibe tus paquetes en la puerta con Envíos Perolero.",
+  hero_p:"Dale una segunda vida a lo que ya no usas y encuentra joyitas de segunda mano en toda Venezuela. Publica gratis, pon tu precio en dólares y habla directo con los compradores por WhatsApp.",
   hero_cta1:"Publicar gratis", hero_cta2:"Explorar ofertas de hoy",
-  trust1:"Pago protegido hasta la entrega", trust2:"Envíos asegurados a toda Venezuela", trust3:"Devoluciones garantizadas en 48 h",
-  community:"Comunidad activa", community_n:"+2 millones de usuarios", live:"EN VIVO", float1_a:"Oferta aceptada", float2_a:"En camino",
+  trust1:"Publicar es gratis", trust2:"Contacto directo por WhatsApp", trust3:"Cuentas verificadas por correo",
+  community:"Comunidad Perolero", community_n:"+2 millones de usuarios", live:"NUEVO", float1_a:"Oferta aceptada", float2_a:"Nuevo mensaje",
   cats_title:"¿Qué estás buscando?", cats_sub:"Explora las categorías más activas de tu zona", cats_more:"Ver todas ({n})", cats_less:"Ver menos",
   chip_near:"Cerca de mí ({c})", chip_ship:"Con envío", chip_drop:"Bajadas de precio", chip_fav:"Mis favoritos", chip_adv:"Filtros avanzados",
   price_range:"Rango de precio (USD)", min:"Mín.", max:"Máx.", clear:"Limpiar", apply:"Aplicar",
   results:"{n} resultados", result1:"1 resultado", for_q:"para «{q}»", clear_filters:"Limpiar filtros",
   empty_title:"No encontramos productos con esos filtros", empty_sub:"Prueba con otra búsqueda o sé el primero en publicar algo así.",
   recent_title:"Recién llegados a tu zona", recent_sub:"Oportunidades publicadas en los últimos minutos",
-  cars_title:"Destacados en carros", cars_pill:"Garantía PRO", cars_sub:"Vehículos verificados con historial y kilometraje certificado", cars_all:"Ver todos los carros",
-  fashion_title:"Moda sostenible y vintage", fashion_sub:"Viste tu estilo ahorrando hasta un 70% frente a la tienda", trending:"Tendencia",
+  cars_title:"Carros y motos", cars_pill:"Garantía PRO", cars_sub:"Vehículos publicados por la comunidad", cars_all:"Ver todos los carros",
+  fashion_title:"Moda y accesorios", fashion_sub:"Ropa, zapatos y accesorios de segunda mano", trending:"Tendencia",
   how_eyebrow:"Cómo funciona", how_title:"Vende en minutos, compra con confianza", how_cta:"Empezar a vender",
   step1_t:"Toma unas fotos", step1_d:"Publica gratis en menos de un minuto. Ponle precio en dólares y listo.",
   step2_t:"Chatea y negocia", step2_d:"Habla directo con el comprador o vendedor y lleguen a un acuerdo justo.",
@@ -766,16 +791,16 @@ es:{
   cities_title:"Perolero en toda Venezuela", cities_sub:"Descubre lo que se mueve en tu ciudad", listings:"{n} anuncios",
   testi_title:"Lo que dice nuestra comunidad", testi_sub:"Historias de compra y venta de nuestros usuarios",
   impact_eyebrow:"El poder de la segunda mano", impact_title:"Comprar y vender cosas usadas ayuda al planeta y a tu bolsillo.",
-  impact_p:"En 2025, nuestra comunidad evitó más de 12.000 toneladas de CO₂ al alargar la vida útil de millones de objetos que aún tenían mucho que dar.",
-  stat1:"CO₂ evitado", stat2:"Ahorro para usuarios", stat3:"Objetos reutilizados", reuse:"Reutilización", carbon:"Huella de carbono neutral",
-  app_eyebrow:"Perolero en tu bolsillo", app_title:"La app para vender y descubrir al instante",
-  app_p:"Chatea al instante con vendedores, negocia de forma amistosa, paga con total seguridad y gestiona tus envíos desde tu celular.",
-  dl_on:"Descargar en", get_on:"Disponible en", language:"Idioma:", phone_head:"Chat con comprador",
+  impact_p:"Cada cosa que se vende en Perolero sigue siendo útil en otra casa: menos basura, menos gasto y más dinero en tu bolsillo.",
+  stat1:"Anuncios activos", stat2:"Objetos vendidos", stat3:"Personas registradas", reuse:"Cada objeto reutilizado cuenta", carbon:"Menos basura, más ahorro para tu familia.",
+  app_eyebrow:"Perolero en tu celular", app_title:"Úsalo como una app, sin descargar nada",
+  app_p:"Añade Perolero a la pantalla de inicio de tu celular y entra con un toque. Funciona en Android y iPhone.",
+  dl_on:"Descargar en", get_on:"Disponible en", language:"Idioma:", phone_head:"WhatsApp",
   chat1:"¡Hola! ¿Todavía está disponible? ¿Haces envíos a Caracas?", chat2:"¡Sí! Te lo mando hoy por encomienda con seguro incluido.", chat3:"✓ Oferta aceptada: $400",
   f_about:"Sobre nosotros", new:"Nuevo", f_press:"Prensa", f_jobs:"Empleo", f_support:"Soporte", f_help:"Centro de ayuda", f_rules:"Normas de la comunidad",
   f_safety:"Consejos de seguridad", f_buyer:"Protección al comprador", f_legal:"Aviso legal", f_terms:"Términos de uso", f_privacy:"Política de privacidad",
-  f_lang:"Idioma y moneda", f_currency:"Precios en dólares (USD)", f_app:"Descarga la app", f_app_p:"Compra y vende estés donde estés desde tu celular.",
-  copyright:"© 2026 Perolero Venezuela. Todos los derechos reservados.", f_secure:"Transacciones protegidas y envíos asegurados",
+  f_lang:"Idioma y moneda", f_currency:"Precios en dólares (USD)", f_app:"Úsalo en tu celular", f_app_p:"Compra y vende estés donde estés desde tu celular.",
+  copyright:"© 2026 Perolero Venezuela. Todos los derechos reservados.", f_secure:"Contacto directo entre compradores y vendedores",
   ck_title:"Tu privacidad nos importa", ck_text:"En Perolero usamos cookies propias y de terceros para mejorar tu experiencia y mostrarte contenido relevante. Puedes aceptarlas todas o gestionar tus preferencias.",
   ck_accept:"Aceptar todo", ck_reject:"Rechazar todo", ck_custom:"Personalizar", ck_notice:"Aviso de privacidad", ck_terms:"Términos",
   pub_eyebrow:"Es gratis", pub_title:"Publicar producto", pub_photo:"Añade hasta 6 fotos (la primera será la portada)", pub_photo_hint:"JPG o PNG · se optimizan automáticamente", photos:"Fotos", pub_name:"Título", pub_name_ph:"Ej.: iPhone 13 de 128 GB",
@@ -797,6 +822,22 @@ es:{
   marked_sold:"Anuncio marcado como vendido", reactivated:"Tu anuncio vuelve a estar a la venta", deleted:"Anuncio eliminado", sold:"VENDIDO", your_listing:"Este es tu anuncio",
   my_listings:"Mis anuncios", cover:"Portada", max_photos:"Máximo 6 fotos por anuncio", pub_need_photo:"Añade al menos una foto.", uploading:"Subiendo foto {i} de {n}...",
   search_city:"Buscar ciudad o estado...", d_ago:"Hace {n} d", safety_tip:"Consejo: revisa el producto antes de pagar y reúnete en lugares públicos y concurridos.",
+  listing1:"1 anuncio", float2_b:"¿Sigue disponible?", community_n:"{n} personas ya usan Perolero", community_join:"Únete hoy, ¡es gratis!",
+  safe_title:"Compra y vende seguro", safe_sub:"Consejos sencillos para que todo salga bien",
+  tips:[["groups","Reúnete en lugares públicos","Para entregar en persona, elige sitios concurridos como centros comerciales, y mejor de día."],["fact_check","Revisa antes de pagar","Prueba el producto y comprueba que funciona y coincide con las fotos antes de entregar el dinero."],["gpp_maybe","Desconfía de lo demasiado bueno","No pagues por adelantado a desconocidos ni compartas códigos o claves. Si algo no cuadra, repórtalo."]],
+  add_home:"Añadir a inicio", install_android:"En Chrome, abre el menú ⋮ y pulsa «Añadir a pantalla de inicio». ¡Perolero quedará como una app!", install_ios:"En Safari, pulsa el botón Compartir y luego «Añadir a pantalla de inicio».",
+  f_browse:"Ver anuncios", f_contact:"Contacto", see_all:"Ver todos", load_more:"Cargar más", results_title:"Resultados", results_sub:"Anuncios que coinciden con tu búsqueda", all_title:"Todos los anuncios", all_sub:"Lo más reciente primero",
+  sample:"Ejemplo", new_tag:"Nuevo", hidden_label:"OCULTO", hidden_note:"Este anuncio fue ocultado por moderación y no lo ven otros usuarios.", be_first:"¡Sé el primero en publicar!",
+  edit:"Editar anuncio", edit_title:"Editar anuncio", save_changes:"Guardar cambios", listing_updated:"Anuncio actualizado", tap_cover:"Toca una foto para hacerla portada",
+  share:"Compartir", share_text:"Mira esto en Perolero: {t} por {p}", link_copied:"Enlace copiado. ¡Pégalo donde quieras!", copy_link:"Copia este enlace:", not_found:"Este anuncio ya no está disponible",
+  reviews_n:"{n} opiniones", review1:"1 opinión", no_reviews:"Sin opiniones todavía", member_since:"En Perolero desde {d}", listings_of:"Anuncios de {n}", no_seller_listings:"No tiene anuncios activos ahora mismo.",
+  reviews_title:"Opiniones", write_review:"Deja tu opinión", edit_review:"Edita tu opinión", review_ph:"¿Cómo fue tu experiencia con este vendedor?", send_review:"Publicar opinión", review_saved:"¡Gracias por tu opinión!", review_login:"Entra para dejar una opinión", pick_stars:"Elige de 1 a 5 estrellas.", see_profile:"Ver perfil y opiniones",
+  change_photo:"Cambiar foto", photo_saved:"Foto de perfil actualizada",
+  report:"Reportar anuncio", report_title:"Reportar anuncio", report_details:"Cuéntanos más (opcional)", report_send:"Enviar reporte", report_pick:"Elige un motivo.", report_done:"Gracias. Revisaremos este anuncio pronto.", report_dup:"Ya habías reportado este anuncio.",
+  reasons:{scam:"Posible estafa o fraude",prohibited:"Producto prohibido o ilegal",wrong_category:"Categoría o precio incorrecto",offensive:"Contenido ofensivo",duplicate:"Anuncio repetido",other:"Otro motivo"},
+  admin_title:"Panel de moderación", admin_sub:"Anuncios reportados por la comunidad", admin_empty:"No hay reportes pendientes. ¡Todo en orden! 🎉", reports_n:"{n} reportes", report1:"1 reporte",
+  view:"Ver", hide:"Ocultar", unhide:"Mostrar", dismiss:"Descartar reportes", a_listings:"Anuncios activos", a_sold:"Vendidos", a_users:"Usuarios", a_reports:"Reportes abiertos", done:"Hecho",
+  status_active:"Activo", status_sold:"Vendido", status_hidden:"Oculto",
   login:"Entrar", register:"Crear cuenta", logout:"Cerrar sesión", my_profile:"Mi perfil", full_name:"Nombre y apellido", full_name_ph:"Ej.: María González",
   email:"Correo electrónico", password:"Contraseña", password_ph:"Mínimo 6 caracteres", new_password:"Nueva contraseña", forgot:"¿Olvidaste tu contraseña?", back_login:"Volver a entrar",
   terms_note:"Al crear tu cuenta aceptas los Términos de uso y la Política de privacidad de Perolero.",
@@ -818,20 +859,20 @@ es:{
 en:{
   search_ph:"Search all categories...", search:"Search", categories:"Categories", all_cats:"All categories", all_ve:"All Venezuela",
   messages:"Messages", favorites:"Favorites", profile:"My profile", publish_btn:"+ List an item", publish_short:"List", see_all_msgs:"See all",
-  hero_badge:"Trade your way • Circular economy", hero_h1_a:"The app and website to", hero_h1_b:"buy and sell", hero_h1_c:"near you",
+  hero_badge:"Trade your way • Circular economy", hero_h1_a:"The website to", hero_h1_b:"buy and sell", hero_h1_c:"near you",
   rot:["anything","cars","phones","clothes","furniture","consoles"],
-  hero_p:"Give thousands of products a second life all across Venezuela. Find hidden gems at great prices in US dollars, support the circular economy and get your parcels delivered to your door with Perolero Shipping.",
+  hero_p:"Give a second life to things you no longer use and find second-hand gems all over Venezuela. List for free, set your price in US dollars and talk directly with buyers on WhatsApp.",
   hero_cta1:"List for free", hero_cta2:"Explore today's deals",
-  trust1:"Payment protected until delivery", trust2:"Insured shipping across Venezuela", trust3:"Guaranteed returns within 48h",
-  community:"Active community", community_n:"2M+ users", live:"LIVE", float1_a:"Offer accepted", float2_a:"On its way",
+  trust1:"Listing is free", trust2:"Direct contact on WhatsApp", trust3:"Email-verified accounts",
+  community:"Perolero community", community_n:"2M+ users", live:"NEW", float1_a:"Offer accepted", float2_a:"New message",
   cats_title:"What are you looking for?", cats_sub:"Browse the most active categories near you", cats_more:"See all ({n})", cats_less:"See less",
   chip_near:"Near me ({c})", chip_ship:"With shipping", chip_drop:"Price drops", chip_fav:"My favorites", chip_adv:"Advanced filters",
   price_range:"Price range (USD)", min:"Min", max:"Max", clear:"Clear", apply:"Apply",
   results:"{n} results", result1:"1 result", for_q:"for “{q}”", clear_filters:"Clear filters",
   empty_title:"No items match those filters", empty_sub:"Try another search or be the first to list something like it.",
   recent_title:"Just arrived near you", recent_sub:"Deals posted in the last few minutes",
-  cars_title:"Featured cars", cars_pill:"PRO warranty", cars_sub:"Verified vehicles with certified history and mileage", cars_all:"See all cars",
-  fashion_title:"Sustainable & vintage fashion", fashion_sub:"Wear your own style and save up to 70% vs. retail", trending:"Trending",
+  cars_title:"Cars & motorcycles", cars_pill:"PRO warranty", cars_sub:"Vehicles listed by the community", cars_all:"See all cars",
+  fashion_title:"Fashion & accessories", fashion_sub:"Second-hand clothes, shoes and accessories", trending:"Trending",
   how_eyebrow:"How it works", how_title:"Sell in minutes, buy with confidence", how_cta:"Start selling",
   step1_t:"Snap a few photos", step1_d:"List for free in under a minute. Set your price in US dollars and you're done.",
   step2_t:"Chat and negotiate", step2_d:"Talk directly with buyers or sellers and agree on a fair deal.",
@@ -840,16 +881,16 @@ en:{
   cities_title:"Perolero all over Venezuela", cities_sub:"Discover what's trending in your city", listings:"{n} listings",
   testi_title:"What our community says", testi_sub:"Buying and selling stories from our users",
   impact_eyebrow:"The power of second-hand", impact_title:"Buying and selling used items helps the planet and your wallet.",
-  impact_p:"In 2025, our community avoided over 12,000 tonnes of CO₂ by extending the life of millions of items that still had plenty to give.",
-  stat1:"CO₂ avoided", stat2:"Saved by users", stat3:"Items reused", reuse:"Reuse", carbon:"Carbon-neutral footprint",
-  app_eyebrow:"Perolero in your pocket", app_title:"The app to sell and discover instantly",
-  app_p:"Chat with sellers instantly, negotiate in a friendly way, pay safely and manage your shipments from your phone.",
-  dl_on:"Download on", get_on:"Get it on", language:"Language:", phone_head:"Chat with buyer",
+  impact_p:"Everything sold on Perolero stays useful in another home: less waste, less spending and more money in your pocket.",
+  stat1:"Active listings", stat2:"Items sold", stat3:"Registered people", reuse:"Every reused item counts", carbon:"Less waste, more savings for your family.",
+  app_eyebrow:"Perolero on your phone", app_title:"Use it like an app, no download needed",
+  app_p:"Add Perolero to your phone's home screen and open it with one tap. Works on Android and iPhone.",
+  dl_on:"Download on", get_on:"Get it on", language:"Language:", phone_head:"WhatsApp",
   chat1:"Hi! Is it still available? Do you ship to Caracas?", chat2:"Yes! I'll ship it today with insurance included.", chat3:"✓ Offer accepted: $400",
   f_about:"About us", new:"New", f_press:"Press", f_jobs:"Careers", f_support:"Support", f_help:"Help center", f_rules:"Community guidelines",
   f_safety:"Safety tips", f_buyer:"Buyer protection", f_legal:"Legal notice", f_terms:"Terms of use", f_privacy:"Privacy policy",
-  f_lang:"Language & currency", f_currency:"Prices in US dollars (USD)", f_app:"Get the app", f_app_p:"Buy and sell wherever you are from your phone.",
-  copyright:"© 2026 Perolero Venezuela. All rights reserved.", f_secure:"Protected transactions and insured shipping",
+  f_lang:"Language & currency", f_currency:"Prices in US dollars (USD)", f_app:"Use it on your phone", f_app_p:"Buy and sell wherever you are from your phone.",
+  copyright:"© 2026 Perolero Venezuela. All rights reserved.", f_secure:"Direct contact between buyers and sellers",
   ck_title:"Your privacy matters", ck_text:"At Perolero we use our own and third-party cookies to improve your experience and show you relevant content. You can accept them all or manage your preferences.",
   ck_accept:"Accept all", ck_reject:"Reject all", ck_custom:"Customize", ck_notice:"Privacy notice", ck_terms:"Terms",
   pub_eyebrow:"It's free", pub_title:"List an item", pub_photo:"Add up to 6 photos (the first one is the cover)", pub_photo_hint:"JPG or PNG · automatically optimized", photos:"Photos", pub_name:"Title", pub_name_ph:"e.g. iPhone 13 128GB",
@@ -871,6 +912,22 @@ en:{
   marked_sold:"Listing marked as sold", reactivated:"Your listing is back on sale", deleted:"Listing deleted", sold:"SOLD", your_listing:"This is your listing",
   my_listings:"My listings", cover:"Cover", max_photos:"Maximum 6 photos per listing", pub_need_photo:"Add at least one photo.", uploading:"Uploading photo {i} of {n}...",
   search_city:"Search city or state...", d_ago:"{n}d ago", safety_tip:"Tip: check the item before paying and meet in busy public places.",
+  listing1:"1 listing", float2_b:"Still available?", community_n:"{n} people already use Perolero", community_join:"Join today, it's free!",
+  safe_title:"Buy and sell safely", safe_sub:"Simple tips so everything goes well",
+  tips:[["groups","Meet in public places","For in-person deals, pick busy spots like shopping malls, ideally during the day."],["fact_check","Check before paying","Try the item and make sure it works and matches the photos before handing over money."],["gpp_maybe","Be wary of deals too good to be true","Never pay strangers in advance or share codes or passwords. If something feels off, report it."]],
+  add_home:"Add to home", install_android:"In Chrome, open the ⋮ menu and tap “Add to Home screen”. Perolero will work like an app!", install_ios:"In Safari, tap the Share button and then “Add to Home Screen”.",
+  f_browse:"Browse listings", f_contact:"Contact", see_all:"See all", load_more:"Load more", results_title:"Results", results_sub:"Listings matching your search", all_title:"All listings", all_sub:"Newest first",
+  sample:"Example", new_tag:"New", hidden_label:"HIDDEN", hidden_note:"This listing was hidden by moderation and other users can't see it.", be_first:"Be the first to list!",
+  edit:"Edit listing", edit_title:"Edit listing", save_changes:"Save changes", listing_updated:"Listing updated", tap_cover:"Tap a photo to make it the cover",
+  share:"Share", share_text:"Check this out on Perolero: {t} for {p}", link_copied:"Link copied. Paste it anywhere!", copy_link:"Copy this link:", not_found:"This listing is no longer available",
+  reviews_n:"{n} reviews", review1:"1 review", no_reviews:"No reviews yet", member_since:"On Perolero since {d}", listings_of:"{n}'s listings", no_seller_listings:"No active listings right now.",
+  reviews_title:"Reviews", write_review:"Leave a review", edit_review:"Edit your review", review_ph:"How was your experience with this seller?", send_review:"Post review", review_saved:"Thanks for your review!", review_login:"Sign in to leave a review", pick_stars:"Pick 1 to 5 stars.", see_profile:"See profile and reviews",
+  change_photo:"Change photo", photo_saved:"Profile photo updated",
+  report:"Report listing", report_title:"Report listing", report_details:"Tell us more (optional)", report_send:"Send report", report_pick:"Pick a reason.", report_done:"Thanks. We'll review this listing soon.", report_dup:"You already reported this listing.",
+  reasons:{scam:"Possible scam or fraud",prohibited:"Prohibited or illegal item",wrong_category:"Wrong category or price",offensive:"Offensive content",duplicate:"Duplicate listing",other:"Other reason"},
+  admin_title:"Moderation panel", admin_sub:"Listings reported by the community", admin_empty:"No pending reports. All good! 🎉", reports_n:"{n} reports", report1:"1 report",
+  view:"View", hide:"Hide", unhide:"Show", dismiss:"Dismiss reports", a_listings:"Active listings", a_sold:"Sold", a_users:"Users", a_reports:"Open reports", done:"Done",
+  status_active:"Active", status_sold:"Sold", status_hidden:"Hidden",
   login:"Sign in", register:"Sign up", logout:"Sign out", my_profile:"My profile", full_name:"Full name", full_name_ph:"e.g. María González",
   email:"Email", password:"Password", password_ph:"At least 6 characters", new_password:"New password", forgot:"Forgot your password?", back_login:"Back to sign in",
   terms_note:"By creating an account you accept Perolero's Terms of use and Privacy policy.",
@@ -1041,7 +1098,7 @@ function matches(p){
   if(state.drop && !p.was) return false;
   if(state.fav && !state.favs.has(p.id)) return false;
   if(state.mine && !(p.real && auth.user && p.owner===auth.user.id)) return false;
-  if(p.status==="sold" && !state.mine) return false;
+  if((p.status==="sold"||p.status==="hidden") && !state.mine) return false;
   if(state.min!=null && p.price<state.min) return false;
   if(state.max!=null && p.price>state.max) return false;
   return true;
@@ -1054,7 +1111,10 @@ const favBtn = p=>`<button class="fav-toggle absolute top-2.5 right-2.5 w-8 h-8 
 const TAGCOL = {mint:"bg-mint-light text-primary",coral:"bg-badge-coral text-on-tertiary",gray:"bg-surface-container-highest text-charcoal-dark",dark:"bg-charcoal-dark/80 backdrop-blur-sm text-white",orange:"bg-badge-orange/20 text-badge-orange",primary:"bg-primary-container text-white",white:"bg-surface-card/90 text-charcoal-dark"};
 const media = (p,ratio)=>!p.img?`<div class="media relative w-full ${ratio} overflow-hidden"><div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-mint-light via-surface-container to-tertiary-fixed/60 text-primary"><span class="material-symbols-outlined text-[56px] opacity-60">${p.icon}</span></div>`:`<div class="media relative w-full ${ratio} bg-surface-container-high overflow-hidden shimmer"><img class="w-full h-full object-cover" src="${p.img}" alt="${esc((p[state.lang]||p.es).t)}" loading="lazy" onload="imgLoaded(this)" onerror="imgFail(this,'${p.icon}')"/>`;
 
-const soldOverlay = p=>p.status==="sold"?`<div class="absolute inset-0 bg-charcoal-dark/55 flex items-center justify-center z-[1]"><span class="px-3 py-1 rounded-full bg-white text-charcoal-dark text-label-md font-bold">${t("sold")}</span></div>`:"";
+const soldOverlay = p=>(p.status==="sold"||p.status==="hidden")?`<div class="absolute inset-0 bg-charcoal-dark/55 flex items-center justify-center z-[1]"><span class="px-3 py-1 rounded-full bg-white text-charcoal-dark text-label-md font-bold">${t(p.status==="sold"?"sold":"hidden_label")}</span></div>`:"";
+const sampleChip = p=>p.sample?`<span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-charcoal-dark/70 backdrop-blur-sm text-white text-[10px] font-bold">${t("sample")}</span>`:"";
+const avatarHTML = (prof,cls="w-11 h-11",txt="text-[14px]")=>prof?.avatar_url?`<img src="${esc(prof.avatar_url)}" alt="" class="${cls} rounded-full object-cover bg-surface-container-high shrink-0"/>`:`<span class="${cls} ${txt} rounded-full bg-primary-container text-white font-bold flex items-center justify-center shrink-0">${esc(initials(prof?.full_name||""))}</span>`;
+const starsHTML = (avg,size=14)=>[1,2,3,4,5].map(i=>`<span class="material-symbols-outlined ${i<=Math.round(avg)?"icon-fill text-badge-orange":"text-outline-variant"}" style="font-size:${size}px">star</span>`).join("");
 function smallCard(p,i){
   const L=p[state.lang]||p.es;
   let top="";
@@ -1069,9 +1129,9 @@ function smallCard(p,i){
   else if(p.neg) right=`<span class="font-label-sm text-label-sm text-badge-coral font-bold">${t("negotiable")}</span>`;
   else if(p.size) right=`<span class="font-label-sm text-label-sm text-secondary">${t("size",{s:p.size})}</span>`;
   const dropBadge = p.was && p.mins!=null ? `<span class="ml-1.5 align-middle text-[10px] font-bold text-badge-coral bg-tertiary-fixed px-1.5 py-0.5 rounded-full">-${Math.round((1-p.price/p.was)*100)}%</span>`:"";
-  const footR = p.shipCost ? `<span class="text-[11px] text-primary font-bold whitespace-nowrap">${t("ship_cost",{p:money(p.shipCost)})}</span>` : `<span class="material-symbols-outlined text-[18px] text-primary-container">shield</span>`;
+  const footR = p.shipCost ? `<span class="text-[11px] text-primary font-bold whitespace-nowrap">${t("ship_cost",{p:money(p.shipCost)})}</span>` : `<span class="material-symbols-outlined text-[18px] text-primary-container">${p.ship?"local_shipping":"handshake"}</span>`;
   return `<article class="card card-in group bg-surface-card rounded-xl overflow-hidden shadow-sm flex flex-col justify-between cursor-pointer" style="--d:${i*70}ms" data-id="${p.id}" tabindex="0">
-    <div>${media(p,"aspect-square")}${soldOverlay(p)}${favBtn(p)}${top}${bottom?`<div class="absolute bottom-2 left-2">${bottom}</div>`:""}</div>
+    <div>${media(p,"aspect-square")}${soldOverlay(p)}${favBtn(p)}${top}${sampleChip(p)}${bottom?`<div class="absolute bottom-2 left-2">${bottom}</div>`:""}</div>
       <div class="p-3.5 flex flex-col gap-1">
         <div class="flex items-baseline justify-between gap-2"><span class="font-headline-sm text-headline-sm text-charcoal-dark font-bold">${money(p.price)}${dropBadge}</span>${right}</div>
         <h3 class="font-title-sm text-title-sm text-charcoal-dark truncate" title="${esc(L.t)}">${esc(L.t)}</h3>
@@ -1085,38 +1145,60 @@ function smallCard(p,i){
 }
 function carCard(p,i){
   const L=p[state.lang]||p.es;
-  const tags=(p.tags||[]).map(([k,c])=>`<span class="px-2.5 py-0.5 rounded-full ${TAGCOL[c]} text-[10px] font-bold">${t(k)}</span>`).join("");
-  const footIcon = p.foot==="f_papers"?"":`<span class="material-symbols-outlined text-[16px]">verified</span>`;
+  const tags=p.real?(p.mins<1440?`<span class="px-2.5 py-0.5 rounded-full ${TAGCOL.primary} text-[10px] font-bold">${t("new_tag")}</span>`:""):(p.tags||[]).map(([k,c])=>`<span class="px-2.5 py-0.5 rounded-full ${TAGCOL[c]} text-[10px] font-bold">${t(k)}</span>`).join("");
+  const meta=p.real?ago(p.mins):`${p.year} • ${num(p.km)} km`;
+  const specs=p.real
+    ?`<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">${p.ship?"local_shipping":"handshake"}</span>${t(p.ship?"b_ship":"b_inperson")}</span>`
+    :`<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">${p.fuelIcon}</span>${t(p.fuel)}</span><span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">${p.transIcon}</span>${t(p.trans)}</span>`;
+  const foot=p.real
+    ?`<span class="text-on-surface-variant text-label-sm font-semibold truncate max-w-[45%]">${esc(p.seller?.full_name||"")}</span>`
+    :`<span class="${p.foot==="f_papers"?"text-charcoal-dark font-semibold":"text-primary font-bold"} text-label-sm flex items-center gap-0.5 whitespace-nowrap">${p.foot==="f_papers"?"":`<span class="material-symbols-outlined text-[16px]">verified</span>`}${t(p.foot)}</span>`;
   return `<article class="card card-in group bg-surface-card rounded-xl overflow-hidden shadow-sm flex flex-col justify-between cursor-pointer" style="--d:${i*90}ms" data-id="${p.id}" tabindex="0">
-    <div>${media(p,"aspect-[16/10]")}<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">${tags}</div>${favBtn(p)}</div>
+    <div>${media(p,"aspect-[16/10]")}${soldOverlay(p)}<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">${tags}</div>${favBtn(p)}${sampleChip(p)}</div>
       <div class="p-4 flex flex-col gap-2">
-        <div class="flex items-baseline justify-between gap-2"><span class="font-headline-md text-headline-md text-charcoal-dark font-bold">${money(p.price)}</span><span class="font-label-md text-label-md text-secondary whitespace-nowrap">${p.year} • ${num(p.km)} km</span></div>
-        <h3 class="font-title-md text-title-md text-charcoal-dark">${esc(L.t)}</h3>
-        <div class="flex items-center gap-3 text-secondary font-body-sm text-body-sm pt-1">
-          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">${p.fuelIcon}</span>${t(p.fuel)}</span>
-          <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">${p.transIcon}</span>${t(p.trans)}</span>
-        </div>
+        <div class="flex items-baseline justify-between gap-2"><span class="font-headline-md text-headline-md text-charcoal-dark font-bold">${money(p.price)}</span><span class="font-label-md text-label-md text-secondary whitespace-nowrap">${meta}</span></div>
+        <h3 class="font-title-md text-title-md text-charcoal-dark truncate">${esc(L.t)}</h3>
+        <div class="flex items-center gap-3 text-secondary font-body-sm text-body-sm pt-1">${specs}</div>
       </div>
     </div>
     <div class="px-4 pb-4 pt-2 flex items-center justify-between gap-2 border-t border-border-subtle/50 text-secondary font-body-sm text-body-sm">
-      <span class="flex items-center gap-1 text-on-surface-variant font-medium truncate"><span class="material-symbols-outlined text-[16px] text-primary">location_on</span>${esc(p.loc)}</span>
-      <span class="${p.foot==="f_papers"?"text-charcoal-dark font-semibold":"text-primary font-bold"} text-label-sm flex items-center gap-0.5 whitespace-nowrap">${footIcon}${t(p.foot)}</span>
+      <span class="flex items-center gap-1 text-on-surface-variant font-medium truncate"><span class="material-symbols-outlined text-[16px] text-primary">location_on</span>${esc(p.loc)}</span>${foot}
     </div>
   </article>`;
 }
 
 /* ---------- Render principal ---------- */
-function renderProducts(){
+const SAMPLE_LIMIT=12, PAGE=20;
+let page=1;
+const realActive = ()=>PRODUCTS.filter(p=>p.real&&p.status==="active");
+const samplesOn = ()=>realActive().length<SAMPLE_LIMIT;
+function renderProducts(keepPage=false){
+  if(!keepPage) page=1;
+  const listMode=filtersActive()||state.all;
+  const show=(sec,on)=>$(`[data-section="${sec}"]`).style.display=on?"":"none";
   let total=0;
-  [["recent","#grid-recent",smallCard],["cars","#grid-cars",carCard],["fashion","#grid-fashion",smallCard]].forEach(([sec,sel,fn])=>{
-    const list=PRODUCTS.filter(p=>p.sec===sec&&matches(p));
-    total+=list.length;
-    $(sel).innerHTML=list.map(fn).join("");
-    $(`[data-section="${sec}"]`).style.display=list.length?"":"none";
-  });
+  if(listMode){
+    const list=PRODUCTS.filter(p=>(!p.sample||samplesOn())&&matches(p));
+    total=list.length;
+    $("#grid-recent").innerHTML=list.slice(0,page*PAGE).map((p,i)=>smallCard(p,i%PAGE)).join("");
+    $("#load-more").classList.toggle("hidden",total<=page*PAGE);
+    show("recent",total>0); show("cars",false); show("fashion",false);
+    $("#recent-title").textContent=t(state.mine?"my_listings":state.fav?"chip_fav":filtersActive()?"results_title":"all_title");
+    $("#recent-sub").textContent=t(filtersActive()?"results_sub":"all_sub");
+    $("#see-all").classList.add("hidden");
+  } else {
+    const real=realActive(), on=samplesOn();
+    const fill=(arr,sec,n)=>on?[...arr,...SAMPLES.filter(x=>x.sec===sec)].slice(0,Math.max(n,arr.length)):arr;
+    const groups=[["recent","#grid-recent",smallCard,fill(real.slice(0,10),"recent",5)],
+                  ["cars","#grid-cars",carCard,fill(real.filter(x=>x.cat==="cars"||x.cat==="motos").slice(0,3),"cars",3)],
+                  ["fashion","#grid-fashion",smallCard,fill(real.filter(x=>x.cat==="fashion").slice(0,4),"fashion",4)]];
+    groups.forEach(([sec,sel,fn,list])=>{ total+=list.length; $(sel).innerHTML=list.map(fn).join(""); show(sec,list.length>0); });
+    $("#load-more").classList.add("hidden");
+    $("#recent-title").textContent=t("recent_title"); $("#recent-sub").textContent=t("recent_sub");
+    const sa=$("#see-all"); sa.classList.toggle("hidden",real.length<=10); sa.classList.toggle("flex",real.length>10);
+  }
   $$(".media img").forEach(img=>{if(img.complete&&img.naturalWidth) imgLoaded(img);});
-  const active=filtersActive();
-  const bar=$("#results-bar"); bar.classList.toggle("hidden",!active); bar.classList.toggle("flex",active);
+  const bar=$("#results-bar"); bar.classList.toggle("hidden",!listMode); bar.classList.toggle("flex",listMode);
   let txt = total===1?t("result1"):t("results",{n:total});
   const extra=[]; if(state.q) extra.push(t("for_q",{q:esc(state.q)})); if(state.cat) extra.push("· "+catName(state.cat)); if(state.city) extra.push("· "+state.city); if(state.mine) extra.push("· "+t("my_listings"));
   $("#results-text").innerHTML = txt+" "+extra.join(" ");
@@ -1167,28 +1249,28 @@ function renderCatState(){
 }
 
 function renderCities(){
-  const counts={Caracas:8412,Maracaibo:4230,Valencia:3975,Barquisimeto:2840,Mérida:1610,Porlamar:1185};
+  const counts={}; realActive().forEach(p=>{counts[p.loc]=(counts[p.loc]||0)+1;});
   const names={Porlamar:"Margarita"};
   $("#cities").innerHTML=Object.keys(CITY_ART).map((c,i)=>`<button class="city reveal relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow text-left group" style="--d:${i*70}ms" data-city="${c}" type="button">
     ${CITY_ART[c]}
     <div class="absolute inset-0 bg-gradient-to-t from-charcoal-dark/75 via-charcoal-dark/10 to-transparent"></div>
     <div class="absolute left-3 right-3 bottom-3 flex items-end justify-between gap-2 text-white">
-      <div><p class="font-title-md text-title-md leading-tight">${names[c]||c}</p><p class="text-body-sm opacity-85">${t("listings",{n:num(counts[c])})}</p></div>
+      <div><p class="font-title-md text-title-md leading-tight">${names[c]||c}</p><p class="text-body-sm opacity-85">${counts[c]?t(counts[c]===1?"listing1":"listings",{n:num(counts[c])}):t("be_first")}</p></div>
       <span class="w-8 h-8 rounded-full bg-white/20 backdrop-blur flex items-center justify-center transition-all group-hover:bg-primary-container group-hover:translate-x-0.5"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></span>
     </div></button>`).join("");
   observeReveals();
 }
-function renderTesti(){
-  $("#testimonials").innerHTML=TESTI.map((x,i)=>`<figure class="reveal bg-surface-card rounded-lg p-6 shadow-sm flex flex-col gap-4 hover:shadow-md transition-shadow" style="--d:${i*100}ms">
-    <div class="flex text-badge-orange">${'<span class="material-symbols-outlined icon-fill text-[18px]">star</span>'.repeat(5)}</div>
-    <blockquote class="font-body-lg text-body-lg text-charcoal-dark flex-1">“${x[state.lang]}”</blockquote>
-    <figcaption class="flex items-center gap-3"><span class="w-10 h-10 rounded-full ${x.col} text-white font-bold flex items-center justify-center">${x.n.split(" ").map(s=>s[0]).join("")}</span><span><span class="block font-title-sm text-title-sm text-charcoal-dark">${x.n}</span><span class="block text-body-sm text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-primary">location_on</span>${x.c}</span></span></figcaption>
-  </figure>`).join("");
+function renderSafety(){
+  const cols=["bg-mint-light text-primary","bg-surface-container text-primary","bg-tertiary-fixed text-badge-coral"];
+  $("#safety").innerHTML=T[state.lang].tips.map(([ic,h,d],i)=>`<div class="reveal bg-surface-card rounded-lg p-6 shadow-sm flex flex-col gap-3 hover:shadow-md hover:-translate-y-1 transition-all duration-300" style="--d:${i*100}ms">
+    <span class="w-12 h-12 rounded-2xl ${cols[i]} flex items-center justify-center"><span class="material-symbols-outlined text-[26px]">${ic}</span></span>
+    <h3 class="font-title-md text-title-md text-charcoal-dark">${h}</h3>
+    <p class="font-body-md text-body-md text-secondary">${d}</p></div>`).join("");
   observeReveals();
 }
-function renderMsgs(){
-  const cols=["bg-primary-container","bg-badge-coral","bg-badge-orange"];
-  $("#msg-list").innerHTML=t("msgs").map((m,i)=>`<a href="#" class="msg-item flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-container-low transition-colors"><span class="w-10 h-10 shrink-0 rounded-full ${cols[i]} text-white font-bold flex items-center justify-center text-[13px]">${m[0].split(" ").map(s=>s[0]).join("")}</span><span class="flex-1 min-w-0"><span class="flex justify-between gap-2"><span class="font-label-lg text-label-lg text-charcoal-dark">${m[0]}</span><span class="text-[11px] text-secondary">${m[2]}</span></span><span class="block text-body-sm text-secondary truncate">${m[1]}</span></span>${i<3?'<span class="w-2 h-2 rounded-full bg-badge-coral shrink-0"></span>':''}</a>`).join("");
+function updateCommunity(){
+  const n=STATS?.users||0;
+  $("#community-n").textContent = n>=100 ? t("community_n",{n:num(n)}) : t("community_join");
 }
 
 /* ---------- Idioma ---------- */
@@ -1203,15 +1285,15 @@ function applyLang(){
   $$(".foot-lang").forEach(b=>{const a=b.dataset.lang===state.lang;b.className=`set-lang foot-lang px-2.5 py-1 rounded-md text-label-sm font-label-sm transition-colors border ${a?"bg-mint-light text-primary font-bold border-primary-container":"bg-surface-container-low text-on-surface-variant hover:bg-surface-container border-transparent"}`;});
   rotIdx=0; $("#rot-word").textContent=T[state.lang].rot[0];
   $$(".counter.done").forEach(el=>el.textContent=num(+el.dataset.to,+el.dataset.dec));
-  renderCats(); renderProducts(); renderCities(); renderTesti(); renderMsgs(); renderAuthView();
+  renderCats(); renderProducts(); renderCities(); renderSafety(); renderAuthView(); renderPubTexts(); updateCommunity(); renderPubPhotos();
 }
 function setLang(l){ if(l===state.lang) return; state.lang=l; LS.set("cb-lang",l); applyLang(); toast(t("lang_set"),"translate"); }
 
 /* ---------- Toast ---------- */
 let toastTimer;
-function toast(msg,icon="check_circle"){
+function toast(msg,icon="check_circle",ms=2800){
   $("#toast-text").textContent=msg; $("#toast-icon").textContent=icon;
-  const el=$("#toast"); el.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove("show"),2600);
+  const el=$("#toast"); el.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove("show"),ms);
 }
 
 /* ---------- Favoritos ---------- */
@@ -1236,6 +1318,8 @@ function updateFavCount(){
 const waLink=(phone,text)=>`https://wa.me/${String(phone).replace(/\D/g,"")}?text=${encodeURIComponent(text)}`;
 function openProduct(id){
   const p=PRODUCTS.find(x=>x.id===id); if(!p) return;
+  if($(".overlay.open")) closeModals();
+  if(p.real && location.hash!=="#/a/"+p.id) history.replaceState(null,"","#/a/"+p.id);
   const L=p[state.lang]||p.es;
   const isOwner=!!(p.real && auth.user && p.owner===auth.user.id);
   const pics=p.photos?.length?p.photos:(p.img?[p.img]:[]);
@@ -1245,8 +1329,9 @@ function openProduct(id){
   let sellerHTML;
   if(p.real){
     const sn=p.seller?.full_name||t("seller");
-    sellerHTML=`<span class="w-11 h-11 rounded-full bg-primary-container text-white font-bold flex items-center justify-center">${esc(initials(sn))}</span>
-      <div class="flex-1 min-w-0"><p class="font-title-sm text-title-sm text-charcoal-dark truncate">${esc(sn)}</p><p class="text-body-sm text-secondary">${t("member")}${p.seller?.city?" · "+esc(p.seller.city):""}</p></div>`;
+    sellerHTML=`<button id="pm-seller" class="w-full flex items-center gap-3 text-left group" type="button">${avatarHTML(p.seller)}
+      <div class="flex-1 min-w-0"><p class="font-title-sm text-title-sm text-charcoal-dark truncate group-hover:text-primary transition-colors">${esc(sn)}</p><p id="pm-rating" class="text-body-sm text-secondary flex items-center gap-1">${t("member")}${p.seller?.city?" · "+esc(p.seller.city):""}</p></div>
+      <span class="material-symbols-outlined text-secondary group-hover:text-primary group-hover:translate-x-0.5 transition-all">chevron_right</span></button>`;
   } else {
     const s=SELLERS[PRODUCTS.indexOf(p)%SELLERS.length];
     sellerHTML=`<span class="w-11 h-11 rounded-full bg-primary-container text-white font-bold flex items-center justify-center">${initials(s[0])}</span>
@@ -1256,7 +1341,12 @@ function openProduct(id){
   const btnMain="w-full py-3 rounded-full text-white font-label-lg text-label-lg transition-all active:scale-[.98] inline-flex items-center justify-center gap-2";
   let actions;
   if(isOwner){
-    actions=`<div class="p-3 rounded-2xl bg-mint-light text-primary text-body-md font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">person</span>${t("your_listing")}</div>
+    actions=p.status==="hidden"
+      ?`<div class="p-3 rounded-2xl bg-tertiary-fixed text-tertiary text-body-md font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">visibility_off</span>${t("hidden_note")}</div>
+        <button id="pm-edit" class="${btnMain} bg-primary-container hover:bg-primary" type="button"><span class="material-symbols-outlined text-[20px]">edit</span>${t("edit")}</button>
+        <button id="pm-delete" class="w-full py-3 rounded-full bg-surface-container hover:bg-tertiary-fixed text-tertiary font-label-lg text-label-lg transition-colors inline-flex items-center justify-center gap-2" type="button"><span class="material-symbols-outlined text-[20px]">delete</span>${t("delete")}</button>`
+      :`<div class="p-3 rounded-2xl bg-mint-light text-primary text-body-md font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">person</span>${t("your_listing")}</div>
+      <button id="pm-edit" class="${btnMain} bg-primary-container hover:bg-primary" type="button"><span class="material-symbols-outlined text-[20px]">edit</span>${t("edit")}</button>
       <button id="pm-sold" class="${btnMain} bg-charcoal-dark hover:bg-secondary" type="button"><span class="material-symbols-outlined text-[20px]">${p.status==="sold"?"replay":"sell"}</span>${t(p.status==="sold"?"reactivate":"mark_sold")}</button>
       <button id="pm-delete" class="w-full py-3 rounded-full bg-surface-container hover:bg-tertiary-fixed text-tertiary font-label-lg text-label-lg transition-colors inline-flex items-center justify-center gap-2" type="button"><span class="material-symbols-outlined text-[20px]">delete</span>${t("delete")}</button>`;
   } else if(!p.real){
@@ -1286,23 +1376,33 @@ function openProduct(id){
       ${specs}
       <div class="flex items-center gap-3 p-3 rounded-2xl border border-border-subtle">${sellerHTML}</div>
       ${actions}
+      ${p.real?`<div class="flex gap-2">
+        <button id="pm-share" class="flex-1 py-2.5 rounded-full bg-surface-container-low hover:bg-surface-container text-charcoal-dark font-label-lg text-label-lg transition-colors inline-flex items-center justify-center gap-2" type="button"><span class="material-symbols-outlined text-[20px]">share</span>${t("share")}</button>
+        <a class="w-12 rounded-full bg-surface-container-low hover:bg-[#25D366] hover:text-white text-[#1ebe5b] transition-colors inline-flex items-center justify-center" href="https://wa.me/?text=${encodeURIComponent(t("share_text",{t:L.t,p:money(p.price)})+" "+listingUrl(p.id))}" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4 5.2 5.2 0 0 0 3.2.7 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3Z"/></svg></a>
+      </div>`:""}
       <p class="text-body-sm text-secondary flex items-start gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>${t("safety_tip")}</p>
+      ${p.real&&!isOwner?`<button id="pm-report" class="self-start text-body-sm text-secondary hover:text-badge-coral inline-flex items-center gap-1 transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">flag</span>${t("report")}</button>`:""}
     </div>`;
   $$(".pm-thumb").forEach(b=>b.onclick=()=>{$("#pm-main").src=b.dataset.src;$$(".pm-thumb").forEach(x=>{x.classList.toggle("ring-primary-container",x===b);x.classList.toggle("ring-white/60",x!==b);});});
   if($("#offer-form")) $("#offer-form").onsubmit=e=>{e.preventDefault();const v=parseFloat($("#offer-input").value);if(!(v>0))return toast(t("offer_bad"),"error");window.open(waLink(p.seller.phone,t("wa_offer",{t:L.t,p:money(v)})),"_blank","noopener");};
   if($("#pm-login")) $("#pm-login").onclick=()=>openAuth("login");
   if($("#pm-sold")) $("#pm-sold").onclick=()=>setListingStatus(p,p.status==="sold"?"active":"sold");
   if($("#pm-delete")) $("#pm-delete").onclick=()=>deleteListing(p);
+  if($("#pm-edit")) $("#pm-edit").onclick=()=>openPublish(p);
+  if($("#pm-share")) $("#pm-share").onclick=()=>shareListing(p);
+  if($("#pm-report")) $("#pm-report").onclick=()=>openReport(p);
+  if($("#pm-seller")) $("#pm-seller").onclick=()=>openSeller(p.owner);
   openModal("#product-modal");
+  if(p.real && sb) sellerRating(p.owner).then(r=>{const el=$("#pm-rating"); if(el) el.innerHTML=`${starsHTML(r.avg)}<span class="ml-1">${ratingText(r)}</span>`;});
 }
 let lastFocus;
 function openModal(sel){lastFocus=document.activeElement;const m=$(sel);m.classList.add("open");document.body.style.overflow="hidden";setTimeout(()=>m.querySelector("input,button:not(.modal-close)")?.focus({preventScroll:true}),50);}
-function closeModals(){$$(".overlay.open").forEach(m=>m.classList.remove("open"));document.body.style.overflow="";lastFocus?.focus?.({preventScroll:true});}
+function closeModals(){$$(".overlay.open").forEach(m=>m.classList.remove("open"));document.body.style.overflow="";if(location.hash.startsWith("#/a/"))history.replaceState(null,"",location.pathname+location.search);lastFocus?.focus?.({preventScroll:true});}
 
 /* ---------- Anuncios reales (Supabase) ---------- */
 const SAMPLES = PRODUCTS.map(p=>Object.assign(p,{sample:true}));
 const BUCKET = "listing-photos";
-const LISTING_SELECT = "id,user_id,title,description,price,category,city,shipping,photos,status,created_at,profiles(full_name,phone,city)";
+const LISTING_SELECT = "id,user_id,title,description,price,category,city,shipping,photos,status,created_at,profiles(full_name,phone,city,avatar_url)";
 function toProduct(r){
   const d={t:r.title,d:r.description||""};
   return {id:r.id,real:true,owner:r.user_id,sec:"recent",cat:r.category,img:r.photos?.[0]||"",photos:r.photos||[],
@@ -1310,31 +1410,190 @@ function toProduct(r){
     mins:Math.max(0,Math.round((Date.now()-new Date(r.created_at))/60000)),
     ship:r.shipping,badge:r.shipping?"ship":"inperson",loc:r.city,status:r.status,seller:r.profiles||{},es:d,en:d};
 }
+let routed=false, STATS=null;
 async function loadListings(){
   if(!sb) return;
-  const {data,error}=await sb.from("listings").select(LISTING_SELECT).neq("status","deleted").order("created_at",{ascending:false}).limit(200);
+  const {data,error}=await sb.from("listings").select(LISTING_SELECT).neq("status","deleted").order("created_at",{ascending:false}).limit(300);
   if(error){ console.warn("Perolero: no se pudieron cargar los anuncios",error); return; }
   PRODUCTS=[...data.map(toProduct),...SAMPLES];
-  renderProducts();
+  renderProducts(); renderCities();
+  if(!routed){ routed=true; routeHash(); }
+}
+async function loadStats(){
+  if(!sb) return;
+  const {data,error}=await sb.rpc("perolero_stats");
+  if(error||!data) return;
+  STATS=data;
+  $("#stat-listings").dataset.to=data.listings; $("#stat-sold").dataset.to=data.sold; $("#stat-users").dataset.to=data.users;
+  if(statsSeen) $$("#impacto .counter").forEach(animateCounter);
+  updateCommunity();
+}
+const listingUrl = id=>location.origin+location.pathname+"#/a/"+id;
+function routeHash(){ const m=location.hash.match(/^#\/a\/([0-9a-f-]{36})$/i); if(m) openListingById(m[1]); }
+async function openListingById(id){
+  let p=PRODUCTS.find(x=>x.id===id);
+  if(!p && sb){ const {data}=await sb.from("listings").select(LISTING_SELECT).eq("id",id).maybeSingle(); if(data){ p=toProduct(data); PRODUCTS.push(p); } }
+  if(p) openProduct(p.id); else { history.replaceState(null,"",location.pathname); toast(t("not_found"),"error"); }
+}
+async function shareListing(p){
+  const L=p[state.lang]||p.es, url=listingUrl(p.id), text=t("share_text",{t:L.t,p:money(p.price)});
+  if(navigator.share){ try{ await navigator.share({title:L.t,text,url}); }catch(e){} return; }
+  try{ await navigator.clipboard.writeText(url); toast(t("link_copied"),"link"); }catch(e){ prompt(t("copy_link"),url); }
 }
 async function setListingStatus(p,status){
   const {error}=await sb.from("listings").update({status}).eq("id",p.id);
   if(error) return toast(authErr(error),"error");
-  p.status=status; closeModals(); renderProducts();
+  p.status=status; closeModals(); renderProducts(); loadStats();
   toast(t(status==="sold"?"marked_sold":"reactivated"),"check_circle");
 }
-async function deleteListing(p){
-  if(!confirm(t("confirm_delete"))) return;
-  const paths=(p.photos||[]).map(u=>decodeURIComponent(u.split(`/${BUCKET}/`)[1]||"")).filter(Boolean);
+const pathFromUrl = u=>decodeURIComponent((String(u).split(`/${BUCKET}/`)[1]||"").split("?")[0]);
+async function deleteListing(p,silent=false){
+  if(!silent && !confirm(t("confirm_delete"))) return false;
+  const paths=(p.photos||[]).map(pathFromUrl).filter(Boolean);
   if(paths.length) await sb.storage.from(BUCKET).remove(paths);
   const {error}=await sb.from("listings").delete().eq("id",p.id);
+  if(error){ toast(authErr(error),"error"); return false; }
+  PRODUCTS=PRODUCTS.filter(x=>x.id!==p.id); closeModals(); renderProducts(); renderCities(); loadStats(); toast(t("deleted"),"delete");
+  return true;
+}
+
+/* ---------- Vendedor: perfil y opiniones ---------- */
+async function sellerRating(id){
+  const {data}=await sb.from("reviews").select("rating").eq("seller_id",id);
+  const n=data?.length||0; return {n,avg:n?data.reduce((a,r)=>a+r.rating,0)/n:0};
+}
+const ratingText = r=>r.n?`${num(r.avg,1)} · ${t(r.n===1?"review1":"reviews_n",{n:r.n})}`:t("no_reviews");
+let sellerOpen=null, reviewStars=0;
+async function openSeller(id){
+  if(!sb||!id) return;
+  sellerOpen=id; closeModals(); openModal("#seller-modal");
+  $("#seller-body").innerHTML=`<div class="py-20 flex justify-center"><span class="material-symbols-outlined animate-spin text-primary text-[36px]">progress_activity</span></div>`;
+  const [{data:prof},{data:revs}]=await Promise.all([
+    sb.from("profiles").select("id,full_name,city,avatar_url,created_at").eq("id",id).maybeSingle(),
+    sb.from("reviews").select("id,rating,comment,created_at,reviewer_id,reviewer:profiles!reviews_reviewer_id_fkey(full_name,avatar_url)").eq("seller_id",id).order("created_at",{ascending:false})
+  ]);
+  if(!prof){ $("#seller-body").innerHTML=`<p class="py-16 text-center text-secondary">${t("not_found")}</p>`; return; }
+  const list=revs||[], n=list.length, avg=n?list.reduce((a,r)=>a+r.rating,0)/n:0;
+  const items=PRODUCTS.filter(x=>x.real&&x.owner===id&&x.status==="active");
+  const mine=list.find(r=>r.reviewer_id===auth.user?.id);
+  reviewStars=mine?.rating||0;
+  const since=new Date(prof.created_at).toLocaleDateString(state.lang==="es"?"es-VE":"en-US",{month:"long",year:"numeric"});
+  const first=esc((prof.full_name||t("seller")).split(" ")[0]);
+  let form="";
+  if(!auth.user) form=`<button class="open-login-review w-full py-3 rounded-2xl border-2 border-dashed border-outline-variant text-primary font-label-lg text-label-lg hover:bg-mint-light transition-colors" type="button">${t("review_login")}</button>`;
+  else if(auth.user.id!==id) form=`<form id="review-form" class="p-4 rounded-2xl bg-surface-container-low flex flex-col gap-3">
+      <p class="font-title-sm text-title-sm text-charcoal-dark">${t(mine?"edit_review":"write_review")}</p>
+      <div id="star-pick" class="flex gap-1">${[1,2,3,4,5].map(i=>`<button class="star-btn w-10 h-10 rounded-full hover:bg-white flex items-center justify-center transition-transform hover:scale-110" data-v="${i}" type="button" aria-label="${i}"><span class="material-symbols-outlined text-[28px] ${i<=reviewStars?"icon-fill text-badge-orange":"text-outline-variant"}">star</span></button>`).join("")}</div>
+      <textarea id="review-comment" rows="2" maxlength="500" class="px-4 py-3 rounded-2xl bg-white border border-transparent focus:border-primary-container outline-none resize-none" placeholder="${t("review_ph")}">${esc(mine?.comment||"")}</textarea>
+      <p id="review-msg" class="hidden text-body-sm text-error"></p>
+      <button class="self-end px-5 py-2.5 rounded-full bg-primary-container hover:bg-primary text-white font-label-lg text-label-lg transition-colors disabled:opacity-60" type="submit">${t("send_review")}</button>
+    </form>`;
+  $("#seller-body").innerHTML=`
+    <div class="flex items-center gap-4 pr-10">
+      ${avatarHTML(prof,"w-20 h-20","text-[26px]")}
+      <div class="min-w-0">
+        <h3 class="font-headline-md text-headline-md text-charcoal-dark truncate">${esc(prof.full_name||t("seller"))}</h3>
+        <p class="text-body-md text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">location_on</span>${esc(prof.city||"Venezuela")}</p>
+        <p class="text-body-sm text-secondary">${t("member_since",{d:since})}</p>
+        <p class="flex items-center gap-1 mt-1">${starsHTML(avg,18)}<span class="text-body-md text-charcoal-dark font-semibold ml-1">${ratingText({n,avg})}</span></p>
+      </div>
+    </div>
+    <h4 class="font-title-md text-title-md text-charcoal-dark mt-7 mb-3">${t("listings_of",{n:first})}</h4>
+    ${items.length?`<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">${items.map(smallCard).join("")}</div>`:`<p class="text-body-md text-secondary">${t("no_seller_listings")}</p>`}
+    <h4 class="font-title-md text-title-md text-charcoal-dark mt-7 mb-3">${t("reviews_title")} (${n})</h4>
+    <div class="flex flex-col gap-3">${form}
+      ${list.map(r=>`<div class="flex gap-3 p-4 rounded-2xl border border-border-subtle">${avatarHTML(r.reviewer,"w-10 h-10","text-[13px]")}
+        <div class="flex-1 min-w-0"><div class="flex items-center justify-between gap-2"><p class="font-label-lg text-label-lg text-charcoal-dark truncate">${esc(r.reviewer?.full_name||"—")}</p><span class="text-body-sm text-secondary whitespace-nowrap">${new Date(r.created_at).toLocaleDateString(state.lang==="es"?"es-VE":"en-US")}</span></div>
+        <p class="flex">${starsHTML(r.rating,15)}</p>${r.comment?`<p class="text-body-md text-secondary mt-1 break-words">${esc(r.comment)}</p>`:""}</div></div>`).join("")}
+    </div>`;
+  $$("#seller-body .media img").forEach(img=>{if(img.complete&&img.naturalWidth) imgLoaded(img);});
+}
+async function submitReview(e){
+  e.preventDefault();
+  const msg=$("#review-msg"), btn=e.target.querySelector("button[type=submit]");
+  if(!reviewStars){ msg.textContent=t("pick_stars"); msg.classList.remove("hidden"); return; }
+  btn.disabled=true;
+  const {error}=await sb.from("reviews").upsert({seller_id:sellerOpen,reviewer_id:auth.user.id,rating:reviewStars,comment:$("#review-comment").value.trim()||null},{onConflict:"seller_id,reviewer_id"});
+  btn.disabled=false;
+  if(error){ msg.textContent=authErr(error); msg.classList.remove("hidden"); return; }
+  toast(t("review_saved"),"star"); openSeller(sellerOpen);
+}
+
+/* ---------- Reportes ---------- */
+const REASONS=["scam","prohibited","wrong_category","offensive","duplicate","other"];
+let reportTarget=null;
+function openReport(p){
+  if(!auth.user){ openAuth("login"); return; }
+  reportTarget=p; closeModals();
+  $("#report-listing").textContent=(p[state.lang]||p.es).t;
+  $("#report-reasons").innerHTML=REASONS.map(r=>`<label class="flex items-center gap-3 p-3 rounded-2xl border border-border-subtle cursor-pointer hover:bg-surface-container-low has-[:checked]:border-badge-coral has-[:checked]:bg-tertiary-fixed/50 transition-colors"><input type="radio" name="reason" value="${r}" class="w-4 h-4 accent-[#FF5938]"/><span class="text-body-md text-charcoal-dark">${T[state.lang].reasons[r]}</span></label>`).join("");
+  $("#report-details").value=""; $("#report-msg").classList.add("hidden");
+  openModal("#report-modal");
+}
+async function submitReport(e){
+  e.preventDefault();
+  const reason=$("#report-form input[name=reason]:checked")?.value, msg=$("#report-msg");
+  if(!reason){ msg.textContent=t("report_pick"); msg.classList.remove("hidden"); return; }
+  const btn=$("#report-submit"); btn.disabled=true;
+  const {error}=await sb.from("reports").insert({listing_id:reportTarget.id,reporter_id:auth.user.id,reason,details:$("#report-details").value.trim()||null});
+  btn.disabled=false;
+  if(error && error.code!=="23505"){ msg.textContent=authErr(error); msg.classList.remove("hidden"); return; }
+  closeModals(); toast(t(error?"report_dup":"report_done"),"flag");
+}
+
+/* ---------- Moderación ---------- */
+async function checkAdmin(){
+  auth.admin=false;
+  if(auth.user && sb){ const {data}=await sb.from("admins").select("user_id").eq("user_id",auth.user.id).maybeSingle(); auth.admin=!!data; }
+  $("#admin-btn").classList.toggle("hidden",!auth.admin); $("#admin-btn").classList.toggle("flex",auth.admin);
+  if(auth.admin) refreshAdminCount();
+}
+async function refreshAdminCount(){
+  const {count}=await sb.from("reports").select("id",{count:"exact",head:true}).eq("status","open");
+  const el=$("#admin-count"); el.textContent=count||""; el.classList.toggle("hidden",!count);
+}
+async function openAdmin(){
+  if(!auth.admin) return;
+  closeDropdowns(); if(!$("#admin-modal").classList.contains("open")){ closeModals(); openModal("#admin-modal"); }
+  $("#admin-list").innerHTML=`<div class="py-12 flex justify-center"><span class="material-symbols-outlined animate-spin text-primary text-[32px]">progress_activity</span></div>`;
+  await loadStats();
+  const {data,error}=await sb.from("reports").select("id,listing_id,reason,details,created_at,reporter:profiles!reports_reporter_id_fkey(full_name),listing:listings(id,title,photos,status,price,city,user_id)").eq("status","open").order("created_at",{ascending:false});
+  if(error){ $("#admin-list").innerHTML=`<p class="text-error">${esc(authErr(error))}</p>`; return; }
+  const groups={}; (data||[]).forEach(r=>{(groups[r.listing_id]=groups[r.listing_id]||{listing:r.listing,reports:[]}).reports.push(r);});
+  const g=Object.values(groups).sort((a,b)=>b.reports.length-a.reports.length);
+  const st=[["a_listings",STATS?.listings],["a_sold",STATS?.sold],["a_users",STATS?.users],["a_reports",(data||[]).length]];
+  $("#admin-stats").innerHTML=st.map(([k,v])=>`<div class="p-3.5 rounded-2xl bg-surface-container-low"><p class="font-headline-sm text-headline-sm text-primary font-bold">${num(v||0)}</p><p class="text-body-sm text-secondary">${t(k)}</p></div>`).join("");
+  $("#admin-list").innerHTML=g.length?g.map(({listing:l,reports:rs})=>`<div class="p-4 rounded-2xl border border-border-subtle flex flex-col sm:flex-row gap-4">
+      <div class="w-full sm:w-28 h-28 rounded-2xl overflow-hidden bg-surface-container-high shrink-0">${l?.photos?.[0]?`<img src="${esc(l.photos[0])}" class="w-full h-full object-cover" alt=""/>`:""}</div>
+      <div class="flex-1 min-w-0 flex flex-col gap-2">
+        <div class="flex items-start justify-between gap-2"><div class="min-w-0"><p class="font-title-sm text-title-sm text-charcoal-dark truncate">${esc(l?.title||"—")}</p><p class="text-body-sm text-secondary">${l?money(l.price)+" · "+esc(l.city)+" · "+t("status_"+l.status):""}</p></div>
+        <span class="px-2.5 py-1 rounded-full bg-tertiary-fixed text-badge-coral text-label-md font-bold whitespace-nowrap">${t(rs.length===1?"report1":"reports_n",{n:rs.length})}</span></div>
+        <ul class="flex flex-col gap-1">${rs.map(r=>`<li class="text-body-sm text-charcoal-dark"><b>${T[state.lang].reasons[r.reason]||r.reason}</b>${r.details?` — ${esc(r.details)}`:""} <span class="text-secondary">(${esc(r.reporter?.full_name||"—")})</span></li>`).join("")}</ul>
+        <div class="flex flex-wrap gap-2 pt-1" data-lid="${l?.id||""}">
+          <button class="adm-act px-3.5 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-label-md font-label-md" data-act="view" type="button">${t("view")}</button>
+          <button class="adm-act px-3.5 py-1.5 rounded-full bg-charcoal-dark hover:bg-secondary text-white text-label-md font-label-md" data-act="${l?.status==="hidden"?"unhide":"hide"}" type="button">${t(l?.status==="hidden"?"unhide":"hide")}</button>
+          <button class="adm-act px-3.5 py-1.5 rounded-full bg-mint-light hover:bg-surface-container text-primary text-label-md font-label-md" data-act="dismiss" type="button">${t("dismiss")}</button>
+          <button class="adm-act px-3.5 py-1.5 rounded-full bg-tertiary-fixed hover:bg-tertiary-fixed-dim text-tertiary text-label-md font-label-md" data-act="delete" type="button">${t("delete")}</button>
+        </div>
+      </div></div>`).join(""):`<p class="py-10 text-center text-body-lg text-secondary">${t("admin_empty")}</p>`;
+  $("#admin-list").dataset.groups=JSON.stringify(g.map(x=>x.listing));
+}
+async function adminAction(act,lid){
+  const listing=JSON.parse($("#admin-list").dataset.groups||"[]").find(l=>l?.id===lid);
+  if(!listing) return;
+  if(act==="view"){ closeModals(); openListingById(lid); return; }
+  if(act==="delete"){ if(await deleteListing(listing)) { openModal("#admin-modal"); openAdmin(); refreshAdminCount(); } return; }
+  let error;
+  if(act==="hide"||act==="unhide") ({error}=await sb.from("listings").update({status:act==="hide"?"hidden":"active"}).eq("id",lid));
+  if(!error && (act==="hide"||act==="dismiss")) ({error}=await sb.from("reports").update({status:"resolved"}).eq("listing_id",lid).eq("status","open"));
+  if(!error && act==="dismiss" && listing.status==="hidden") ({error}=await sb.from("listings").update({status:"active"}).eq("id",lid));
   if(error) return toast(authErr(error),"error");
-  PRODUCTS=PRODUCTS.filter(x=>x!==p); closeModals(); renderProducts(); toast(t("deleted"),"delete");
+  toast(t("done"),"check_circle"); openAdmin(); refreshAdminCount(); loadListings();
 }
 
 /* ---------- Publicar ---------- */
 const MAX_PHOTOS=6;
-let pubFiles=[];
+let pubFiles=[], removedPhotos=[], editing=null;
 function handleFiles(list){
   for(const f of [...(list||[])]){
     if(!f.type.startsWith("image/")) continue;
@@ -1343,16 +1602,28 @@ function handleFiles(list){
   }
   renderPubPhotos(); if(pubFiles.length) $("#pub-error").classList.add("hidden");
 }
+function openPublish(p=null){
+  if(!auth.user){ toast(t("login_to_publish"),"lock"); openAuth("login"); return; }
+  closeModals(); editing=p;
+  $("#publish-form").reset(); pubFiles.forEach(f=>{if(!f.existing) URL.revokeObjectURL(f.url);}); pubFiles=[]; removedPhotos=[];
+  $("#pub-error").classList.add("hidden");
+  if(p){
+    $("#pub-title").value=p.es.t; $("#pub-price").value=p.price; $("#pub-cat").value=p.cat; $("#pub-city").value=p.loc;
+    $("#pub-ship").checked=!!p.ship; $("#pub-desc").value=p.es.d||""; pubFiles=(p.photos||[]).map(u=>({url:u,existing:u}));
+  } else $("#pub-city").value=(auth.profile?.city&&CITIES.includes(auth.profile.city))?auth.profile.city:"Caracas";
+  renderPubTexts(); renderPubPhotos(); openModal("#publish-modal");
+}
+function renderPubTexts(){ $("#pub-heading").textContent=t(editing?"edit_title":"pub_title"); $("#pub-submit-text").textContent=t(editing?"save_changes":"pub_submit"); }
 function renderPubPhotos(){
-  $("#pub-thumbs").innerHTML=pubFiles.map((f,i)=>`<div class="relative aspect-square rounded-2xl overflow-hidden bg-surface-container-high card-in" style="--d:${i*40}ms"><img src="${f.url}" class="w-full h-full object-cover" alt=""/>${i===0?`<span class="absolute bottom-1 left-1 px-1.5 py-0.5 rounded-full bg-charcoal-dark/80 text-white text-[9px] font-bold">${t("cover")}</span>`:""}<button class="rm-photo absolute top-1 right-1 w-6 h-6 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow" data-i="${i}" type="button" aria-label="Quitar"><span class="material-symbols-outlined text-[14px]">close</span></button></div>`).join("");
+  $("#pub-thumbs").innerHTML=pubFiles.map((f,i)=>`<div class="relative aspect-square rounded-2xl overflow-hidden bg-surface-container-high card-in ${i?"cursor-pointer":""}" style="--d:${i*40}ms" ${i?`data-cover="${i}" title="${t("tap_cover")}"`:""}><img src="${esc(f.url)}" class="w-full h-full object-cover pointer-events-none" alt=""/>${i===0?`<span class="absolute bottom-1 left-1 px-1.5 py-0.5 rounded-full bg-charcoal-dark/80 text-white text-[9px] font-bold">${t("cover")}</span>`:""}<button class="rm-photo absolute top-1 right-1 w-6 h-6 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow" data-i="${i}" type="button" aria-label="Quitar"><span class="material-symbols-outlined text-[14px]">close</span></button></div>`).join("");
   $("#pub-thumbs").classList.toggle("hidden",!pubFiles.length);
   $("#pub-count").textContent=`${pubFiles.length}/${MAX_PHOTOS}`;
 }
 // Reduce cada foto a máx. 1600 px en JPEG (sube más rápido con datos móviles)
-async function compressImage(file){
+async function compressImage(file,max=1600){
   try{
     const bmp=await createImageBitmap(file);
-    const k=Math.min(1,1600/Math.max(bmp.width,bmp.height));
+    const k=Math.min(1,max/Math.max(bmp.width,bmp.height));
     const c=document.createElement("canvas"); c.width=Math.round(bmp.width*k); c.height=Math.round(bmp.height*k);
     c.getContext("2d").drawImage(bmp,0,0,c.width,c.height);
     return await new Promise(r=>c.toBlob(b=>r(b||file),"image/jpeg",0.82));
@@ -1370,31 +1641,38 @@ async function submitPublish(e){
   if(title.length<2||!(price>0)) return err(t("pub_error"));
   if(!pubFiles.length) return err(t("pub_need_photo"));
   const btn=$("#pub-submit"), lbl=$("#pub-submit-text"); btn.disabled=true;
+  const wasEditing=editing;
   try{
-    const id=uuid(), urls=[];
-    for(let i=0;i<pubFiles.length;i++){
-      lbl.textContent=t("uploading",{i:i+1,n:pubFiles.length});
-      const blob=await compressImage(pubFiles[i].file);
-      const path=`${auth.user.id}/${id}/${i+1}.jpg`;
+    const id=editing?editing.id:uuid(), urls=[], fresh=pubFiles.filter(f=>!f.existing).length; let k=0;
+    for(const f of pubFiles){
+      if(f.existing){ urls.push(f.existing); continue; }
+      k++; lbl.textContent=t("uploading",{i:k,n:fresh});
+      const blob=await compressImage(f.file);
+      const path=`${auth.user.id}/${id}/${Date.now()}-${k}.jpg`;
       const {error}=await sb.storage.from(BUCKET).upload(path,blob,{contentType:"image/jpeg",cacheControl:"31536000"});
       if(error) throw error;
       urls.push(sb.storage.from(BUCKET).getPublicUrl(path).data.publicUrl);
     }
     lbl.textContent=t("loading");
-    const {data,error}=await sb.from("listings").insert({id,title,description:desc||null,price,category:cat,city,shipping:ship,photos:urls}).select(LISTING_SELECT).single();
+    const row={title,description:desc||null,price,category:cat,city,shipping:ship,photos:urls};
+    const q=editing?sb.from("listings").update(row).eq("id",id):sb.from("listings").insert({id,...row});
+    const {data,error}=await q.select(LISTING_SELECT).single();
     if(error) throw error;
-    const p=toProduct(data); PRODUCTS.unshift(p);
-    e.target.reset(); pubFiles.forEach(f=>URL.revokeObjectURL(f.url)); pubFiles=[]; renderPubPhotos(); renderCats();
-    closeModals(); clearFilters(false); renderProducts();
-    toast(t("pub_done"),"celebration");
-    setTimeout(()=>{$("#recientes").scrollIntoView({behavior:"smooth"});const c=$(`[data-id="${p.id}"]`);if(c){c.classList.add("ring-4","ring-primary-container");setTimeout(()=>c.classList.remove("ring-4","ring-primary-container"),2500);}},250);
+    if(removedPhotos.length) await sb.storage.from(BUCKET).remove(removedPhotos.map(pathFromUrl).filter(Boolean));
+    const np=toProduct(data);
+    if(editing){ const i=PRODUCTS.findIndex(x=>x.id===id); if(i>=0) PRODUCTS[i]=np; else PRODUCTS.unshift(np); } else PRODUCTS.unshift(np);
+    e.target.reset(); pubFiles.forEach(f=>{if(!f.existing) URL.revokeObjectURL(f.url);}); pubFiles=[]; removedPhotos=[]; editing=null; renderPubPhotos();
+    closeModals(); clearFilters(false); renderProducts(); renderCities(); loadStats();
+    toast(t(wasEditing?"listing_updated":"pub_done"),wasEditing?"check_circle":"celebration");
+    if(wasEditing) openProduct(np.id);
+    else setTimeout(()=>{$("#recientes").scrollIntoView({behavior:"smooth"});const c=$(`[data-id="${np.id}"]`);if(c){c.classList.add("ring-4","ring-primary-container");setTimeout(()=>c.classList.remove("ring-4","ring-primary-container"),2500);}},250);
   }catch(ex){ err(authErr(ex)); }
-  finally{ btn.disabled=false; lbl.textContent=t("pub_submit"); }
+  finally{ btn.disabled=false; renderPubTexts(); }
 }
 
 /* ---------- Acciones de filtro ---------- */
 function clearFilters(render=true){
-  Object.assign(state,{q:"",cat:null,city:null,ship:false,drop:false,fav:false,mine:false,min:null,max:null});
+  Object.assign(state,{q:"",cat:null,city:null,ship:false,drop:false,fav:false,mine:false,all:false,min:null,max:null});
   $("#search-input").value=""; $("#m-search-input").value=""; $("#min-price").value=""; $("#max-price").value="";
   if(render) renderProducts();
 }
@@ -1412,7 +1690,8 @@ function animateCounter(el){
   const step=now=>{const k=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-k,3); el.textContent=num(to*e,dec); if(k<1) requestAnimationFrame(step); else el.classList.add("done");};
   requestAnimationFrame(step);
 }
-const statIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){$$(".counter",e.target).forEach(animateCounter);$("#donut").setAttribute("stroke-dasharray","84, 100");statIO.unobserve(e.target);}}),{threshold:.35});
+let statsSeen=false;
+const statIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){statsSeen=true;$$(".counter",e.target).forEach(animateCounter);statIO.unobserve(e.target);}}),{threshold:.35});
 
 let chatTimer=[];
 function runChat(){
@@ -1452,7 +1731,7 @@ function bind(){
 
   // Dropdowns
   const dd=(btn,menu)=>$(btn).addEventListener("click",e=>{e.stopPropagation();const m=$(menu);closeDropdowns(m);m.classList.toggle("open");});
-  dd("#cat-btn","#cat-dd"); dd("#city-btn","#city-dd"); dd("#msg-btn","#msg-dd"); dd("#adv-btn","#adv-dd");
+  dd("#cat-btn","#cat-dd"); dd("#city-btn","#city-dd"); dd("#adv-btn","#adv-dd");
   $$(".adv-proxy").forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();$("#chips").scrollIntoView({behavior:"smooth",block:"center"});setTimeout(()=>$("#adv-dd").classList.add("open"),350);}));
   document.addEventListener("click",e=>{if(!e.target.closest(".dropdown")) closeDropdowns();});
 
@@ -1476,6 +1755,11 @@ function bind(){
   $("#clear-filters").addEventListener("click",()=>clearFilters());
   document.addEventListener("click",e=>{if(e.target.closest(".clear-all")) clearFilters();});
 
+  // Ver todos / cargar más / enlaces a anuncios
+  $("#see-all").addEventListener("click",()=>{clearFilters(false);state.all=true;renderProducts();goResults();});
+  $("#load-more").addEventListener("click",()=>{page++;renderProducts(true);});
+  addEventListener("hashchange",routeHash);
+
   // Favoritos
   $("#fav-btn").addEventListener("click",()=>{state.fav=!state.fav;renderProducts();goResults();});
 
@@ -1493,10 +1777,14 @@ function bind(){
   $$(".overlay").forEach(o=>o.addEventListener("click",e=>{if(e.target===o||e.target.closest(".modal-close")) closeModals();}));
   document.addEventListener("click",e=>{if(e.target.closest(".open-publish")){e.preventDefault();closeDropdowns();
     if(!auth.user){toast(t("login_to_publish"),"lock");openAuth("login");return;}
-    closeModals();openModal("#publish-modal");}});
+    openPublish();}});
   $("#publish-form").addEventListener("submit",submitPublish);
   $("#pub-photo").addEventListener("change",e=>{handleFiles(e.target.files);e.target.value="";});
-  $("#pub-thumbs").addEventListener("click",e=>{const b=e.target.closest(".rm-photo");if(!b)return;e.preventDefault();const [f]=pubFiles.splice(+b.dataset.i,1);URL.revokeObjectURL(f.url);renderPubPhotos();});
+  $("#pub-thumbs").addEventListener("click",e=>{
+    const b=e.target.closest(".rm-photo");
+    if(b){ e.preventDefault(); const [f]=pubFiles.splice(+b.dataset.i,1); if(f.existing) removedPhotos.push(f.existing); else URL.revokeObjectURL(f.url); renderPubPhotos(); return; }
+    const c=e.target.closest("[data-cover]"); if(c){ const [f]=pubFiles.splice(+c.dataset.cover,1); pubFiles.unshift(f); renderPubPhotos(); }
+  });
   const dz=$("#drop-zone");
   ["dragenter","dragover"].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add("border-primary-container","bg-mint-light");}));
   ["dragleave","drop"].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove("border-primary-container","bg-mint-light");}));
@@ -1504,8 +1792,7 @@ function bind(){
 
   // Varios
   bindAuth();
-  $$(".store-link").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();toast(t("stores_soon"),"phone_iphone");}));
-  document.addEventListener("click",e=>{if(e.target.closest(".msg-item")){e.preventDefault();closeDropdowns();toast(t("soon"),"chat");}});
+  $$(".install-btn").forEach(b=>b.addEventListener("click",()=>toast(t(b.dataset.os==="ios"?"install_ios":"install_android"),b.dataset.os==="ios"?"ios_share":"add_to_home_screen",6000)));
   $$('footer a[href="#"]:not(#cookie-settings)').forEach(a=>a.addEventListener("click",e=>{e.preventDefault();toast(t("soon"),"info");}));
 
   // Cookies
@@ -1596,7 +1883,7 @@ async function setUser(user){
     const {data}=await sb.from("profiles").select("*").eq("id",user.id).maybeSingle();
     auth.profile=data||{id:user.id,full_name:user.user_metadata?.full_name||"",city:user.user_metadata?.city||""};
   }
-  updateUserUI(); loadListings();
+  updateUserUI(); loadListings(); loadStats(); checkAdmin();
   if(auth.profile?.city && CITIES.includes(auth.profile.city)) $("#pub-city").value=auth.profile.city;
   if(!user && state.mine){ state.mine=false; }
   renderProducts();
@@ -1605,12 +1892,12 @@ async function setUser(user){
 function updateUserUI(){
   const on=!!auth.user;
   $("#login-btn").classList.toggle("hidden",on); $("#user-menu").classList.toggle("hidden",!on);
-  if(on){const n=displayName(); $("#user-initials").textContent=initials(n); $("#user-name").textContent=n; $("#user-email").textContent=auth.user.email;}
+  if(on){const n=displayName(); $("#user-avatar").innerHTML=avatarHTML({...auth.profile,full_name:n},"w-9 h-9","text-[13px]"); $("#user-name").textContent=n; $("#user-email").textContent=auth.user.email;}
 }
 function openProfile(){
   closeDropdowns(); const p=auth.profile||{};
   $("#pf-name").value=p.full_name||""; $("#pf-city").value=p.city||CITIES[0]; $("#pf-phone").value=(p.phone||"").replace(/^\+58/,"");
-  $("#profile-email").textContent=auth.user.email; $("#profile-initials").textContent=initials(displayName());
+  $("#profile-email").textContent=auth.user.email; $("#profile-avatar").innerHTML=avatarHTML({...auth.profile,full_name:displayName()},"w-20 h-20","text-[24px]");
   $("#pf-msg").classList.add("hidden"); openModal("#profile-modal");
 }
 async function saveProfile(e){
@@ -1624,6 +1911,19 @@ async function saveProfile(e){
   btn.disabled=false;
   if(error) return show(false,authErr(error));
   auth.profile=data; updateUserUI(); renderProducts(); closeModals(); toast(t("saved"),"check_circle");
+}
+async function uploadAvatar(file){
+  if(!file||!auth.user||!sb) return;
+  $("#profile-avatar").innerHTML=`<span class="w-20 h-20 rounded-full bg-surface-container flex items-center justify-center"><span class="material-symbols-outlined animate-spin text-primary">progress_activity</span></span>`;
+  const blob=await compressImage(file,480), path=`${auth.user.id}/avatar.jpg`;
+  const {error}=await sb.storage.from("avatars").upload(path,blob,{contentType:"image/jpeg",upsert:true,cacheControl:"60"});
+  if(error){ toast(authErr(error),"error"); openProfile(); return; }
+  const url=sb.storage.from("avatars").getPublicUrl(path).data.publicUrl+"?v="+Date.now();
+  const {data,error:e2}=await sb.from("profiles").update({avatar_url:url}).eq("id",auth.user.id).select().single();
+  if(e2){ toast(authErr(e2),"error"); return; }
+  auth.profile=data; updateUserUI();
+  $("#profile-avatar").innerHTML=avatarHTML(auth.profile,"w-20 h-20","text-[24px]");
+  toast(t("photo_saved"),"photo_camera");
 }
 function bindAuth(){
   $("#login-btn").addEventListener("click",()=>openAuth("login"));
@@ -1641,6 +1941,16 @@ function bindAuth(){
     $$("#city-dd .city-group").forEach(g=>{let any=false;$$(".dd-city",g).forEach(b=>{const ok=!q||norm(b.dataset.city+" "+b.dataset.st).includes(q);b.classList.toggle("hidden",!ok);any=any||ok;});g.classList.toggle("hidden",!any);});
   });
   $("#profile-form").addEventListener("submit",saveProfile);
+  $("#avatar-input").addEventListener("change",e=>{uploadAvatar(e.target.files[0]);e.target.value="";});
+  $("#admin-btn").addEventListener("click",openAdmin);
+  $("#report-form").addEventListener("submit",submitReport);
+  $("#admin-list").addEventListener("click",e=>{const b=e.target.closest(".adm-act");if(b) adminAction(b.dataset.act,b.parentElement.dataset.lid);});
+  document.addEventListener("click",e=>{
+    const s=e.target.closest(".star-btn");
+    if(s){ reviewStars=+s.dataset.v; $$("#star-pick .star-btn span").forEach((x,i)=>{x.classList.toggle("icon-fill",i<reviewStars);x.classList.toggle("text-badge-orange",i<reviewStars);x.classList.toggle("text-outline-variant",i>=reviewStars);}); }
+    if(e.target.closest(".open-login-review")) openAuth("login");
+  });
+  document.addEventListener("submit",e=>{ if(e.target.id==="review-form") submitReview(e); });
   $("#logout-btn").addEventListener("click",async()=>{closeDropdowns();await sb?.auth.signOut();toast(t("logged_out"),"logout");});
   if(AUTH_HASH.get("error_description")) setTimeout(()=>toast(AUTH_HASH.get("error_description"),"error"),600);
   if(!sb){ updateUserUI(); return; }
